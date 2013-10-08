@@ -31,6 +31,6 @@ Webworkers mit Ravan.js (Obradovic, Pressmar, Spindler)
 ##19. November
 Opendata (Hari, Scheibe, Schenk)
 
-WebRTC I (Bertschart, Maggi)
+WebRTC I (Betschart, Maggi)
 
 WebRTC II (Brandenburg, Jakobsche, Riesterer)
