@@ -5,9 +5,9 @@
 
 Timing: gelb
 
-Zu verwendende Quellen:
-http://www.dcache.org/‎
-https://entropia.de/GPN13:Build_your_own_cloud
+Zu verwendende Quellen:  
+http://www.dcache.org/  
+https://entropia.de/GPN13:Build_your_own_cloud  
 http://de.wikipedia.org/wiki/Cloud-Computing
 
 Gliederung des Inhalts:
@@ -29,8 +29,8 @@ Präsentation ausarbeiten
 Projektthema:
 dCache
 
-Zu verwendende Quellen:
-http://www.dcache.org/‎
+Zu verwendende Quellen:  
+http://www.dcache.org/   
 https://entropia.de/GPN13:Build_your_own_cloud
 
 Risiken:
