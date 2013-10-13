@@ -3,23 +3,28 @@
 
 ##Stand Vortrag
 
-Timing: gelb
+Timing: gelb/grün
 
-Zu verwendende Quellen:
+Zu verwendende Quellen:  
+siehe Präsentation  
 
-Gliederung des Inhalts:
-Was sind Partikelsysteme und wozu können sie gebraucht werden?
-Welche Herausforderungen gestalten sich bei der Implementationer einer Partikelsystemsimulation?
-Wie können Partikelsysteme zur Simulation von sozialen Vorgängen benutzt werden?
+Gliederung des Inhalts:  
+Was sind Partikelsysteme und wozu können sie gebraucht werden?  
+Welche Herausforderungen gestalten sich bei der Implementation einer 
+Partikelsystemsimulation?  
+Wie können Partikelsysteme zur Simulation von sozialen Vorgängen benutzt 
+werden?
 
 
 Risiken:
 
-Gefundene Informationen:
+Gefundene Informationen:  
+siehe Präsentation
 
 Todos:
 Beispiele suchen
 
 ##Stand Projektausarbeitung
 
-Implementation einer solchen Simulation für Daten aus einem sozialen Netzwerk(details noch offen)
+Implementation einer solchen Simulation für Daten aus einem sozialen 
+Netzwerk(Details noch offen)
