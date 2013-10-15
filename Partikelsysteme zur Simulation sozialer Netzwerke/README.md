@@ -22,7 +22,7 @@ Gefundene Informationen:
 siehe Präsentation
 
 Todos:
-Beispiele suchen
+
 
 ##Stand Projektausarbeitung
 
