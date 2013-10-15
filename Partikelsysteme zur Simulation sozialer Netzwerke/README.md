@@ -3,7 +3,7 @@
 
 ##Stand Vortrag
 
-Timing: gelb/grün
+Timing: grün
 
 Zu verwendende Quellen:  
 siehe Präsentation  
