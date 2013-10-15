@@ -175,14 +175,14 @@ var state = false, // `true` when the simulation is running
     
     	if ( !state ) return;
     
-    	var delta, now = (new Date()).getTime(), i, origin, rotation;
+    	//var delta, now = (new Date()).getTime(), i, origin, rotation;
     
-        delta = 1 / 60;
+        var delta = 1 / 30;
     
     	world.stepSimulation(
-        	delta * 2, // double the speed of the simulation
+        	delta, // double the speed of the simulation
         	10,        // max substeps
-        	1 / 60     // size of each substep
+        	1 / 30     // size of each substep
     	);
     
     	// Update the scene objects
