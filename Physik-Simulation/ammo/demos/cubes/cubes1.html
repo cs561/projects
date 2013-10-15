@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='utf-8'>
+<title>Ball-Example</title>
+<script type="text/JavaScript" src="../src/ammo.js"></script>
+<script type="text/JavaScript" src="../src/Three49.js"></script>
+
+</head>
+
+<body>
+
+<button id="startStop">Start</button><br />
+<canvas id="viewport" width="600" height="600"></canvas>
+
+<script type="text/javascript">
+
+var state = false, // `true` when the simulation is running
+    
+	viewport = document.getElementById("viewport"), // The canvas element we're going to use
+    
+    // If your computer supports it, switch to the WebGLRenderer for a much smoother experience
+    // most of the lag and jittering you see in the simulation is from the CanvasRenderer, not the physics
+    renderer = new THREE.CanvasRenderer({ canvas: viewport }), // Create the renderer
+    //renderer = new THREE.WebGLRenderer({ canvas: viewport }), // Create the renderer
+    
+    scene = new THREE.Scene, // Create the scene
+    
+    ball_geometry = new THREE.SphereGeometry( 3 ), // Create the ball geometry with a radius of `3`
+    ball_material = new THREE.MeshLambertMaterial({ color: 0x0000ff, overdraw: true }), // Balls will be blue
+    
+        
+    world, // This will hold the Ammo.js objects
+    localInertia = new Ammo.btVector3(0, 0, 0),
+    shape, // Will be each shape's definition
+    transform = new Ammo.btTransform, // will be used to position the objects
+    boxes = [], // This will hold all of the balls we create
+    motionState, rbInfo, body; // Used for creating each physics body
+
+
+	renderer.setSize( viewport.clientWidth, viewport.clientHeight );
+
+	camera = new THREE.PerspectiveCamera(
+		50,
+		window.innerWidth / window.innerHeight,
+		5,
+		1000
+	);
+	camera.position.set( 6, 30, 60 );
+	camera.lookAt( scene.position );
+	scene.add( camera );
+
+	function addLights() {
+    	var ambientLight = new THREE.AmbientLight( 0x555555 );
+    	scene.add( ambientLight );
+
+    	var light = new THREE.DirectionalLight( 0xffffff );
+		light.target.position.copy( scene.position );
+		light.castShadow = true;
+		light.shadowCameraLeft = -25;
+		light.shadowCameraTop = -25;
+		light.shadowCameraRight = 25;
+		light.shadowCameraBottom = 25;
+		light.shadowBias = -.0001
+		scene.add( light );
+	}
+
+	function buildScene() {
+    
+    	// Create the physics world
+     	var collisionConfiguration = new Ammo.btDefaultCollisionConfiguration;
+     	world = new Ammo.btDiscreteDynamicsWorld(
+         	new Ammo.btCollisionDispatcher( collisionConfiguration ), // Dispatcher for collision handling
+         	new Ammo.btDbvtBroadphase, // Broadphase interface
+         	new Ammo.btSequentialImpulseConstraintSolver, // Constraint solver
+         	collisionConfiguration // Collision configuration
+     	);
+    
+    	var ramp_geometry= new THREE.CubeGeometry( 50, 2, 10 ),
+        material_red = new THREE.MeshLambertMaterial({ color: 0xdd0000, overdraw: true });    
+    
+    	// Create the floor
+    	var floor = new THREE.Mesh( new THREE.PlaneGeometry( 100, 50 ), material_red );
+    	floor.position.y = -15;
+    	floor.receiveShadow = true;
+
+    	scene.add( floor );
+    
+    	shape = new Ammo.btBoxShape(new Ammo.btVector3( 50, 1, 25  )); // "50" = half of the width of the floor, ".01" = small height number to represent the plane, "25" = half of the depth
+    	shape.calculateLocalInertia( 0, localInertia ); // "0" is the ramp's mass. For a static shape this must be 0
+    
+    	// position the floor
+    
+    	transform = new Ammo.btTransform;
+    	transform.setIdentity(); // reset any existing transform
+    	transform.setOrigin(new Ammo.btVector3( 0, -15, 0 ));
+    	transform.setRotation(new Ammo.btQuaternion( 0, 0, 0 ));
+    
+    	motionState = new Ammo.btDefaultMotionState( transform );
+    	rbInfo = new Ammo.btRigidBodyConstructionInfo( 0, motionState, shape, localInertia ); // mass, motion state, shape, inertia
+    
+    	body = new Ammo.btRigidBody( rbInfo );
+    	world.addRigidBody( body ); // Add this physics body to the world
+    
+	}
+
+	function addBall() {
+    	var box, position_x, position_z,
+			mass, startTransform, localInertia, boxShape, motionState, rbInfo, boxAmmo;
+		
+		position_x = Math.random() * 10 - 5;
+		position_z = Math.random() * 10 + 5;
+		
+		// Create 3D box model
+		box = new THREE.Mesh(
+			new THREE.CubeGeometry( 3, 3, 3),
+			new THREE.MeshLambertMaterial({ opacity: 1, transparent: true })
+		);
+		mass = 3 * 3 * 3;
+		
+		localInertia = new Ammo.btVector3(0, 0, 0);
+
+		shape = new Ammo.btSphereShape( new Ammo.btVector3( 2, 2, 2 ) ); 
+       	shape.calculateLocalInertia( mass, localInertia ); // "5" is the ball's mass.
+		
+		box.material.color.setRGB( Math.random() * 100 / 100, Math.random() * 100 / 100, Math.random() * 100 / 100 );
+		box.castShadow = true;
+		box.receiveShadow = true;
+		box.useQuaternion = true;
+		scene.add( box );
+		
+		
+		// Create box physics model
+		startTransform = new Ammo.btTransform();
+		startTransform.setIdentity();
+		startTransform.setOrigin(new Ammo.btVector3( position_x, 25, position_z ));
+		
+		
+		boxShape = new Ammo.btBoxShape(new Ammo.btVector3( 2, 2, 2 ));
+		boxShape.calculateLocalInertia( mass, localInertia );
+		
+		motionState = new Ammo.btDefaultMotionState( startTransform );
+		rbInfo = new Ammo.btRigidBodyConstructionInfo( mass, motionState, boxShape, localInertia );
+		boxAmmo = new Ammo.btRigidBody( rbInfo );
+		boxAmmo.mesh = box;
+		world.addRigidBody( boxAmmo );		
+		boxes.push( boxAmmo );
+		
+//    	boxAmmo.setCollisionFlags( body.getCollisionFlags() | 8 );
+		
+	}
+
+	function updateWorld() {
+		requestAnimationFrame( updateWorld );
+    
+    	if ( !state ) return;
+    
+    	//var delta, now = (new Date()).getTime(), i, origin, rotation;
+    
+        var delta = 1 / 30;
+    
+    	world.stepSimulation(
+        	delta, // double the speed of the simulation
+        	10,        // max substeps
+        	1 / 30     // size of each substep
+    	);
+    
+    	// Update the scene objects
+    	for ( i = 0; i < boxes.length; i++ ) {
+        	transform = boxes[i].getCenterOfMassTransform();
+
+			origin = transform.getOrigin();
+			boxes[i].mesh.position.x = origin.x();
+			boxes[i].mesh.position.y = origin.y();
+			boxes[i].mesh.position.z = origin.z();
+			
+			rotation = transform.getRotation();
+			boxes[i].mesh.quaternion.x = rotation.x();
+			boxes[i].mesh.quaternion.y = rotation.y();
+			boxes[i].mesh.quaternion.z = rotation.z();
+			boxes[i].mesh.quaternion.w = rotation.w();
+
+    	}
+    
+    
+    	renderer.render( scene, camera );
+	
+	}
+
+	addLights();
+	buildScene();
+
+	document.getElementById( 'startStop' ).addEventListener('click',
+	    function() {
+    	    if ( this.innerHTML === 'Start' ) {
+        	    this.innerHTML = 'Stop';
+            	state = true;
+        	} else {
+            	this.innerHTML = 'Start';
+            	state = false;
+        	}
+    	}
+	)
+
+	updateWorld();
+
+	setInterval( addBall, 1000 );
+</script>
+
+</body>
+</html>
