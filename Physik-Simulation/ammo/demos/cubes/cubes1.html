@@ -105,6 +105,9 @@ var state = false, // `true` when the simulation is running
 	}
 
 	function addBall() {
+	
+    	if ( !state ) return;
+
     	var box, position_x, position_z,
 			mass, startTransform, localInertia, boxShape, motionState, rbInfo, boxAmmo;
 		
