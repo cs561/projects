@@ -1,8 +1,35 @@
 # Vortrag
 
 ## Inhalt
-* Terminologie von P2P Netzwerken
-* Aufbau und Funktionsweise verschiedener P2P Netzwerke
+
+### Terminologie
+* Peers, Nodes, Leecher, Seeder
+* Definition P2P
+
+### Wieso werden P2P-Protokolle eingesetzt?
+* Inhalt verteilen
+* Echtzeitanwendung
+* Nachteile
+
+### Vorstellung verschiedener Protokolle/Netze
+#### Protokolle
+* Bittorrent
+* Spotify
+* Zattoo
+* ?
+* ?
+#### jeweiliger Inhalt
+* Zweck/Zielsetzung des Netzwerkes
+* Aufbau 
+* Funktionsweise
+* Spezielles
+
+### Abschluss
+* Ausblick in die Zukunft
+* Links
+* Fragen?
+
+
 
 ## Links
 http://datatracker.ietf.org/doc/draft-ietf-ppsp-survey/?include_text=1
