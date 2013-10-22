@@ -18,6 +18,7 @@
 * Zattoo
 * ?
 * ?
+
 #### jeweiliger Inhalt
 * Zweck/Zielsetzung des Netzwerkes
 * Aufbau 
@@ -25,7 +26,6 @@
 * Spezielles
 
 ### Abschluss
-* Ausblick in die Zukunft
 * Links
 * Fragen?
 
