@@ -1,0 +1,481 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+		
+		
+		<script type="text/javascript" src="website/js/jquery.js"></script>
+		<script type="text/javascript" src="photobooth_min.js"></script>
+		<script type="text/javascript" src="website/js/script.js"></script>
+		<!--
+		<link href='http://fonts.googleapis.com/css?family=Abel' rel='stylesheet' type='text/css'>
+		<link type="text/css" rel="stylesheet" media="screen" href="website/css/page.css" />
+		-->
+
+		<title>Augmented Reality CS 561</title>
+
+		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+		<meta name="author" content="Hakim El Hattab">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="css/reveal.min.css">
+		<link rel="stylesheet" href="css/theme/default.css" id="theme">
+
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- If the query includes 'print-pdf', use the PDF print sheet -->
+		<script>
+			document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section data-background-color="rgba( 12, 25, 77, 0.6)">
+					<h1>Augmented Reality</h1>
+					<p>CS561 Seminar Verteilte Systeme</p>
+					<div>
+					<br>
+					</div>
+					<p>Mario Weber, Maurus Dähler, Simon Wang</p>
+					<div style="text-align: left; ">
+					<font color="#444444">, &nbsp;</font>
+					</div>
+				</section>
+					<section data-background-color="rgba( 12, 25, 77, 0.6)">
+					<h2>Überblick Vortrag</h2>
+					<ul>
+						<li>Was ist AR?</li>
+						<li>Anwendungen</li>
+						<li>Webservices</li>
+						<li>Do it yourself</li>
+						<li>AR - Probleme und Gefahren</li>	
+					</ul>
+				</section>
+				<section data-background-color="rgba( 12, 25, 77, 0.6)">
+					<h2>Was ist AR?</h2>
+					<img src="images/intro.jpg" hight="600" width="600"></img>
+				</section>
+				<section>
+				
+					<section data-background-color="rgba( 12, 25, 77, 0.6)">
+						<h2>Anwendungen</h2>
+						<img src="images/bsp1.jpg" hight="600" width="600"></img>
+					</section>
+					
+					<section data-background-color="rgba( 12, 25, 77, 0.6)">
+					<ul>
+						<li>Streetview</li>
+					</ul>
+					<br>
+					<img src="images/1.jpg" hight="800" width="800"></img>
+					</section>
+					
+					<section data-background-color="rgba( 12, 25, 77, 0.6)">
+					<ul>
+						<li>Medizin</li>
+					</ul>
+					<br>
+					<img src="images/aug_med.png" hight="600" width="600"></img>
+					</section>
+					
+					
+					<section data-background-color="rgba( 12, 25, 77, 0.6)">
+					<ul>
+						<li>Architektur</li>
+					</ul>
+					<br>
+					<img src="images/3.jpg" hight="600" width="600"></img>
+					</section>
+					
+					<section data-background-color="rgba( 12, 25, 77, 0.6)">
+					<ul>
+						<li>Navigation</li>
+					</ul>
+					<br>
+					<img src="images/navi.png" hight="600" width="600"></img>
+					</section>
+					
+					<section data-background-color="rgba( 12, 25, 77, 0.6)">
+					<ul>
+						<li>Militär und Katastrophenmanagement</li>
+					</ul>
+					<br>
+					<img src="images/army_ar.jpg" hight="600" width="600"></img>
+					</section>
+					
+					<section data-background-color="rgba( 12, 25, 77, 0.6)">
+					<ul>
+						<li>Games</li>
+					</ul>
+					<br>
+					<img src="images/2.jpg" hight="600" width="600"></img>
+					</section>
+					
+					<section data-background-color="rgba( 12, 25, 77, 0.6)">
+					<ul>
+						<li>Apps</li>
+					</ul>
+					<br>
+					<img src="images/5.jpg" hight="600" width="600"></img>
+					</section>
+					
+				</section>
+				
+				<section>
+				
+					<section data-background-color="rgba( 12, 25, 77, 0.6)">
+						<h2>Webservices</h2>
+							<a href="http://www.wikitude.com/" target="_blank"><img src="images/wikitude_small.png"></a>
+							<a href="http://www.junaio.com/" target="_blank"><img src="images/junaio_small.png"></a>
+							<a href="https://www.layar.com/" target="_blank"><img src="images/layar_small.png"></a>
+					</section>
+					
+					<section data-background-color="rgba( 12, 25, 77, 0.6)">
+
+						<a href="https://www.layar.com/" target="_blank"><img src="images/layar_small.png"></a></br>
+		
+						<br>
+						<video controls width="640" height="360" src="layar.mp4"></video>
+					</section>
+					
+					<section data-background-color="rgba( 12, 25, 77, 0.6)">
+
+						<a href="http://www.wikitude.com/" target="_blank"><img src="images/wikitude_small.png"></a>
+		
+						<br>
+						<img src="images/tude.png">
+					</section>
+					
+					<section data-background-color="rgba( 12, 25, 77, 0.6)">
+
+						<a href="http://www.junaio.com/" target="_blank"><img src="images/junaio_small.png"></a>
+						<br>
+						<img src="images/033.png" hight="150" width="400">
+						<img src="images/034.png" hight="150" width="250">
+						
+					</section>
+					
+					<section data-background-color="rgba( 12, 25, 77, 0.6)">
+
+						<a href="http://www.junaio.com/" target="_blank"><img src="images/junaio_small.png"></a>
+		
+						<br>
+						<br><br><br><br>
+						<h2>DEMO</h2>
+					</section>
+					
+					
+					
+					<section data-background-color="rgba( 12, 25, 77, 0.6)">
+
+						<img src="images/junaio_small.png">
+						<br>
+						<img src="images/pro1.png" hight="400" width="400">
+						
+						
+					</section>
+					
+					
+				</section>
+				
+				<section>
+					<section data-background-color="rgba( 12, 25, 77, 0.6)">
+						<h2>Do it yourself!</h2>
+						<a href="http://www.microsoft.com/de-ch/visualstudio/" target="_blank"><img src="images/vslogo.png" hight="400" width="200"></a>
+						<br>
+						<a href="http://www.microsoft.com/en-us/download/details.aspx?id=23714" target="_blank"><img src="images/xnalogo.png" hight="100" width="100"></a>
+						<br>
+						<a href="http://virtual.vtt.fi/virtual/proj2/multimedia/alvar/" target="_blank"><img src="images/alvarlogo.png" hight="400" width="200"></a>
+						
+					</section>
+					<section data-background-color="rgba( 12, 25, 77, 0.6)">
+						<h3>Beispiel Tutorial 8 Goblin XNA</h3>
+						<img src="images/self.png" hight="700" width="700">
+					</section>
+					
+					<section data-background-color="rgba( 12, 25, 77, 0.6)">
+						<h3>Code Frag1 Initialize</h3>
+						<pre><code data-trim>
+							protected override void Initialize()
+        {
+            base.Initialize();
+
+            // Initialize the GoblinXNA framework
+            State.InitGoblin(graphics, Content, "");
+
+            // Initialize the scene graph
+            scene = new Scene();
+
+            // Use the newton physics engine to perform collision detection
+            scene.PhysicsEngine = new NewtonPhysics();
+
+          
+            SetupMarkerTracking();
+
+            // Set up the lights used in the scene
+            CreateLights();
+
+            // Enable shadow mapping
+            scene.ShadowMap = new MultiLightShadowMap();
+
+            // Create 3D objects
+            CreateObjects();
+
+            // Create the ground that represents the physical ground marker array
+            CreateGround();
+
+            // Show Frames-Per-Second on the screen for debugging
+            State.ShowFPS = true;
+        }
+						</code></pre>
+					</section>
+					
+					<section data-background-color="rgba( 12, 25, 77, 0.6)">
+						<h3>Code Frag2 SetupMarkerTracker</h3>
+						<pre><code data-trim>
+private void SetupMarkerTracking()
+        {
+            IVideoCapture captureDevice = null;
+
+            if (useStaticImage)
+            {
+                captureDevice = new NullCapture();
+                captureDevice.InitVideoCapture(0, FrameRate._30Hz, Resolution._800x600,
+                    ImageFormat.R8G8B8_24, false);
+                ((NullCapture)captureDevice).StaticImageFile = "MarkerImage";
+            }
+            else
+            
+                captureDevice = new DirectShowCapture();
+                captureDevice.InitVideoCapture(0, FrameRate._60Hz, Resolution._640x480,
+                    ImageFormat.R8G8B8_24, false);
+            }
+
+            // Add this video capture device to the scene so that it can be used for
+            // the marker tracker
+            scene.AddVideoCaptureDevice(captureDevice);
+
+            ALVARMarkerTracker tracker = new ALVARMarkerTracker();
+            tracker.MaxMarkerError = 0.02f;
+            tracker.InitTracker(captureDevice.Width, captureDevice.Height, "default_calib.xml", 32.4f);
+
+            // Set the marker tracker to use for our scene
+            scene.MarkerTracker = tracker;
+        
+        }
+						</code></pre>
+						
+					</section>
+					
+					<section data-background-color="rgba( 12, 25, 77, 0.6)">
+						<h3>Code Frag3 CreateObjects</h3>
+						<pre><code data-trim>
+private void CreateObjects()
+        {
+            
+            // Create a geometry node with a model of a box that will be overlaid on
+            // top of the ground marker array initially. (When the toolbar marker array is
+            // detected, it will be overlaid on top of the toolbar marker array.)
+            boxNode = new GeometryNode("Box");
+
+            boxNode.Model = new TexturedBox(32.4f);
+
+            // Add this box model to the physics engine for collision detection
+            boxNode.AddToPhysicsEngine = true;
+            boxNode.Physics.Shape = ShapeType.Box;
+            // Make this box model cast and receive shadows
+            boxNode.Model.ShadowAttribute = ShadowAttribute.ReceiveCast;
+            // Assign a shadow shader for this model that uses the IShadowMap we assigned to the scene
+            boxNode.Model.Shader = new SimpleShadowShader(scene.ShadowMap);
+
+            // Create a marker node to track a toolbar marker array.
+            toolbarMarkerNode = new MarkerNode(scene.MarkerTracker, "ALVARToolbar.xml");
+
+            scene.RootNode.AddChild(toolbarMarkerNode);
+
+            // Create a material to apply to the box model
+            Material boxMaterial = new Material();
+            boxMaterial.Diffuse = new Vector4(0.5f, 0, 0, 1);
+            boxMaterial.Specular = Color.White.ToVector4();
+            boxMaterial.SpecularPower = 10;
+
+            boxNode.Material = boxMaterial;
+
+            // Add this box model node to the ground marker node
+            groundMarkerNode.AddChild(boxNode);
+
+        }
+						</code></pre>
+						
+					</section>
+					
+					<section data-background-color="rgba( 12, 25, 77, 0.6)">
+						<h3>Code Frag4 Draw</h3>
+						<pre><code data-trim>
+protected override void Draw(GameTime gameTime)
+        {
+            // If ground marker array is detected
+            if (groundMarkerNode.MarkerFound)
+            {
+                // If the toolbar marker array is detected, then overlay the box model on top
+                // of the toolbar marker array; otherwise, overlay the box model on top of
+                // the ground marker array
+                if (toolbarMarkerNode.MarkerFound)
+                {
+                  
+                    Vector3 shiftVector = new Vector3(0, 0, 16.1f);
+                    Matrix mat = Matrix.CreateTranslation(shiftVector) * 
+                        toolbarMarkerNode.WorldTransformation * 
+                        Matrix.Invert(groundMarkerNode.WorldTransformation);
+
+                    // Modify the transformation in the physics engine
+                    ((NewtonPhysics)scene.PhysicsEngine).SetTransform(boxNode.Physics, mat);
+                }
+                else
+                    ((NewtonPhysics)scene.PhysicsEngine).SetTransform(boxNode.Physics, 
+                        Matrix.CreateTranslation(0, 0, 16.1f));
+            }
+
+            scene.Draw(gameTime.ElapsedGameTime, gameTime.IsRunningSlowly);
+        }
+						</code></pre>
+						
+					</section>
+					
+					
+					
+				</section>
+				
+				
+				<section>
+					<section data-background-color="rgba( 12, 25, 77, 0.6)">
+					<h2>AR - Probleme und Gefahren</h2>
+					</section>
+					
+					<section data-background-color="rgba( 12, 25, 77, 0.6)">
+					<h3>google glasses</h3>
+					<img src="images/glasses.jpg" hight="00" width="600">
+					</section>
+					
+					<section data-background-color="rgba( 12, 25, 77, 0.6)">
+					<h3>google glasses</h3>
+					<img src="images/facerec.jpg" hight="600" width="600">
+					</section>
+					
+					<section data-background-color="rgba( 12, 25, 77, 0.6)">
+					<h3>bigbrother is watching them</h3>
+					<img src="images/1984.jpg" hight="600" width="600">
+					</section>
+					
+					<section data-background-color="rgba( 12, 25, 77, 0.6)">
+					<h3>ar popups?</h3>
+					<img src="images/popups.jpg" hight="600" width="600">
+					</section>
+					
+					<section data-background-color="rgba( 12, 25, 77, 0.6)">
+					<h3>augmented crime</h3>
+					<img src="images/bankaccount.jpg" hight="600" width="600">
+					</section>
+					
+					<section data-background-color="rgba( 12, 25, 77, 0.6)">
+					<h3>Pleaserobme.com</h3>
+					<a href="http://www.pleaserobme.com" target="_blank"><img src="images/robme.png" hight="400" width="400"></a>
+					</section>
+					
+			
+					<section data-background-color="rgba( 12, 25, 77, 0.6)">
+							<h2>Demo</h2>
+							<script>
+								// Put event listeners into place
+								window.addEventListener("DOMContentLoaded", function() {
+									// Grab elements, create settings, etc.
+									var canvas = document.getElementById("canvas"),
+										context = canvas.getContext("2d"),
+										video = document.getElementById("video"),
+										videoObj = { "video": true },
+										errBack = function(error) {
+											console.log("Video capture error: ", error.code); 
+										};
+
+									// Put video listeners into place
+									if(navigator.getUserMedia) { // Standard
+										navigator.getUserMedia(videoObj, function(stream) {
+											video.src = stream;
+											video.play();
+										}, errBack);
+									} else if(navigator.webkitGetUserMedia) { // WebKit-prefixed
+										navigator.webkitGetUserMedia(videoObj, function(stream){
+											video.src = window.webkitURL.createObjectURL(stream);
+											video.play();
+										}, errBack);
+									}
+								}, false);
+
+								
+							</script>
+							<video id="video" width="640" height="480" autoplay></video>
+							<canvas id="canvas" width="640" height="480"></canvas>
+					</section>
+					
+					
+				</section>	
+				
+				
+				<section data-background-color="rgba( 12, 25, 77, 0.6)">
+					<h2>Fragen?</h2>
+				</section>
+				
+			</div>
+
+
+		</div>
+		<div class="foooter" style="display: block; position: absolute; bottom: 10px; left: 37%; margin-left: -160px; z-index: 20;">
+			<p style="color:black"><img src = "images/unibas.gif" style="height:100px; font-weight: bold;">AUGMENTED REALITY - CS561 VERTEILTE SYSTEME - MARIO WEBER, MAURUS DÄHLER, SIMON WANG</p>
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.min.js"></script>
+
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+
+		</script>
+	
+	</body>
+</html>
