@@ -33,8 +33,8 @@ public class Game extends PApplet{
 	    tutorialStage = 1;
 	    
 	    // debug
-	    actualLevelNo = 3;
-	    tutorialStage = 0;
+	   /* actualLevelNo = 3;
+	    tutorialStage = 0;*/
 	    
 	    coordProvider = new LevelContentProvider();
 	    startNextLevel(actualLevelNo);

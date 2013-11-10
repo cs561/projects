@@ -19,7 +19,7 @@ class TowerElement{
     private Body      	body;
     private Level     	level;
     private Game		game;
-    private boolean   	pointed;
+    private boolean   	pointed, horizontal;
     private PImage    	tex;
     
     private String[]  textureNames = {"wood1.jpg", "wood2.jpg", "wood3.jpg", "stone1.jpg", "stone2.jpg", "stone3.jpg", "metal1.jpg", "metal2.jpg", "metal3.jpg"};
@@ -35,6 +35,12 @@ class TowerElement{
         this.friction = f;
         this.restitution = r;
         game = level.getGame();
+        
+        if(w > h){
+        	horizontal = true;
+        }else{
+        	horizontal = false;
+        }
         
         switch(type){
             case 0:
@@ -79,14 +85,34 @@ class TowerElement{
         game.image(tex, -w/2, -h/2, w, h);
         game.popMatrix();
         
+      /*  game.fill(255);
+        game.rect(pos.x, pos.y, 10, 10);
+        game.fill(200);
+        game.rect(pos.x-w/2, pos.y+h/2, 10, 10);*/
+        
+        if(pointed){
+        	game.fill(255,100);
+        	game.ellipse(pos.x-2, pos.y-2, 16, 16);
+            game.image(game.loadImage("check.png"), pos.x-8, pos.y-8, 15, 15);
+        }
+        
         // TODO better detection of upset
+        
+        boolean fallen = (Math.abs(a) > game.PI/4)? true : false;
         
         int absX = (int)Math.abs(pos.x - topLeftX);
         int absY = (int)Math.abs(pos.y - topLeftY);
         
-        if((absX > 20 || absY > 20) && !pointed){
-            pointed = true;
-            level.increasePoints();
+        if((absY > 13) && !pointed){
+        	if(horizontal){
+        		if(absX > 13){
+                    pointed = true;
+                    level.increasePoints();
+        		}
+        	}else{
+                pointed = true;
+                level.increasePoints();
+        	}
         } 
     }
     
