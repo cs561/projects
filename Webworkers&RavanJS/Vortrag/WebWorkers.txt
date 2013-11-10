@@ -1,0 +1,45 @@
+﻿0) Vorstellung - Thema - Gruppe - Inhaltsvz.
+1) Was sind Webworkers?
+- Wie war es bisher -> Entstehung von Webworkers (Beispiel vorher/jetzt)
+- Erklärung was sind Webworkers Thread, Javascript
+- Unterscheidung zwischen zwei Typen (Shared, Dedicated)
+- Welche Browser unterstützen Webworkers
+2) Vor-/Nachteile von Webworkers
+- Unterschied Ajax vs. Webworkers
+- Kein Einfrieren mehr,...
+- Limitierungen (DOM Zugriffe, ....)
+3) How to use a web worker? - Implementierungsbeispiel(Mit rotem Faden von Anfang bis zum Ende)
+- Codebeispiele Deklaration/Initalisierung, Messages (Kommunikation), Termite, Importscripts, Error Handling
+4) Weitere/Mögliche Anwendungsfälle
+....
+5) Konkrettes Anwendungsbeispiel Raven.js
+- Was ist das?
+- Hash Unterstützung
+- Komponenten
+- Beispiel (evtl. interaktiv mit den Teilnehmern)
+- -> Hinweis: Fehler mit Kommunikation zwischen den Clients
+
+#################################################################################################################################
+
+Wenn einem noch Punkte einfalle, einfach ergänzen. Die Sachen am besten schonmal als OpenOffice Präsentation vorbereiten (also nur die Seiteninhalt ohne das Zeugs drumherum. Fürgen das Zeug dann am Dienstag zusammen)
+
+EINTEILUNG
+----------
+0) Mirco/Michaja -> wird im Skype geklärt
+1) Mirco/Michaja -> wird im Skype geklärt
+2) Mirco/Michaja -> wird im Skype geklärt
+3) Mirco/Michaja -> wird im Skype geklärt
+4) Marko; Vortrag -zu klären-
+5) Marko; Vortrag Michaja
+
+Die Schlussformatierung der Präsentation kann ich übernehmen.
+
+
+A: Einleitung am Anfang mit Gruppe etc.
+A: Worum handelt es sich bei einem Web Worker?
+A: Limitierungen bzgl. Funktionen von Web Workern
+B: Schrittweise Implementierung mit einfachen Beispielen
+ : - Message, Terminierung, Untergeordnete Worker, Inline-Worker, Externe Skripts laden, Blob-URLs, Fehlerbehebung
+B: Vorteile, Nachteile, Browserkompatibilität
+A: Wo werden Webworkers eingesetzt (Anwendungsfälle)?
+A: Ravan.js
