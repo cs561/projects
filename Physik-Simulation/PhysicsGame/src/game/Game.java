@@ -33,8 +33,8 @@ public class Game extends PApplet{
 	    tutorialStage = 1;
 	    
 	    // debug
-	   /* actualLevelNo = 3;
-	    tutorialStage = 0;*/
+	    actualLevelNo = 5;
+	    tutorialStage = 0;
 	    
 	    coordProvider = new LevelContentProvider();
 	    startNextLevel(actualLevelNo);
@@ -165,18 +165,20 @@ public class Game extends PApplet{
 
 	
 	void drawInformationBar(){
-	    fill(0,100,255,75);
+	    fill(0,100,255);
 	    stroke(255);
 	    strokeWeight(0);
 	    rectMode(CORNER);
 	    rect(0,0,1280,60); 
-	    int textColor = (win)? color(150, 150, 150) : color(27, 28, 64);
+	 
+	    int textColor = (win)? color(106, 111, 247) : color(27, 28, 64);
 	    fill(textColor);
 	    textFont(baveuse30);
 	    text("LEVEL " + actualLevelNo, 25, 40);
 	    text("upset bars: " + actualLevel.getPoints() + "/" + actualLevel.getPointsToReach(), 230, 40); 
 	    text("bullets left: " + actualLevel.getBulletsLeft(), 600, 40);
-	    fill(0, 255, 0);
+	    
+	    fill(61, 214, 0);
 	    text("total points: " + totalPoints, 950, 40);
 	}
 
@@ -419,7 +421,7 @@ public class Game extends PApplet{
 	    }
 	    
 	    actualLevel = new Level(level, this, coordProvider);
-	    actualBackground = loadImage("background" + actualLevelNo + ".jpg"); // TODO from ContentProvider
+	    actualBackground = loadImage(coordProvider.getLevelBackgroundImage(actualLevelNo)); 
 	    actualForce = 0;
 	    actualDx = 0;
 	    actualDy = 0;

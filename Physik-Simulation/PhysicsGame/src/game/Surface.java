@@ -41,6 +41,10 @@ class Surface{
     	
         game.strokeWeight(1);
         game.stroke(185, 122, 87);
+        
+        game.strokeWeight(5);
+        game.stroke(0);
+        
         game.noFill();
         game.beginShape();
         for(Vec2 v: surface){
