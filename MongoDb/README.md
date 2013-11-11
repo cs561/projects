@@ -11,7 +11,7 @@ Gliederung des Inhalts:
 - MapReduce-Theorie
 - Praxis am Beispiel MongoDB
 - Challenge
-Risiken:
+
 
 Gefundene Informationen:
 
