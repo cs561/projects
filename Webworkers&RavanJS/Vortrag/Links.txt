@@ -1,0 +1,1 @@
+http://www.smart-webentwicklung.de/2013/09/einfuehrung-in-die-html5-web-worker-api/

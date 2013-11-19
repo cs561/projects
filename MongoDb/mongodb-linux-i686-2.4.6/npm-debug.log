@@ -1,0 +1,1066 @@
+info it worked if it ends with ok
+verbose cli [ 'node', '/usr/bin/npm', 'install', 'mongoose' ]
+info using npm@1.1.4
+info using node@v0.6.12
+verbose config file /home/lucius/.npmrc
+verbose config file /usr/etc/npmrc
+verbose config file /usr/share/npm/npmrc
+verbose cache add [ 'mongoose', null ]
+silly cache add: name, spec, args [ undefined, 'mongoose', [ 'mongoose', null ] ]
+verbose parsed url { pathname: 'mongoose', path: 'mongoose', href: 'mongoose' }
+verbose addNamed [ 'mongoose', '' ]
+verbose addNamed [ null, '' ]
+silly name, range, hasData [ 'mongoose', '', false ]
+verbose raw, before any munging mongoose
+verbose url resolving [ 'https://registry.npmjs.org/', './mongoose' ]
+verbose url resolved https://registry.npmjs.org/mongoose
+verbose etag "5RH4B8FIXCHMDDKI1C2ATBJX0"
+http GET https://registry.npmjs.org/mongoose
+http 304 https://registry.npmjs.org/mongoose
+silly get cb [ 304,
+silly get cb   { server: 'CouchDB/1.3.1 (Erlang OTP/R15B03)',
+silly get cb     etag: '"5RH4B8FIXCHMDDKI1C2ATBJX0"',
+silly get cb     date: 'Mon, 28 Oct 2013 12:14:31 GMT',
+silly get cb     'content-length': '0' } ]
+verbose etag mongoose from cache
+silly name, range, hasData 2 [ 'mongoose', '', true ]
+silly versions [ 'mongoose',
+silly versions   [ '0.0.1',
+silly versions     '0.0.2',
+silly versions     '0.0.3',
+silly versions     '0.0.4',
+silly versions     '0.0.5',
+silly versions     '1.0.0',
+silly versions     '1.0.1',
+silly versions     '1.0.2',
+silly versions     '0.0.6',
+silly versions     '1.0.3',
+silly versions     '1.0.4',
+silly versions     '1.0.5',
+silly versions     '1.0.6',
+silly versions     '1.0.7',
+silly versions     '1.0.8',
+silly versions     '1.0.10',
+silly versions     '1.0.11',
+silly versions     '1.0.12',
+silly versions     '1.0.13',
+silly versions     '1.0.14',
+silly versions     '1.0.15',
+silly versions     '1.0.16',
+silly versions     '1.1.0',
+silly versions     '1.1.1',
+silly versions     '1.1.2',
+silly versions     '1.1.3',
+silly versions     '1.1.4',
+silly versions     '1.1.5',
+silly versions     '1.1.6',
+silly versions     '1.1.7',
+silly versions     '1.1.8',
+silly versions     '1.1.9',
+silly versions     '1.1.10',
+silly versions     '1.1.11',
+silly versions     '1.1.12',
+silly versions     '1.1.13',
+silly versions     '1.1.14',
+silly versions     '1.1.15',
+silly versions     '1.1.16',
+silly versions     '1.1.17',
+silly versions     '1.1.18',
+silly versions     '1.1.19',
+silly versions     '1.1.20',
+silly versions     '1.1.21',
+silly versions     '1.1.22',
+silly versions     '1.1.23',
+silly versions     '1.1.24',
+silly versions     '1.1.25',
+silly versions     '1.2.0',
+silly versions     '1.3.0',
+silly versions     '1.3.1',
+silly versions     '1.3.2',
+silly versions     '1.3.3',
+silly versions     '1.3.4',
+silly versions     '1.3.5',
+silly versions     '1.3.6',
+silly versions     '1.3.7',
+silly versions     '1.4.0',
+silly versions     '1.5.0',
+silly versions     '1.6.0',
+silly versions     '1.7.2',
+silly versions     '1.7.3',
+silly versions     '1.7.4',
+silly versions     '1.8.0',
+silly versions     '1.8.1',
+silly versions     '1.8.2',
+silly versions     '1.8.3',
+silly versions     '1.8.4',
+silly versions     '2.0.0',
+silly versions     '2.0.1',
+silly versions     '2.0.2',
+silly versions     '2.0.3',
+silly versions     '2.0.4',
+silly versions     '2.1.0',
+silly versions     '2.1.1',
+silly versions     '2.1.2',
+silly versions     '2.1.3',
+silly versions     '2.1.4',
+silly versions     '2.2.0',
+silly versions     '2.2.1',
+silly versions     '2.2.2',
+silly versions     '2.2.3',
+silly versions     '2.2.4',
+silly versions     '2.3.0',
+silly versions     '2.3.1',
+silly versions     '2.3.2',
+silly versions     '2.3.3',
+silly versions     '2.3.4',
+silly versions     '2.3.5',
+silly versions     '2.3.6',
+silly versions     '2.3.7',
+silly versions     '2.3.8',
+silly versions     '2.3.9',
+silly versions     '2.3.10',
+silly versions     '2.3.11',
+silly versions     '2.3.12',
+silly versions     '2.3.13',
+silly versions     '2.4.0',
+silly versions     '2.4.1',
+silly versions     '2.4.2',
+silly versions     '2.4.3',
+silly versions     '2.4.4',
+silly versions     '2.4.5',
+silly versions     '2.4.6',
+silly versions     '2.4.7',
+silly versions     '2.4.8',
+silly versions     '2.4.9',
+silly versions     '2.4.10',
+silly versions     '2.5.0',
+silly versions     '2.5.1',
+silly versions     '2.5.2',
+silly versions     '2.5.3',
+silly versions     '2.5.4',
+silly versions     '2.5.5',
+silly versions     '2.5.6',
+silly versions     '2.5.7',
+silly versions     '2.5.8',
+silly versions     '2.5.9',
+silly versions     '2.5.10',
+silly versions     '2.5.11',
+silly versions     '2.5.12',
+silly versions     '2.5.13',
+silly versions     '2.5.14',
+silly versions     '2.6.0',
+silly versions     '2.6.1',
+silly versions     '2.6.2',
+silly versions     '2.6.3',
+silly versions     '2.6.4',
+silly versions     '2.6.5',
+silly versions     '2.6.6',
+silly versions     '2.6.7',
+silly versions     '2.6.8',
+silly versions     '2.7.0',
+silly versions     '2.7.1',
+silly versions     '2.7.2',
+silly versions     '2.7.4',
+silly versions     '2.7.3',
+silly versions     '3.0.0',
+silly versions     '3.0.1',
+silly versions     '3.0.2',
+silly versions     '2.8.0',
+silly versions     '3.0.3',
+silly versions     '3.1.0',
+silly versions     '2.8.1',
+silly versions     '3.1.2-pre',
+silly versions     '3.1.1',
+silly versions     '2.8.2',
+silly versions     '2.8.3',
+silly versions     '3.1.2',
+silly versions     '2.9.0',
+silly versions     '3.2.0',
+silly versions     '2.9.1',
+silly versions     '3.2.1',
+silly versions     '2.9.2',
+silly versions     '3.2.2',
+silly versions     '3.3.0',
+silly versions     '3.3.1',
+silly versions     '2.9.3',
+silly versions     '3.4.0',
+silly versions     '2.9.4',
+silly versions     '2.9.5',
+silly versions     '3.5.0',
+silly versions     '3.5.1',
+silly versions     '3.5.2',
+silly versions     '3.5.3',
+silly versions     '2.9.6',
+silly versions     '2.9.7',
+silly versions     '3.5.4',
+silly versions     '3.5.5',
+silly versions     '2.9.8',
+silly versions     '2.9.9',
+silly versions     '2.9.10',
+silly versions     '3.0.0-alpha1',
+silly versions     '3.0.0-alpha2',
+silly versions     '3.0.0-rc0',
+silly versions     '3.6.0-rc0' ] ]
+verbose bin dist [ '0.6-ares1.7.5-evundefined-openssl1.0.1-v83.7.12.22-linux-ia32-3.2.0-41-generic-pae',
+verbose bin dist   { shasum: 'f3425d1107bce0f221eb56b9f2a0d71f4cd49591',
+verbose bin dist     tarball: 'http://registry.npmjs.org/mongoose/-/mongoose-3.6.0rc0.tgz' } ]
+verbose addRemoteTarball [ 'https://registry.npmjs.org/mongoose/-/mongoose-3.6.0rc0.tgz',
+verbose addRemoteTarball   'f3425d1107bce0f221eb56b9f2a0d71f4cd49591' ]
+verbose mkdir (expected) error ENOENT, no such file or directory '/tmp/npm-1382962473543'
+verbose mkdir (expected) error ENOENT, no such file or directory '/tmp/npm-1382962473543/1382962473543-0.026496953796595335'
+verbose mkdir done: /tmp/npm-1382962473543/1382962473543-0.026496953796595335 755
+verbose fetch to /tmp/npm-1382962473543/1382962473543-0.026496953796595335/tmp.tgz
+http GET https://registry.npmjs.org/mongoose/-/mongoose-3.6.0rc0.tgz
+http 200 https://registry.npmjs.org/mongoose/-/mongoose-3.6.0rc0.tgz
+silly updated sha bytes 40960
+silly updated sha bytes 40960
+silly updated sha bytes 19970
+info shasum f3425d1107bce0f221eb56b9f2a0d71f4cd49591
+info shasum /tmp/npm-1382962473543/1382962473543-0.026496953796595335/tmp.tgz
+verbose mkdir (expected) error ENOENT, no such file or directory '/tmp/npm-1382962473543/1382962473543-0.026496953796595335/___package.npm'
+verbose mkdir done: /tmp/npm-1382962473543/1382962473543-0.026496953796595335/___package.npm 755
+verbose unpack_ uid, gid [ undefined, undefined ]
+verbose unpackTarget /tmp/npm-1382962473543/1382962473543-0.026496953796595335/package
+silly gunzTarPerm modes [ '755', '644' ]
+silly afterUntar ok
+silly asyncMap in gTP /tmp/npm-1382962473543/1382962473543-0.026496953796595335/___package.npm/package
+silly asyncMap in gTP /tmp/npm-1382962473543/1382962473543-0.026496953796595335/___package.npm/package/package.json
+silly asyncMap in gTP /tmp/npm-1382962473543/1382962473543-0.026496953796595335/___package.npm/package/.npmignore
+silly asyncMap in gTP /tmp/npm-1382962473543/1382962473543-0.026496953796595335/___package.npm/package/README.md
+silly asyncMap in gTP /tmp/npm-1382962473543/1382962473543-0.026496953796595335/___package.npm/package/static.js
+silly asyncMap in gTP /tmp/npm-1382962473543/1382962473543-0.026496953796595335/___package.npm/package/website.js
+silly asyncMap in gTP /tmp/npm-1382962473543/1382962473543-0.026496953796595335/___package.npm/package/index.js
+silly asyncMap in gTP /tmp/npm-1382962473543/1382962473543-0.026496953796595335/___package.npm/package/.travis.yml
+silly asyncMap in gTP /tmp/npm-1382962473543/1382962473543-0.026496953796595335/___package.npm/package/History.md
+silly asyncMap in gTP /tmp/npm-1382962473543/1382962473543-0.026496953796595335/___package.npm/package/CONTRIBUTING.md
+silly asyncMap in gTP /tmp/npm-1382962473543/1382962473543-0.026496953796595335/___package.npm/package/examples
+silly asyncMap in gTP /tmp/npm-1382962473543/1382962473543-0.026496953796595335/___package.npm/package/examples/schema.js
+silly asyncMap in gTP /tmp/npm-1382962473543/1382962473543-0.026496953796595335/___package.npm/package/lib
+silly asyncMap in gTP /tmp/npm-1382962473543/1382962473543-0.026496953796595335/___package.npm/package/lib/collection.js
+silly asyncMap in gTP /tmp/npm-1382962473543/1382962473543-0.026496953796595335/___package.npm/package/lib/error.js
+silly asyncMap in gTP /tmp/npm-1382962473543/1382962473543-0.026496953796595335/___package.npm/package/lib/statemachine.js
+silly asyncMap in gTP /tmp/npm-1382962473543/1382962473543-0.026496953796595335/___package.npm/package/lib/index.js
+silly asyncMap in gTP /tmp/npm-1382962473543/1382962473543-0.026496953796595335/___package.npm/package/lib/internal.js
+silly asyncMap in gTP /tmp/npm-1382962473543/1382962473543-0.026496953796595335/___package.npm/package/lib/utils.js
+silly asyncMap in gTP /tmp/npm-1382962473543/1382962473543-0.026496953796595335/___package.npm/package/lib/namedscope.js
+silly asyncMap in gTP /tmp/npm-1382962473543/1382962473543-0.026496953796595335/___package.npm/package/lib/connection.js
+silly asyncMap in gTP /tmp/npm-1382962473543/1382962473543-0.026496953796595335/___package.npm/package/lib/query.js
+silly asyncMap in gTP /tmp/npm-1382962473543/1382962473543-0.026496953796595335/___package.npm/package/lib/querystream.js
+silly asyncMap in gTP /tmp/npm-1382962473543/1382962473543-0.026496953796595335/___package.npm/package/lib/schematype.js
+silly asyncMap in gTP /tmp/npm-1382962473543/1382962473543-0.026496953796595335/___package.npm/package/lib/document.js
+silly asyncMap in gTP /tmp/npm-1382962473543/1382962473543-0.026496953796595335/___package.npm/package/lib/schema.js
+silly asyncMap in gTP /tmp/npm-1382962473543/1382962473543-0.026496953796595335/___package.npm/package/lib/connectionstate.js
+silly asyncMap in gTP /tmp/npm-1382962473543/1382962473543-0.026496953796595335/___package.npm/package/lib/schemadefault.js
+silly asyncMap in gTP /tmp/npm-1382962473543/1382962473543-0.026496953796595335/___package.npm/package/lib/model.js
+silly asyncMap in gTP /tmp/npm-1382962473543/1382962473543-0.026496953796595335/___package.npm/package/lib/virtualtype.js
+silly asyncMap in gTP /tmp/npm-1382962473543/1382962473543-0.026496953796595335/___package.npm/package/lib/promise.js
+silly asyncMap in gTP /tmp/npm-1382962473543/1382962473543-0.026496953796595335/___package.npm/package/lib/schema
+silly asyncMap in gTP /tmp/npm-1382962473543/1382962473543-0.026496953796595335/___package.npm/package/lib/schema/array.js
+silly asyncMap in gTP /tmp/npm-1382962473543/1382962473543-0.026496953796595335/___package.npm/package/lib/schema/boolean.js
+silly asyncMap in gTP /tmp/npm-1382962473543/1382962473543-0.026496953796595335/___package.npm/package/lib/schema/buffer.js
+silly asyncMap in gTP /tmp/npm-1382962473543/1382962473543-0.026496953796595335/___package.npm/package/lib/schema/date.js
+silly asyncMap in gTP /tmp/npm-1382962473543/1382962473543-0.026496953796595335/___package.npm/package/lib/schema/documentarray.js
+silly asyncMap in gTP /tmp/npm-1382962473543/1382962473543-0.026496953796595335/___package.npm/package/lib/schema/index.js
+silly asyncMap in gTP /tmp/npm-1382962473543/1382962473543-0.026496953796595335/___package.npm/package/lib/schema/mixed.js
+silly asyncMap in gTP /tmp/npm-1382962473543/1382962473543-0.026496953796595335/___package.npm/package/lib/schema/number.js
+silly asyncMap in gTP /tmp/npm-1382962473543/1382962473543-0.026496953796595335/___package.npm/package/lib/schema/objectid.js
+silly asyncMap in gTP /tmp/npm-1382962473543/1382962473543-0.026496953796595335/___package.npm/package/lib/schema/string.js
+silly asyncMap in gTP /tmp/npm-1382962473543/1382962473543-0.026496953796595335/___package.npm/package/lib/errors
+silly asyncMap in gTP /tmp/npm-1382962473543/1382962473543-0.026496953796595335/___package.npm/package/lib/errors/cast.js
+silly asyncMap in gTP /tmp/npm-1382962473543/1382962473543-0.026496953796595335/___package.npm/package/lib/errors/document.js
+silly asyncMap in gTP /tmp/npm-1382962473543/1382962473543-0.026496953796595335/___package.npm/package/lib/errors/missingSchema.js
+silly asyncMap in gTP /tmp/npm-1382962473543/1382962473543-0.026496953796595335/___package.npm/package/lib/errors/overwriteModel.js
+silly asyncMap in gTP /tmp/npm-1382962473543/1382962473543-0.026496953796595335/___package.npm/package/lib/errors/validation.js
+silly asyncMap in gTP /tmp/npm-1382962473543/1382962473543-0.026496953796595335/___package.npm/package/lib/errors/validator.js
+silly asyncMap in gTP /tmp/npm-1382962473543/1382962473543-0.026496953796595335/___package.npm/package/lib/errors/version.js
+silly asyncMap in gTP /tmp/npm-1382962473543/1382962473543-0.026496953796595335/___package.npm/package/lib/types
+silly asyncMap in gTP /tmp/npm-1382962473543/1382962473543-0.026496953796595335/___package.npm/package/lib/types/array.js
+silly asyncMap in gTP /tmp/npm-1382962473543/1382962473543-0.026496953796595335/___package.npm/package/lib/types/buffer.js
+silly asyncMap in gTP /tmp/npm-1382962473543/1382962473543-0.026496953796595335/___package.npm/package/lib/types/documentarray.js
+silly asyncMap in gTP /tmp/npm-1382962473543/1382962473543-0.026496953796595335/___package.npm/package/lib/types/embedded.js
+silly asyncMap in gTP /tmp/npm-1382962473543/1382962473543-0.026496953796595335/___package.npm/package/lib/types/index.js
+silly asyncMap in gTP /tmp/npm-1382962473543/1382962473543-0.026496953796595335/___package.npm/package/lib/types/objectid.js
+silly asyncMap in gTP /tmp/npm-1382962473543/1382962473543-0.026496953796595335/___package.npm/package/lib/drivers
+silly asyncMap in gTP /tmp/npm-1382962473543/1382962473543-0.026496953796595335/___package.npm/package/lib/drivers/node-mongodb-native
+silly asyncMap in gTP /tmp/npm-1382962473543/1382962473543-0.026496953796595335/___package.npm/package/lib/drivers/node-mongodb-native/binary.js
+silly asyncMap in gTP /tmp/npm-1382962473543/1382962473543-0.026496953796595335/___package.npm/package/lib/drivers/node-mongodb-native/collection.js
+silly asyncMap in gTP /tmp/npm-1382962473543/1382962473543-0.026496953796595335/___package.npm/package/lib/drivers/node-mongodb-native/connection.js
+silly asyncMap in gTP /tmp/npm-1382962473543/1382962473543-0.026496953796595335/___package.npm/package/lib/drivers/node-mongodb-native/objectid.js
+silly chmod package 755
+silly chmod package.json 644
+silly chmod .npmignore 644
+silly chmod README.md 644
+silly chmod static.js 644
+silly chmod website.js 644
+silly chmod index.js 644
+silly chmod .travis.yml 644
+silly chmod History.md 644
+silly chmod CONTRIBUTING.md 644
+silly chmod examples 755
+silly chmod lib 755
+silly chmod schema.js 644
+silly chmod collection.js 644
+silly chmod error.js 644
+silly chmod statemachine.js 644
+silly chmod index.js 644
+silly chmod internal.js 644
+silly chmod utils.js 644
+silly chmod namedscope.js 644
+silly chmod connection.js 644
+silly chmod querystream.js 644
+silly chmod query.js 644
+silly chmod schematype.js 644
+silly chmod document.js 644
+silly chmod schema.js 644
+silly chmod connectionstate.js 644
+silly chmod schemadefault.js 644
+silly chmod model.js 644
+silly chmod virtualtype.js 644
+silly chmod schema 755
+silly chmod promise.js 644
+silly chmod array.js 644
+silly chmod boolean.js 644
+silly chmod buffer.js 644
+silly chmod date.js 644
+silly chmod documentarray.js 644
+silly chmod index.js 644
+silly chmod mixed.js 644
+silly chmod number.js 644
+silly chmod objectid.js 644
+silly chmod string.js 644
+silly chmod errors 755
+silly chmod cast.js 644
+silly chmod document.js 644
+silly chmod missingSchema.js 644
+silly chmod overwriteModel.js 644
+silly chmod validation.js 644
+silly chmod validator.js 644
+silly chmod types 755
+silly chmod version.js 644
+silly chmod array.js 644
+silly chmod buffer.js 644
+silly chmod documentarray.js 644
+silly chmod embedded.js 644
+silly chmod index.js 644
+silly chmod objectid.js 644
+silly chmod drivers 755
+silly chmod node-mongodb-native 755
+silly chmod binary.js 644
+silly chmod collection.js 644
+silly chmod connection.js 644
+silly chmod objectid.js 644
+verbose gunzed /tmp/npm-1382962473543/1382962473543-0.026496953796595335/___package.npm/package
+verbose rm'ed /tmp/npm-1382962473543/1382962473543-0.026496953796595335/package
+verbose renamed [ '/tmp/npm-1382962473543/1382962473543-0.026496953796595335/___package.npm/package',
+verbose renamed   '/tmp/npm-1382962473543/1382962473543-0.026496953796595335/package' ]
+verbose caching /tmp/npm-1382962473543/1382962473543-0.026496953796595335/package/package.json
+verbose loadDefaults mongoose@3.6.0rc0
+verbose tarball contents [ 'tmp.tgz', 'package' ]
+verbose from cache /tmp/npm-1382962473543/1382962473543-0.026496953796595335/package/package.json
+verbose pack /tmp/npm-1382962473543/1382962473543-0.026496953796595335/package
+verbose pack /tmp/npm-1382962473543/1382962473543-0.026496953796595335/package /home/lucius/.npm/mongoose/3.6.0rc0/package.tgz
+silly makeList /tmp/npm-1382962473543/1382962473543-0.026496953796595335/package
+silly dir, dirLen [ '/tmp/npm-1382962473543/1382962473543-0.026496953796595335/package',
+silly dir, dirLen   66 ]
+verbose tarball /home/lucius/.npm/mongoose/3.6.0rc0/package.tgz
+verbose parent /tmp/npm-1382962473543/1382962473543-0.026496953796595335/package
+verbose mkdir (expected) error ENOENT, no such file or directory '/home/lucius/.npm/mongoose/3.6.0rc0/___package.npm'
+verbose mkdir done: /home/lucius/.npm/mongoose/3.6.0rc0/___package.npm 755
+verbose unpack_ uid, gid [ undefined, undefined ]
+verbose unpackTarget /home/lucius/.npm/mongoose/3.6.0rc0/package
+silly gunzTarPerm modes [ '755', '644' ]
+silly afterUntar ok
+silly asyncMap in gTP /home/lucius/.npm/mongoose/3.6.0rc0/___package.npm/package
+silly asyncMap in gTP /home/lucius/.npm/mongoose/3.6.0rc0/___package.npm/package/package.json
+silly asyncMap in gTP /home/lucius/.npm/mongoose/3.6.0rc0/___package.npm/package/.npmignore
+silly asyncMap in gTP /home/lucius/.npm/mongoose/3.6.0rc0/___package.npm/package/README.md
+silly asyncMap in gTP /home/lucius/.npm/mongoose/3.6.0rc0/___package.npm/package/static.js
+silly asyncMap in gTP /home/lucius/.npm/mongoose/3.6.0rc0/___package.npm/package/website.js
+silly asyncMap in gTP /home/lucius/.npm/mongoose/3.6.0rc0/___package.npm/package/index.js
+silly asyncMap in gTP /home/lucius/.npm/mongoose/3.6.0rc0/___package.npm/package/.travis.yml
+silly asyncMap in gTP /home/lucius/.npm/mongoose/3.6.0rc0/___package.npm/package/History.md
+silly asyncMap in gTP /home/lucius/.npm/mongoose/3.6.0rc0/___package.npm/package/CONTRIBUTING.md
+silly asyncMap in gTP /home/lucius/.npm/mongoose/3.6.0rc0/___package.npm/package/examples
+silly asyncMap in gTP /home/lucius/.npm/mongoose/3.6.0rc0/___package.npm/package/examples/schema.js
+silly asyncMap in gTP /home/lucius/.npm/mongoose/3.6.0rc0/___package.npm/package/lib
+silly asyncMap in gTP /home/lucius/.npm/mongoose/3.6.0rc0/___package.npm/package/lib/collection.js
+silly asyncMap in gTP /home/lucius/.npm/mongoose/3.6.0rc0/___package.npm/package/lib/error.js
+silly asyncMap in gTP /home/lucius/.npm/mongoose/3.6.0rc0/___package.npm/package/lib/statemachine.js
+silly asyncMap in gTP /home/lucius/.npm/mongoose/3.6.0rc0/___package.npm/package/lib/index.js
+silly asyncMap in gTP /home/lucius/.npm/mongoose/3.6.0rc0/___package.npm/package/lib/internal.js
+silly asyncMap in gTP /home/lucius/.npm/mongoose/3.6.0rc0/___package.npm/package/lib/utils.js
+silly asyncMap in gTP /home/lucius/.npm/mongoose/3.6.0rc0/___package.npm/package/lib/namedscope.js
+silly asyncMap in gTP /home/lucius/.npm/mongoose/3.6.0rc0/___package.npm/package/lib/connection.js
+silly asyncMap in gTP /home/lucius/.npm/mongoose/3.6.0rc0/___package.npm/package/lib/query.js
+silly asyncMap in gTP /home/lucius/.npm/mongoose/3.6.0rc0/___package.npm/package/lib/querystream.js
+silly asyncMap in gTP /home/lucius/.npm/mongoose/3.6.0rc0/___package.npm/package/lib/schematype.js
+silly asyncMap in gTP /home/lucius/.npm/mongoose/3.6.0rc0/___package.npm/package/lib/document.js
+silly asyncMap in gTP /home/lucius/.npm/mongoose/3.6.0rc0/___package.npm/package/lib/schema.js
+silly asyncMap in gTP /home/lucius/.npm/mongoose/3.6.0rc0/___package.npm/package/lib/connectionstate.js
+silly asyncMap in gTP /home/lucius/.npm/mongoose/3.6.0rc0/___package.npm/package/lib/schemadefault.js
+silly asyncMap in gTP /home/lucius/.npm/mongoose/3.6.0rc0/___package.npm/package/lib/model.js
+silly asyncMap in gTP /home/lucius/.npm/mongoose/3.6.0rc0/___package.npm/package/lib/virtualtype.js
+silly asyncMap in gTP /home/lucius/.npm/mongoose/3.6.0rc0/___package.npm/package/lib/promise.js
+silly asyncMap in gTP /home/lucius/.npm/mongoose/3.6.0rc0/___package.npm/package/lib/errors
+silly asyncMap in gTP /home/lucius/.npm/mongoose/3.6.0rc0/___package.npm/package/lib/errors/cast.js
+silly asyncMap in gTP /home/lucius/.npm/mongoose/3.6.0rc0/___package.npm/package/lib/errors/document.js
+silly asyncMap in gTP /home/lucius/.npm/mongoose/3.6.0rc0/___package.npm/package/lib/errors/missingSchema.js
+silly asyncMap in gTP /home/lucius/.npm/mongoose/3.6.0rc0/___package.npm/package/lib/errors/overwriteModel.js
+silly asyncMap in gTP /home/lucius/.npm/mongoose/3.6.0rc0/___package.npm/package/lib/errors/validation.js
+silly asyncMap in gTP /home/lucius/.npm/mongoose/3.6.0rc0/___package.npm/package/lib/errors/validator.js
+silly asyncMap in gTP /home/lucius/.npm/mongoose/3.6.0rc0/___package.npm/package/lib/errors/version.js
+silly asyncMap in gTP /home/lucius/.npm/mongoose/3.6.0rc0/___package.npm/package/lib/schema
+silly asyncMap in gTP /home/lucius/.npm/mongoose/3.6.0rc0/___package.npm/package/lib/schema/array.js
+silly asyncMap in gTP /home/lucius/.npm/mongoose/3.6.0rc0/___package.npm/package/lib/schema/boolean.js
+silly asyncMap in gTP /home/lucius/.npm/mongoose/3.6.0rc0/___package.npm/package/lib/schema/buffer.js
+silly asyncMap in gTP /home/lucius/.npm/mongoose/3.6.0rc0/___package.npm/package/lib/schema/date.js
+silly asyncMap in gTP /home/lucius/.npm/mongoose/3.6.0rc0/___package.npm/package/lib/schema/documentarray.js
+silly asyncMap in gTP /home/lucius/.npm/mongoose/3.6.0rc0/___package.npm/package/lib/schema/index.js
+silly asyncMap in gTP /home/lucius/.npm/mongoose/3.6.0rc0/___package.npm/package/lib/schema/mixed.js
+silly asyncMap in gTP /home/lucius/.npm/mongoose/3.6.0rc0/___package.npm/package/lib/schema/number.js
+silly asyncMap in gTP /home/lucius/.npm/mongoose/3.6.0rc0/___package.npm/package/lib/schema/objectid.js
+silly asyncMap in gTP /home/lucius/.npm/mongoose/3.6.0rc0/___package.npm/package/lib/schema/string.js
+silly asyncMap in gTP /home/lucius/.npm/mongoose/3.6.0rc0/___package.npm/package/lib/types
+silly asyncMap in gTP /home/lucius/.npm/mongoose/3.6.0rc0/___package.npm/package/lib/types/array.js
+silly asyncMap in gTP /home/lucius/.npm/mongoose/3.6.0rc0/___package.npm/package/lib/types/buffer.js
+silly asyncMap in gTP /home/lucius/.npm/mongoose/3.6.0rc0/___package.npm/package/lib/types/documentarray.js
+silly asyncMap in gTP /home/lucius/.npm/mongoose/3.6.0rc0/___package.npm/package/lib/types/embedded.js
+silly asyncMap in gTP /home/lucius/.npm/mongoose/3.6.0rc0/___package.npm/package/lib/types/index.js
+silly asyncMap in gTP /home/lucius/.npm/mongoose/3.6.0rc0/___package.npm/package/lib/types/objectid.js
+silly asyncMap in gTP /home/lucius/.npm/mongoose/3.6.0rc0/___package.npm/package/lib/drivers
+silly asyncMap in gTP /home/lucius/.npm/mongoose/3.6.0rc0/___package.npm/package/lib/drivers/node-mongodb-native
+silly asyncMap in gTP /home/lucius/.npm/mongoose/3.6.0rc0/___package.npm/package/lib/drivers/node-mongodb-native/binary.js
+silly asyncMap in gTP /home/lucius/.npm/mongoose/3.6.0rc0/___package.npm/package/lib/drivers/node-mongodb-native/connection.js
+silly asyncMap in gTP /home/lucius/.npm/mongoose/3.6.0rc0/___package.npm/package/lib/drivers/node-mongodb-native/collection.js
+silly asyncMap in gTP /home/lucius/.npm/mongoose/3.6.0rc0/___package.npm/package/lib/drivers/node-mongodb-native/objectid.js
+silly chmod package 755
+verbose gunzed /home/lucius/.npm/mongoose/3.6.0rc0/___package.npm/package
+verbose rm'ed /home/lucius/.npm/mongoose/3.6.0rc0/package
+verbose renamed [ '/home/lucius/.npm/mongoose/3.6.0rc0/___package.npm/package',
+verbose renamed   '/home/lucius/.npm/mongoose/3.6.0rc0/package' ]
+verbose caching /home/lucius/.npm/mongoose/3.6.0rc0/package/package.json
+verbose loadDefaults mongoose@3.6.0rc0
+silly updated sha bytes 40960
+silly updated sha bytes 40960
+silly updated sha bytes 20256
+info shasum cfd2b34120abebde04aaa5b27cd732d8b5bc38fa
+info shasum /home/lucius/.npm/mongoose/3.6.0rc0/package.tgz
+verbose from cache /home/lucius/.npm/mongoose/3.6.0rc0/package/package.json
+verbose chmod /home/lucius/.npm/mongoose/3.6.0rc0/package.tgz 644
+verbose chown [ '/home/lucius/.npm/mongoose/3.6.0rc0/package.tgz', 1000, 1000 ]
+silly resolved [ { name: 'mongoose',
+silly resolved     description: 'Mongoose MongoDB ODM',
+silly resolved     version: '3.6.0rc0',
+silly resolved     author: { name: 'Guillermo Rauch', email: 'guillermo@learnboost.com' },
+silly resolved     keywords: 
+silly resolved      [ 'mongodb',
+silly resolved        'mongoose',
+silly resolved        'orm',
+silly resolved        'data',
+silly resolved        'datastore',
+silly resolved        'nosql',
+silly resolved        'odm',
+silly resolved        'sql',
+silly resolved        'db',
+silly resolved        'database' ],
+silly resolved     dependencies: 
+silly resolved      { hooks: '0.2.1',
+silly resolved        mongodb: '1.2.11',
+silly resolved        ms: '0.1.0',
+silly resolved        sliced: '0.0.3',
+silly resolved        muri: '0.3.0',
+silly resolved        mpromise: '0.2.0',
+silly resolved        mpath: '0.1.1' },
+silly resolved     devDependencies: 
+silly resolved      { mocha: '1.8.1',
+silly resolved        'node-static': '0.5.9',
+silly resolved        dox: '0.3.1',
+silly resolved        jade: '0.26.3',
+silly resolved        'highlight.js': '7.0.1',
+silly resolved        markdown: '0.3.1',
+silly resolved        'promises-aplus-tests': '>= 1.0.2' },
+silly resolved     directories: { lib: './lib/mongoose' },
+silly resolved     scripts: { test: 'make test' },
+silly resolved     main: './index.js',
+silly resolved     engines: { node: '>= 0.4.0' },
+silly resolved     bugs: 
+silly resolved      { email: 'https://groups.google.com/group/mongoose-orm',
+silly resolved        url: 'https://github.com/learnboost/mongoose/issues/new' },
+silly resolved     repository: { type: 'git', url: 'git://github.com/LearnBoost/mongoose.git' },
+silly resolved     homepage: 'http://mongoosejs.com',
+silly resolved     _id: 'mongoose@3.6.0rc0',
+silly resolved     optionalDependencies: {},
+silly resolved     _engineSupported: true,
+silly resolved     _npmVersion: '1.1.4',
+silly resolved     _nodeVersion: 'v0.6.12',
+silly resolved     _defaultsLoaded: true,
+silly resolved     dist: { shasum: 'cfd2b34120abebde04aaa5b27cd732d8b5bc38fa' },
+silly resolved     _from: 'mongoose' } ]
+info into /home/lucius/mongodb-linux-i686-2.4.6 mongoose@3.6.0rc0
+info installOne mongoose@3.6.0rc0
+verbose from cache /home/lucius/.npm/mongoose/3.6.0rc0/package/package.json
+info unbuild /home/lucius/mongodb-linux-i686-2.4.6/node_modules/mongoose
+verbose mkdir (expected) error ENOENT, no such file or directory '/home/lucius/mongodb-linux-i686-2.4.6/node_modules'
+verbose mkdir (expected) error ENOENT, no such file or directory '/home/lucius/mongodb-linux-i686-2.4.6/node_modules/___mongoose.npm'
+verbose mkdir done: /home/lucius/mongodb-linux-i686-2.4.6/node_modules/___mongoose.npm 755
+verbose unpack_ uid, gid [ undefined, undefined ]
+verbose unpackTarget /home/lucius/mongodb-linux-i686-2.4.6/node_modules/mongoose
+silly gunzTarPerm modes [ '755', '644' ]
+silly afterUntar ok
+silly asyncMap in gTP /home/lucius/mongodb-linux-i686-2.4.6/node_modules/___mongoose.npm/package
+silly asyncMap in gTP /home/lucius/mongodb-linux-i686-2.4.6/node_modules/___mongoose.npm/package/package.json
+silly asyncMap in gTP /home/lucius/mongodb-linux-i686-2.4.6/node_modules/___mongoose.npm/package/.npmignore
+silly asyncMap in gTP /home/lucius/mongodb-linux-i686-2.4.6/node_modules/___mongoose.npm/package/README.md
+silly asyncMap in gTP /home/lucius/mongodb-linux-i686-2.4.6/node_modules/___mongoose.npm/package/static.js
+silly asyncMap in gTP /home/lucius/mongodb-linux-i686-2.4.6/node_modules/___mongoose.npm/package/website.js
+silly asyncMap in gTP /home/lucius/mongodb-linux-i686-2.4.6/node_modules/___mongoose.npm/package/index.js
+silly asyncMap in gTP /home/lucius/mongodb-linux-i686-2.4.6/node_modules/___mongoose.npm/package/.travis.yml
+silly asyncMap in gTP /home/lucius/mongodb-linux-i686-2.4.6/node_modules/___mongoose.npm/package/History.md
+silly asyncMap in gTP /home/lucius/mongodb-linux-i686-2.4.6/node_modules/___mongoose.npm/package/CONTRIBUTING.md
+silly asyncMap in gTP /home/lucius/mongodb-linux-i686-2.4.6/node_modules/___mongoose.npm/package/examples
+silly asyncMap in gTP /home/lucius/mongodb-linux-i686-2.4.6/node_modules/___mongoose.npm/package/examples/schema.js
+silly asyncMap in gTP /home/lucius/mongodb-linux-i686-2.4.6/node_modules/___mongoose.npm/package/lib
+silly asyncMap in gTP /home/lucius/mongodb-linux-i686-2.4.6/node_modules/___mongoose.npm/package/lib/collection.js
+silly asyncMap in gTP /home/lucius/mongodb-linux-i686-2.4.6/node_modules/___mongoose.npm/package/lib/error.js
+silly asyncMap in gTP /home/lucius/mongodb-linux-i686-2.4.6/node_modules/___mongoose.npm/package/lib/statemachine.js
+silly asyncMap in gTP /home/lucius/mongodb-linux-i686-2.4.6/node_modules/___mongoose.npm/package/lib/index.js
+silly asyncMap in gTP /home/lucius/mongodb-linux-i686-2.4.6/node_modules/___mongoose.npm/package/lib/internal.js
+silly asyncMap in gTP /home/lucius/mongodb-linux-i686-2.4.6/node_modules/___mongoose.npm/package/lib/utils.js
+silly asyncMap in gTP /home/lucius/mongodb-linux-i686-2.4.6/node_modules/___mongoose.npm/package/lib/namedscope.js
+silly asyncMap in gTP /home/lucius/mongodb-linux-i686-2.4.6/node_modules/___mongoose.npm/package/lib/connection.js
+silly asyncMap in gTP /home/lucius/mongodb-linux-i686-2.4.6/node_modules/___mongoose.npm/package/lib/query.js
+silly asyncMap in gTP /home/lucius/mongodb-linux-i686-2.4.6/node_modules/___mongoose.npm/package/lib/querystream.js
+silly asyncMap in gTP /home/lucius/mongodb-linux-i686-2.4.6/node_modules/___mongoose.npm/package/lib/schematype.js
+silly asyncMap in gTP /home/lucius/mongodb-linux-i686-2.4.6/node_modules/___mongoose.npm/package/lib/document.js
+silly asyncMap in gTP /home/lucius/mongodb-linux-i686-2.4.6/node_modules/___mongoose.npm/package/lib/schema.js
+silly asyncMap in gTP /home/lucius/mongodb-linux-i686-2.4.6/node_modules/___mongoose.npm/package/lib/connectionstate.js
+silly asyncMap in gTP /home/lucius/mongodb-linux-i686-2.4.6/node_modules/___mongoose.npm/package/lib/schemadefault.js
+silly asyncMap in gTP /home/lucius/mongodb-linux-i686-2.4.6/node_modules/___mongoose.npm/package/lib/model.js
+silly asyncMap in gTP /home/lucius/mongodb-linux-i686-2.4.6/node_modules/___mongoose.npm/package/lib/virtualtype.js
+silly asyncMap in gTP /home/lucius/mongodb-linux-i686-2.4.6/node_modules/___mongoose.npm/package/lib/promise.js
+silly asyncMap in gTP /home/lucius/mongodb-linux-i686-2.4.6/node_modules/___mongoose.npm/package/lib/schema
+silly asyncMap in gTP /home/lucius/mongodb-linux-i686-2.4.6/node_modules/___mongoose.npm/package/lib/schema/array.js
+silly asyncMap in gTP /home/lucius/mongodb-linux-i686-2.4.6/node_modules/___mongoose.npm/package/lib/schema/boolean.js
+silly asyncMap in gTP /home/lucius/mongodb-linux-i686-2.4.6/node_modules/___mongoose.npm/package/lib/schema/buffer.js
+silly asyncMap in gTP /home/lucius/mongodb-linux-i686-2.4.6/node_modules/___mongoose.npm/package/lib/schema/date.js
+silly asyncMap in gTP /home/lucius/mongodb-linux-i686-2.4.6/node_modules/___mongoose.npm/package/lib/schema/documentarray.js
+silly asyncMap in gTP /home/lucius/mongodb-linux-i686-2.4.6/node_modules/___mongoose.npm/package/lib/schema/index.js
+silly asyncMap in gTP /home/lucius/mongodb-linux-i686-2.4.6/node_modules/___mongoose.npm/package/lib/schema/number.js
+silly asyncMap in gTP /home/lucius/mongodb-linux-i686-2.4.6/node_modules/___mongoose.npm/package/lib/schema/mixed.js
+silly asyncMap in gTP /home/lucius/mongodb-linux-i686-2.4.6/node_modules/___mongoose.npm/package/lib/schema/objectid.js
+silly asyncMap in gTP /home/lucius/mongodb-linux-i686-2.4.6/node_modules/___mongoose.npm/package/lib/schema/string.js
+silly asyncMap in gTP /home/lucius/mongodb-linux-i686-2.4.6/node_modules/___mongoose.npm/package/lib/errors
+silly asyncMap in gTP /home/lucius/mongodb-linux-i686-2.4.6/node_modules/___mongoose.npm/package/lib/errors/cast.js
+silly asyncMap in gTP /home/lucius/mongodb-linux-i686-2.4.6/node_modules/___mongoose.npm/package/lib/errors/document.js
+silly asyncMap in gTP /home/lucius/mongodb-linux-i686-2.4.6/node_modules/___mongoose.npm/package/lib/errors/missingSchema.js
+silly asyncMap in gTP /home/lucius/mongodb-linux-i686-2.4.6/node_modules/___mongoose.npm/package/lib/errors/overwriteModel.js
+silly asyncMap in gTP /home/lucius/mongodb-linux-i686-2.4.6/node_modules/___mongoose.npm/package/lib/errors/validation.js
+silly asyncMap in gTP /home/lucius/mongodb-linux-i686-2.4.6/node_modules/___mongoose.npm/package/lib/errors/validator.js
+silly asyncMap in gTP /home/lucius/mongodb-linux-i686-2.4.6/node_modules/___mongoose.npm/package/lib/errors/version.js
+silly asyncMap in gTP /home/lucius/mongodb-linux-i686-2.4.6/node_modules/___mongoose.npm/package/lib/types
+silly asyncMap in gTP /home/lucius/mongodb-linux-i686-2.4.6/node_modules/___mongoose.npm/package/lib/types/array.js
+silly asyncMap in gTP /home/lucius/mongodb-linux-i686-2.4.6/node_modules/___mongoose.npm/package/lib/types/buffer.js
+silly asyncMap in gTP /home/lucius/mongodb-linux-i686-2.4.6/node_modules/___mongoose.npm/package/lib/types/documentarray.js
+silly asyncMap in gTP /home/lucius/mongodb-linux-i686-2.4.6/node_modules/___mongoose.npm/package/lib/types/embedded.js
+silly asyncMap in gTP /home/lucius/mongodb-linux-i686-2.4.6/node_modules/___mongoose.npm/package/lib/types/index.js
+silly asyncMap in gTP /home/lucius/mongodb-linux-i686-2.4.6/node_modules/___mongoose.npm/package/lib/types/objectid.js
+silly asyncMap in gTP /home/lucius/mongodb-linux-i686-2.4.6/node_modules/___mongoose.npm/package/lib/drivers
+silly asyncMap in gTP /home/lucius/mongodb-linux-i686-2.4.6/node_modules/___mongoose.npm/package/lib/drivers/node-mongodb-native
+silly asyncMap in gTP /home/lucius/mongodb-linux-i686-2.4.6/node_modules/___mongoose.npm/package/lib/drivers/node-mongodb-native/binary.js
+silly asyncMap in gTP /home/lucius/mongodb-linux-i686-2.4.6/node_modules/___mongoose.npm/package/lib/drivers/node-mongodb-native/collection.js
+silly asyncMap in gTP /home/lucius/mongodb-linux-i686-2.4.6/node_modules/___mongoose.npm/package/lib/drivers/node-mongodb-native/connection.js
+silly asyncMap in gTP /home/lucius/mongodb-linux-i686-2.4.6/node_modules/___mongoose.npm/package/lib/drivers/node-mongodb-native/objectid.js
+silly chmod package 755
+verbose gunzed /home/lucius/mongodb-linux-i686-2.4.6/node_modules/___mongoose.npm/package
+verbose rm'ed /home/lucius/mongodb-linux-i686-2.4.6/node_modules/mongoose
+verbose renamed [ '/home/lucius/mongodb-linux-i686-2.4.6/node_modules/___mongoose.npm/package',
+verbose renamed   '/home/lucius/mongodb-linux-i686-2.4.6/node_modules/mongoose' ]
+verbose caching /home/lucius/mongodb-linux-i686-2.4.6/node_modules/mongoose/package.json
+verbose loadDefaults mongoose@3.6.0rc0
+info preinstall mongoose@3.6.0rc0
+verbose from cache /home/lucius/mongodb-linux-i686-2.4.6/node_modules/mongoose/package.json
+verbose readDependencies: using package.json deps
+verbose from cache /home/lucius/mongodb-linux-i686-2.4.6/node_modules/mongoose/package.json
+verbose readDependencies: using package.json deps
+verbose cache add [ 'hooks@0.2.1', null ]
+silly cache add: name, spec, args [ undefined, 'hooks@0.2.1', [ 'hooks@0.2.1', null ] ]
+verbose parsed url { pathname: 'hooks@0.2.1',
+verbose parsed url   path: 'hooks@0.2.1',
+verbose parsed url   href: 'hooks@0.2.1' }
+silly cache add: name, spec, args [ 'hooks', '0.2.1', [ 'hooks', '0.2.1' ] ]
+verbose parsed url { pathname: '0.2.1', path: '0.2.1', href: '0.2.1' }
+verbose addNamed [ 'hooks', '0.2.1' ]
+verbose addNamed [ '0.2.1', '0.2.1' ]
+verbose cache add [ 'mongodb@1.2.11', null ]
+silly cache add: name, spec, args [ undefined, 'mongodb@1.2.11', [ 'mongodb@1.2.11', null ] ]
+verbose parsed url { pathname: 'mongodb@1.2.11',
+verbose parsed url   path: 'mongodb@1.2.11',
+verbose parsed url   href: 'mongodb@1.2.11' }
+silly cache add: name, spec, args [ 'mongodb', '1.2.11', [ 'mongodb', '1.2.11' ] ]
+verbose parsed url { pathname: '1.2.11', path: '1.2.11', href: '1.2.11' }
+verbose addNamed [ 'mongodb', '1.2.11' ]
+verbose addNamed [ '1.2.11', '1.2.11' ]
+verbose raw, before any munging hooks/0.2.1
+verbose url resolving [ 'https://registry.npmjs.org/', './hooks/0.2.1' ]
+verbose url resolved https://registry.npmjs.org/hooks/0.2.1
+verbose etag "13DMQGJFL31LDLIR3LDBA14PZ"
+http GET https://registry.npmjs.org/hooks/0.2.1
+verbose cache add [ 'ms@0.1.0', null ]
+silly cache add: name, spec, args [ undefined, 'ms@0.1.0', [ 'ms@0.1.0', null ] ]
+verbose parsed url { pathname: 'ms@0.1.0', path: 'ms@0.1.0', href: 'ms@0.1.0' }
+silly cache add: name, spec, args [ 'ms', '0.1.0', [ 'ms', '0.1.0' ] ]
+verbose parsed url { pathname: '0.1.0', path: '0.1.0', href: '0.1.0' }
+verbose addNamed [ 'ms', '0.1.0' ]
+verbose addNamed [ '0.1.0', '0.1.0' ]
+verbose cache add [ 'sliced@0.0.3', null ]
+silly cache add: name, spec, args [ undefined, 'sliced@0.0.3', [ 'sliced@0.0.3', null ] ]
+verbose parsed url { pathname: 'sliced@0.0.3',
+verbose parsed url   path: 'sliced@0.0.3',
+verbose parsed url   href: 'sliced@0.0.3' }
+silly cache add: name, spec, args [ 'sliced', '0.0.3', [ 'sliced', '0.0.3' ] ]
+verbose parsed url { pathname: '0.0.3', path: '0.0.3', href: '0.0.3' }
+verbose addNamed [ 'sliced', '0.0.3' ]
+verbose addNamed [ '0.0.3', '0.0.3' ]
+verbose cache add [ 'muri@0.3.0', null ]
+silly cache add: name, spec, args [ undefined, 'muri@0.3.0', [ 'muri@0.3.0', null ] ]
+verbose parsed url { pathname: 'muri@0.3.0',
+verbose parsed url   path: 'muri@0.3.0',
+verbose parsed url   href: 'muri@0.3.0' }
+silly cache add: name, spec, args [ 'muri', '0.3.0', [ 'muri', '0.3.0' ] ]
+verbose parsed url { pathname: '0.3.0', path: '0.3.0', href: '0.3.0' }
+verbose addNamed [ 'muri', '0.3.0' ]
+verbose addNamed [ '0.3.0', '0.3.0' ]
+verbose cache add [ 'mpromise@0.2.0', null ]
+silly cache add: name, spec, args [ undefined, 'mpromise@0.2.0', [ 'mpromise@0.2.0', null ] ]
+verbose parsed url { pathname: 'mpromise@0.2.0',
+verbose parsed url   path: 'mpromise@0.2.0',
+verbose parsed url   href: 'mpromise@0.2.0' }
+silly cache add: name, spec, args [ 'mpromise', '0.2.0', [ 'mpromise', '0.2.0' ] ]
+verbose parsed url { pathname: '0.2.0', path: '0.2.0', href: '0.2.0' }
+verbose addNamed [ 'mpromise', '0.2.0' ]
+verbose addNamed [ '0.2.0', '0.2.0' ]
+verbose raw, before any munging mongodb/1.2.11
+verbose url resolving [ 'https://registry.npmjs.org/', './mongodb/1.2.11' ]
+verbose url resolved https://registry.npmjs.org/mongodb/1.2.11
+verbose etag "25ENTPYLH2PUJKIKHA3AX2D1B"
+http GET https://registry.npmjs.org/mongodb/1.2.11
+verbose raw, before any munging ms/0.1.0
+verbose url resolving [ 'https://registry.npmjs.org/', './ms/0.1.0' ]
+verbose url resolved https://registry.npmjs.org/ms/0.1.0
+verbose etag "18ZL6YHBE886JXG265D91VL82"
+http GET https://registry.npmjs.org/ms/0.1.0
+verbose raw, before any munging sliced/0.0.3
+verbose url resolving [ 'https://registry.npmjs.org/', './sliced/0.0.3' ]
+verbose url resolved https://registry.npmjs.org/sliced/0.0.3
+verbose etag "5B9VP76LIRFIKP0NZBJLJYLRT"
+http GET https://registry.npmjs.org/sliced/0.0.3
+verbose raw, before any munging muri/0.3.0
+verbose url resolving [ 'https://registry.npmjs.org/', './muri/0.3.0' ]
+verbose url resolved https://registry.npmjs.org/muri/0.3.0
+verbose etag "3QZS0E5J6VDJGFABQLQTTQSLK"
+http GET https://registry.npmjs.org/muri/0.3.0
+verbose raw, before any munging mpromise/0.2.0
+verbose url resolving [ 'https://registry.npmjs.org/', './mpromise/0.2.0' ]
+verbose url resolved https://registry.npmjs.org/mpromise/0.2.0
+verbose etag "81VEJA21HERKMMII9E15W2DYI"
+http GET https://registry.npmjs.org/mpromise/0.2.0
+verbose cache add [ 'mpath@0.1.1', null ]
+silly cache add: name, spec, args [ undefined, 'mpath@0.1.1', [ 'mpath@0.1.1', null ] ]
+verbose parsed url { pathname: 'mpath@0.1.1',
+verbose parsed url   path: 'mpath@0.1.1',
+verbose parsed url   href: 'mpath@0.1.1' }
+silly cache add: name, spec, args [ 'mpath', '0.1.1', [ 'mpath', '0.1.1' ] ]
+verbose parsed url { pathname: '0.1.1', path: '0.1.1', href: '0.1.1' }
+verbose addNamed [ 'mpath', '0.1.1' ]
+verbose addNamed [ '0.1.1', '0.1.1' ]
+verbose raw, before any munging mpath/0.1.1
+verbose url resolving [ 'https://registry.npmjs.org/', './mpath/0.1.1' ]
+verbose url resolved https://registry.npmjs.org/mpath/0.1.1
+verbose etag "B6HJ2GOLSU00R4N11FIFXMX6B"
+http GET https://registry.npmjs.org/mpath/0.1.1
+http 304 https://registry.npmjs.org/hooks/0.2.1
+silly get cb [ 304,
+silly get cb   { server: 'CouchDB/1.3.1 (Erlang OTP/R15B03)',
+silly get cb     etag: '"13DMQGJFL31LDLIR3LDBA14PZ"',
+silly get cb     date: 'Mon, 28 Oct 2013 12:15:35 GMT',
+silly get cb     'content-length': '0' } ]
+verbose etag hooks/0.2.1 from cache
+verbose bin dist [ '0.6-ares1.7.5-evundefined-openssl1.0.1-v83.7.12.22-linux-ia32-3.2.0-41-generic-pae',
+verbose bin dist   { shasum: '0f591b1b344bdcb3df59773f62fbbaf85bf4028b',
+verbose bin dist     tarball: 'http://registry.npmjs.org/hooks/-/hooks-0.2.1.tgz' } ]
+verbose caching /home/lucius/.npm/hooks/0.2.1/package/package.json
+verbose loadDefaults hooks@0.2.1
+http 304 https://registry.npmjs.org/mongodb/1.2.11
+silly get cb [ 304,
+silly get cb   { server: 'CouchDB/1.3.1 (Erlang OTP/R15B03)',
+silly get cb     etag: '"25ENTPYLH2PUJKIKHA3AX2D1B"',
+silly get cb     date: 'Mon, 28 Oct 2013 12:15:35 GMT',
+silly get cb     'content-length': '0' } ]
+verbose etag mongodb/1.2.11 from cache
+verbose bin dist [ '0.6-ares1.7.5-evundefined-openssl1.0.1-v83.7.12.22-linux-ia32-3.2.0-41-generic-pae',
+verbose bin dist   { shasum: 'c948504fba7d4d609a188ee4e166ed13ad75f12d',
+verbose bin dist     tarball: 'http://registry.npmjs.org/mongodb/-/mongodb-1.2.11.tgz' } ]
+verbose caching /home/lucius/.npm/mongodb/1.2.11/package/package.json
+verbose loadDefaults mongodb@1.2.11
+http 304 https://registry.npmjs.org/ms/0.1.0
+silly get cb [ 304,
+silly get cb   { server: 'CouchDB/1.3.1 (Erlang OTP/R15B03)',
+silly get cb     etag: '"18ZL6YHBE886JXG265D91VL82"',
+silly get cb     date: 'Mon, 28 Oct 2013 12:15:35 GMT',
+silly get cb     'content-length': '0' } ]
+verbose etag ms/0.1.0 from cache
+verbose bin dist [ '0.6-ares1.7.5-evundefined-openssl1.0.1-v83.7.12.22-linux-ia32-3.2.0-41-generic-pae',
+verbose bin dist   { shasum: 'f21fac490daf1d7667fd180fe9077389cc9442b2',
+verbose bin dist     tarball: 'http://registry.npmjs.org/ms/-/ms-0.1.0.tgz' } ]
+verbose caching /home/lucius/.npm/ms/0.1.0/package/package.json
+verbose loadDefaults ms@0.1.0
+http 304 https://registry.npmjs.org/sliced/0.0.3
+silly get cb [ 304,
+silly get cb   { server: 'CouchDB/1.3.1 (Erlang OTP/R15B03)',
+silly get cb     etag: '"5B9VP76LIRFIKP0NZBJLJYLRT"',
+silly get cb     date: 'Mon, 28 Oct 2013 12:15:36 GMT',
+silly get cb     'content-length': '0' } ]
+verbose etag sliced/0.0.3 from cache
+verbose bin dist [ '0.6-ares1.7.5-evundefined-openssl1.0.1-v83.7.12.22-linux-ia32-3.2.0-41-generic-pae',
+verbose bin dist   { shasum: '4f0bac2171eb17162c3ba6df81f5cf040f7c7e50',
+verbose bin dist     tarball: 'http://registry.npmjs.org/sliced/-/sliced-0.0.3.tgz' } ]
+verbose caching /home/lucius/.npm/sliced/0.0.3/package/package.json
+verbose loadDefaults sliced@0.0.3
+http 304 https://registry.npmjs.org/muri/0.3.0
+silly get cb [ 304,
+silly get cb   { server: 'CouchDB/1.3.1 (Erlang OTP/R15B03)',
+silly get cb     etag: '"3QZS0E5J6VDJGFABQLQTTQSLK"',
+silly get cb     date: 'Mon, 28 Oct 2013 12:15:36 GMT',
+silly get cb     'content-length': '0' } ]
+verbose etag muri/0.3.0 from cache
+verbose bin dist [ '0.6-ares1.7.5-evundefined-openssl1.0.1-v83.7.12.22-linux-ia32-3.2.0-41-generic-pae',
+verbose bin dist   { shasum: '39550abbd39ad8f1543ea97934ea28e8130cf49b',
+verbose bin dist     tarball: 'http://registry.npmjs.org/muri/-/muri-0.3.0.tgz' } ]
+verbose caching /home/lucius/.npm/muri/0.3.0/package/package.json
+verbose loadDefaults muri@0.3.0
+http 304 https://registry.npmjs.org/mpromise/0.2.0
+silly get cb [ 304,
+silly get cb   { server: 'CouchDB/1.3.1 (Erlang OTP/R15B03)',
+silly get cb     etag: '"81VEJA21HERKMMII9E15W2DYI"',
+silly get cb     date: 'Mon, 28 Oct 2013 12:15:36 GMT',
+silly get cb     'content-length': '0' } ]
+verbose etag mpromise/0.2.0 from cache
+verbose bin dist [ '0.6-ares1.7.5-evundefined-openssl1.0.1-v83.7.12.22-linux-ia32-3.2.0-41-generic-pae',
+verbose bin dist   { shasum: '55f8b1f32295d1f76e18fad63cddb1d91ed4b9d6',
+verbose bin dist     tarball: 'http://registry.npmjs.org/mpromise/-/mpromise-0.2.0.tgz' } ]
+verbose caching /home/lucius/.npm/mpromise/0.2.0/package/package.json
+verbose loadDefaults mpromise@0.2.0
+http 304 https://registry.npmjs.org/mpath/0.1.1
+silly get cb [ 304,
+silly get cb   { server: 'CouchDB/1.3.1 (Erlang OTP/R15B03)',
+silly get cb     etag: '"B6HJ2GOLSU00R4N11FIFXMX6B"',
+silly get cb     date: 'Mon, 28 Oct 2013 12:15:36 GMT',
+silly get cb     'content-length': '0' } ]
+verbose etag mpath/0.1.1 from cache
+verbose bin dist [ '0.6-ares1.7.5-evundefined-openssl1.0.1-v83.7.12.22-linux-ia32-3.2.0-41-generic-pae',
+verbose bin dist   { shasum: '23da852b7c232ee097f4759d29c0ee9cd22d5e46',
+verbose bin dist     tarball: 'http://registry.npmjs.org/mpath/-/mpath-0.1.1.tgz' } ]
+verbose caching /home/lucius/.npm/mpath/0.1.1/package/package.json
+verbose loadDefaults mpath@0.1.1
+silly resolved [ { name: 'hooks',
+silly resolved     description: 'Adds pre and post hook functionality to your JavaScript methods.',
+silly resolved     version: '0.2.1',
+silly resolved     keywords: [ 'node', 'hooks', 'middleware', 'pre', 'post' ],
+silly resolved     homepage: 'https://github.com/bnoguchi/hooks-js/',
+silly resolved     repository: { type: 'git', url: 'git://github.com/bnoguchi/hooks-js.git' },
+silly resolved     author: 
+silly resolved      { name: 'Brian Noguchi',
+silly resolved        email: 'brian.noguchi@gmail.com',
+silly resolved        url: 'https://github.com/bnoguchi/' },
+silly resolved     main: './hooks.js',
+silly resolved     directories: { lib: '.' },
+silly resolved     scripts: { test: 'make test' },
+silly resolved     dependencies: {},
+silly resolved     devDependencies: { expresso: '>=0.7.6', should: '>=0.2.1', underscore: '>=1.1.4' },
+silly resolved     engines: { node: '>=0.4.0' },
+silly resolved     licenses: [ 'MIT' ],
+silly resolved     optionalDependencies: {},
+silly resolved     _id: 'hooks@0.2.1',
+silly resolved     _engineSupported: true,
+silly resolved     _npmVersion: '1.1.4',
+silly resolved     _nodeVersion: 'v0.6.12',
+silly resolved     _defaultsLoaded: true,
+silly resolved     _from: 'hooks@0.2.1' },
+silly resolved   { name: 'mongodb',
+silly resolved     description: 'A node.js driver for MongoDB',
+silly resolved     keywords: [ 'mongodb', 'mongo', 'driver', 'db' ],
+silly resolved     version: '1.2.11',
+silly resolved     author: { name: 'Christian Amor Kvalheim', email: 'christkv@gmail.com' },
+silly resolved     contributors: 
+silly resolved      [ { name: 'Aaron Heckmann' },
+silly resolved        { name: 'Christoph Pojer' },
+silly resolved        { name: 'Pau Ramon Revilla' },
+silly resolved        { name: 'Nathan White' },
+silly resolved        { name: 'Emmerman' },
+silly resolved        { name: 'Seth LaForge' },
+silly resolved        { name: 'Boris Filipov' },
+silly resolved        { name: 'Stefan Schärmeli' },
+silly resolved        { name: 'Tedde Lundgren' },
+silly resolved        { name: 'renctan' },
+silly resolved        { name: 'Sergey Ukustov' },
+silly resolved        { name: 'Ciaran Jessup' },
+silly resolved        { name: 'kuno' },
+silly resolved        { name: 'srimonti' },
+silly resolved        { name: 'Erik Abele' },
+silly resolved        { name: 'Pratik Daga' },
+silly resolved        { name: 'Slobodan Utvic' },
+silly resolved        { name: 'Kristina Chodorow' },
+silly resolved        { name: 'Yonathan Randolph' },
+silly resolved        { name: 'Brian Noguchi' },
+silly resolved        { name: 'Sam Epstein' },
+silly resolved        { name: 'James Harrison Fisher' },
+silly resolved        { name: 'Vladimir Dronnikov' },
+silly resolved        { name: 'Ben Hockey' },
+silly resolved        { name: 'Henrik Johansson' },
+silly resolved        { name: 'Simon Weare' },
+silly resolved        { name: 'Alex Gorbatchev' },
+silly resolved        { name: 'Shimon Doodkin' },
+silly resolved        { name: 'Kyle Mueller' },
+silly resolved        { name: 'Eran Hammer-Lahav' },
+silly resolved        { name: 'Marcin Ciszak' },
+silly resolved        { name: 'François de Metz' },
+silly resolved        { name: 'Vinay Pulim' },
+silly resolved        { name: 'nstielau' },
+silly resolved        { name: 'Adam Wiggins' },
+silly resolved        { name: 'entrinzikyl' },
+silly resolved        { name: 'Jeremy Selier' },
+silly resolved        { name: 'Ian Millington' },
+silly resolved        { name: 'Public Keating' },
+silly resolved        { name: 'andrewjstone' },
+silly resolved        { name: 'Christopher Stott' },
+silly resolved        { name: 'Corey Jewett' },
+silly resolved        { name: 'brettkiefer' },
+silly resolved        { name: 'Rob Holland' },
+silly resolved        { name: 'Senmiao Liu' },
+silly resolved        { name: 'heroic' },
+silly resolved        { name: 'gitfy' },
+silly resolved        { name: 'Andrew Stone' },
+silly resolved        { name: 'John Le Drew' },
+silly resolved        { name: 'Lucasfilm Singapore' },
+silly resolved        { name: 'Roman Shtylman' },
+silly resolved        { name: 'Matt Self' } ],
+silly resolved     repository: 
+silly resolved      { type: 'git',
+silly resolved        url: 'git://github.com/mongodb/node-mongodb-native.git' },
+silly resolved     bugs: 
+silly resolved      { email: 'node-mongodb-native@googlegroups.com',
+silly resolved        url: 'http://github.com/mongodb/node-mongodb-native/issues' },
+silly resolved     dependencies: { bson: '0.1.6' },
+silly resolved     devDependencies: 
+silly resolved      { dox: '0.2.0',
+silly resolved        'uglify-js': '1.2.5',
+silly resolved        ejs: '0.6.1',
+silly resolved        nodeunit: '0.7.4',
+silly resolved        github3: '>=0.3.0',
+silly resolved        markdown: '0.3.1',
+silly resolved        gleak: '0.2.3',
+silly resolved        step: '0.0.5',
+silly resolved        async: '0.1.22' },
+silly resolved     config: { native: false },
+silly resolved     main: './lib/mongodb/index',
+silly resolved     homepage: 'http://mongodb.github.com/node-mongodb-native/',
+silly resolved     directories: { lib: './lib/mongodb' },
+silly resolved     engines: { node: '>=0.6.19' },
+silly resolved     scripts: { test: 'make test_pure' },
+silly resolved     licenses: 
+silly resolved      [ { type: 'Apache License, Version 2.0',
+silly resolved          url: 'http://www.apache.org/licenses/LICENSE-2.0' } ],
+silly resolved     _id: 'mongodb@1.2.11',
+silly resolved     optionalDependencies: {},
+silly resolved     _engineSupported: false,
+silly resolved     _npmVersion: '1.1.4',
+silly resolved     _nodeVersion: 'v0.6.12',
+silly resolved     _defaultsLoaded: true,
+silly resolved     _from: 'mongodb@1.2.11' },
+silly resolved   { name: 'ms',
+silly resolved     version: '0.1.0',
+silly resolved     description: 'Tiny ms conversion utility',
+silly resolved     main: './ms',
+silly resolved     devDependencies: { mocha: '*', 'expect.js': '*', serve: '*' },
+silly resolved     _id: 'ms@0.1.0',
+silly resolved     dependencies: {},
+silly resolved     optionalDependencies: {},
+silly resolved     engines: { node: '*' },
+silly resolved     _engineSupported: true,
+silly resolved     _npmVersion: '1.1.4',
+silly resolved     _nodeVersion: 'v0.6.12',
+silly resolved     _defaultsLoaded: true,
+silly resolved     _from: 'ms@0.1.0' },
+silly resolved   { name: 'sliced',
+silly resolved     version: '0.0.3',
+silly resolved     description: 'A faster Node.js alternative to Array.prototype.slice.call(arguments)',
+silly resolved     main: 'index.js',
+silly resolved     scripts: { test: 'make test' },
+silly resolved     repository: { type: 'git', url: 'git://github.com/aheckmann/sliced.git' },
+silly resolved     keywords: [ 'arguments', 'slice', 'array' ],
+silly resolved     author: 
+silly resolved      { name: 'Aaron Heckmann',
+silly resolved        email: 'aaron.heckmann+github@gmail.com' },
+silly resolved     license: 'MIT',
+silly resolved     devDependencies: { mocha: '1.5.0', benchmark: '~1.0.0' },
+silly resolved     _id: 'sliced@0.0.3',
+silly resolved     dependencies: {},
+silly resolved     optionalDependencies: {},
+silly resolved     engines: { node: '*' },
+silly resolved     _engineSupported: true,
+silly resolved     _npmVersion: '1.1.4',
+silly resolved     _nodeVersion: 'v0.6.12',
+silly resolved     _defaultsLoaded: true,
+silly resolved     _from: 'sliced@0.0.3' },
+silly resolved   { name: 'muri',
+silly resolved     version: '0.3.0',
+silly resolved     description: 'MongoDB URI parser',
+silly resolved     main: 'index.js',
+silly resolved     scripts: { test: 'make test' },
+silly resolved     repository: { type: 'git', url: 'git://github.com/aheckmann/muri.git' },
+silly resolved     keywords: [ 'mongodb', 'uri', 'parser' ],
+silly resolved     author: 
+silly resolved      { name: 'Aaron Heckmann',
+silly resolved        email: 'aaron.heckmann+github@gmail.com' },
+silly resolved     license: 'MIT',
+silly resolved     devDependencies: { mocha: '1.6.0' },
+silly resolved     _id: 'muri@0.3.0',
+silly resolved     dependencies: {},
+silly resolved     optionalDependencies: {},
+silly resolved     engines: { node: '*' },
+silly resolved     _engineSupported: true,
+silly resolved     _npmVersion: '1.1.4',
+silly resolved     _nodeVersion: 'v0.6.12',
+silly resolved     _defaultsLoaded: true,
+silly resolved     _from: 'muri@0.3.0' },
+silly resolved   { name: 'mpromise',
+silly resolved     version: '0.2.0',
+silly resolved     description: 'Promises A+ conformant implementation',
+silly resolved     main: 'index.js',
+silly resolved     scripts: { test: 'make test' },
+silly resolved     dependencies: { sliced: '0.0.4' },
+silly resolved     devDependencies: { mocha: '1.7.4', 'promises-aplus-tests': '>= 1.0.2' },
+silly resolved     repository: { type: 'git', url: 'git://github.com/aheckmann/mpromise.git' },
+silly resolved     keywords: [ 'promise', 'mongoose', 'aplus', 'a+', 'plus' ],
+silly resolved     author: 
+silly resolved      { name: 'Aaron Heckmann',
+silly resolved        email: 'aaron.heckmann+github@gmail.com' },
+silly resolved     license: 'MIT',
+silly resolved     _id: 'mpromise@0.2.0',
+silly resolved     optionalDependencies: {},
+silly resolved     engines: { node: '*' },
+silly resolved     _engineSupported: true,
+silly resolved     _npmVersion: '1.1.4',
+silly resolved     _nodeVersion: 'v0.6.12',
+silly resolved     _defaultsLoaded: true,
+silly resolved     _from: 'mpromise@0.2.0' },
+silly resolved   { name: 'mpath',
+silly resolved     version: '0.1.1',
+silly resolved     description: '{G,S}et object values using MongoDB path notation',
+silly resolved     main: 'index.js',
+silly resolved     scripts: { test: 'make test' },
+silly resolved     repository: { type: 'git', url: 'git://github.com/aheckmann/mpath.git' },
+silly resolved     keywords: [ 'mongodb', 'path', 'get', 'set' ],
+silly resolved     author: 
+silly resolved      { name: 'Aaron Heckmann',
+silly resolved        email: 'aaron.heckmann+github@gmail.com' },
+silly resolved     license: 'MIT',
+silly resolved     devDependencies: { mocha: '1.6.0' },
+silly resolved     _id: 'mpath@0.1.1',
+silly resolved     dependencies: {},
+silly resolved     optionalDependencies: {},
+silly resolved     engines: { node: '*' },
+silly resolved     _engineSupported: true,
+silly resolved     _npmVersion: '1.1.4',
+silly resolved     _nodeVersion: 'v0.6.12',
+silly resolved     _defaultsLoaded: true,
+silly resolved     _from: 'mpath@0.1.1' } ]
+info into /home/lucius/mongodb-linux-i686-2.4.6/node_modules/mongoose hooks@0.2.1
+info into /home/lucius/mongodb-linux-i686-2.4.6/node_modules/mongoose mongodb@1.2.11
+info into /home/lucius/mongodb-linux-i686-2.4.6/node_modules/mongoose ms@0.1.0
+info into /home/lucius/mongodb-linux-i686-2.4.6/node_modules/mongoose sliced@0.0.3
+info into /home/lucius/mongodb-linux-i686-2.4.6/node_modules/mongoose muri@0.3.0
+info into /home/lucius/mongodb-linux-i686-2.4.6/node_modules/mongoose mpromise@0.2.0
+info into /home/lucius/mongodb-linux-i686-2.4.6/node_modules/mongoose mpath@0.1.1
+info installOne hooks@0.2.1
+info installOne mongodb@1.2.11
+verbose installOne cb mongodb@1.2.11
+verbose about to build /home/lucius/mongodb-linux-i686-2.4.6/node_modules/mongoose
+ERR! error installing mongoose@3.6.0rc0
+info unbuild /home/lucius/mongodb-linux-i686-2.4.6/node_modules/mongoose
+verbose from cache /home/lucius/mongodb-linux-i686-2.4.6/node_modules/mongoose/package.json
+info preuninstall mongoose@3.6.0rc0
+info installOne ms@0.1.0
+info installOne sliced@0.0.3
+info installOne muri@0.3.0
+info installOne mpromise@0.2.0
+info installOne mpath@0.1.1
+verbose from cache /home/lucius/.npm/hooks/0.2.1/package/package.json
+info unbuild /home/lucius/mongodb-linux-i686-2.4.6/node_modules/mongoose/node_modules/hooks
+verbose from cache /home/lucius/.npm/ms/0.1.0/package/package.json
+info unbuild /home/lucius/mongodb-linux-i686-2.4.6/node_modules/mongoose/node_modules/ms
+verbose from cache /home/lucius/.npm/sliced/0.0.3/package/package.json
+info unbuild /home/lucius/mongodb-linux-i686-2.4.6/node_modules/mongoose/node_modules/sliced
+verbose from cache /home/lucius/.npm/muri/0.3.0/package/package.json
+info unbuild /home/lucius/mongodb-linux-i686-2.4.6/node_modules/mongoose/node_modules/muri
+verbose from cache /home/lucius/.npm/mpromise/0.2.0/package/package.json
+info unbuild /home/lucius/mongodb-linux-i686-2.4.6/node_modules/mongoose/node_modules/mpromise
+verbose from cache /home/lucius/.npm/mpath/0.1.1/package/package.json
+info unbuild /home/lucius/mongodb-linux-i686-2.4.6/node_modules/mongoose/node_modules/mpath
+info uninstall mongoose@3.6.0rc0
+verbose unbuild mongoose@3.6.0rc0 [ true,
+verbose unbuild mongoose@3.6.0rc0   '/home/lucius/mongodb-linux-i686-2.4.6/node_modules',
+verbose unbuild mongoose@3.6.0rc0   '/home/lucius/mongodb-linux-i686-2.4.6/node_modules' ]
+info postuninstall mongoose@3.6.0rc0
+verbose mkdir (expected) error ENOENT, no such file or directory '/home/lucius/mongodb-linux-i686-2.4.6/node_modules/mongoose/node_modules'
+verbose mkdir (expected) error ENOENT, no such file or directory '/home/lucius/mongodb-linux-i686-2.4.6/node_modules/mongoose/node_modules'
+verbose mkdir (expected) error ENOENT, no such file or directory '/home/lucius/mongodb-linux-i686-2.4.6/node_modules/mongoose/node_modules'
+verbose mkdir (expected) error ENOENT, no such file or directory '/home/lucius/mongodb-linux-i686-2.4.6/node_modules/mongoose/node_modules'
+verbose mkdir (expected) error ENOENT, no such file or directory '/home/lucius/mongodb-linux-i686-2.4.6/node_modules/mongoose/node_modules'
+verbose mkdir (expected) error ENOENT, no such file or directory '/home/lucius/mongodb-linux-i686-2.4.6/node_modules/mongoose/node_modules'
+verbose mkdir (expected) error ENOENT, no such file or directory '/home/lucius/mongodb-linux-i686-2.4.6/node_modules/mongoose/node_modules/___hooks.npm'
+verbose mkdir done: /home/lucius/mongodb-linux-i686-2.4.6/node_modules/mongoose/node_modules/___hooks.npm 755
+verbose mkdir (expected) error ENOENT, no such file or directory '/home/lucius/mongodb-linux-i686-2.4.6/node_modules/mongoose/node_modules/___ms.npm'
+verbose mkdir (expected) error ENOENT, no such file or directory '/home/lucius/mongodb-linux-i686-2.4.6/node_modules/mongoose/node_modules/___sliced.npm'
+verbose mkdir (expected) error ENOENT, no such file or directory '/home/lucius/mongodb-linux-i686-2.4.6/node_modules/mongoose/node_modules/___muri.npm'
+verbose mkdir (expected) error ENOENT, no such file or directory '/home/lucius/mongodb-linux-i686-2.4.6/node_modules/mongoose/node_modules/___mpromise.npm'
+verbose mkdir (expected) error ENOENT, no such file or directory '/home/lucius/mongodb-linux-i686-2.4.6/node_modules/mongoose/node_modules/___mpath.npm'
+verbose unpack_ uid, gid [ undefined, undefined ]
+verbose unpackTarget /home/lucius/mongodb-linux-i686-2.4.6/node_modules/mongoose/node_modules/hooks
+silly gunzTarPerm modes [ '755', '644' ]
+verbose mkdir done: /home/lucius/mongodb-linux-i686-2.4.6/node_modules/mongoose/node_modules/___ms.npm 755
+verbose mkdir done: /home/lucius/mongodb-linux-i686-2.4.6/node_modules/mongoose/node_modules/___sliced.npm 755
+verbose mkdir done: /home/lucius/mongodb-linux-i686-2.4.6/node_modules/mongoose/node_modules/___muri.npm 755
+verbose mkdir done: /home/lucius/mongodb-linux-i686-2.4.6/node_modules/mongoose/node_modules/___mpromise.npm 755
+verbose mkdir done: /home/lucius/mongodb-linux-i686-2.4.6/node_modules/mongoose/node_modules/___mpath.npm 755
+verbose unpack_ uid, gid [ undefined, undefined ]
+verbose unpackTarget /home/lucius/mongodb-linux-i686-2.4.6/node_modules/mongoose/node_modules/ms
+silly gunzTarPerm modes [ '755', '644' ]
+verbose unpack_ uid, gid [ undefined, undefined ]
+verbose unpackTarget /home/lucius/mongodb-linux-i686-2.4.6/node_modules/mongoose/node_modules/sliced
+silly gunzTarPerm modes [ '755', '644' ]
+verbose unpack_ uid, gid [ undefined, undefined ]
+verbose unpackTarget /home/lucius/mongodb-linux-i686-2.4.6/node_modules/mongoose/node_modules/muri
+silly gunzTarPerm modes [ '755', '644' ]
+verbose unpack_ uid, gid [ undefined, undefined ]
+verbose unpackTarget /home/lucius/mongodb-linux-i686-2.4.6/node_modules/mongoose/node_modules/mpromise
+silly gunzTarPerm modes [ '755', '644' ]
+verbose unpack_ uid, gid [ undefined, undefined ]
+verbose unpackTarget /home/lucius/mongodb-linux-i686-2.4.6/node_modules/mongoose/node_modules/mpath
+silly gunzTarPerm modes [ '755', '644' ]
+ERR! error rolling back mongoose@3.6.0rc0 Error: UNKNOWN, unknown error '/home/lucius/mongodb-linux-i686-2.4.6/node_modules/mongoose'
+verbose installOne cb mongoose@3.6.0rc0
+ERR! Unsupported
+ERR! Not compatible with your version of node/npm: mongodb@1.2.11
+ERR! Required: {"node":">=0.6.19"}
+ERR! Actual:   {"npm":"1.1.4","node":"0.6.12"}
+ERR! 
+ERR! System Linux 3.2.0-41-generic-pae
+ERR! command "node" "/usr/bin/npm" "install" "mongoose"
+ERR! cwd /home/lucius/mongodb-linux-i686-2.4.6
+ERR! node -v v0.6.12
+ERR! npm -v 1.1.4
+ERR! code ENOTSUP
+ERR! message Unsupported
+ERR! errno {}
+verbose exit [ 1, true ]
