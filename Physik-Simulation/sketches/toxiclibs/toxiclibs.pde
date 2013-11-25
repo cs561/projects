@@ -20,8 +20,8 @@ void setup(){
      particle1.lock();
      
      // now connect the two
-     float len = 50;
-     float strength = 0.001;
+     float len = 100;
+     float strength = 0.1;
      
      VerletSpring2D spring = new VerletSpring2D(particle1, particle2, len, strength);
      
@@ -37,10 +37,6 @@ void draw(){
     
     stroke(0);
     strokeWeight(2);
-    System.out.println(particle1.x);
-    System.out.println(particle1.y);
-    System.out.println(particle2.x);
-    System.out.println(particle2.y);
     line(particle1.x, particle1.y, particle2.x, particle2.y);
     
     particle1.display();

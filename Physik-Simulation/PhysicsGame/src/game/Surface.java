@@ -11,16 +11,33 @@ import org.jbox2d.dynamics.BodyType;
 
 
 class Surface{
-	
+
+	/**
+	 * The surface, which represent the ground. It defines the neccessary
+	 * Box2D objects and provides a display()-method to draw the surface.
+	 */
 	
 	private ArrayList<Vec2>     surface;
     private Game				game;
     
-    
-    Surface(Level level, LevelContentProvider coordProvider){
+    /**
+     * Constructor
+     * @param level				The Level Object, its methods and functions are used.
+     * @param contentProvider	The content provider object.
+     */
+    Surface(Level level, LevelContentProvider contentProvider){
         game = level.getGame();
         
-        surface = coordProvider.getLevelSurfaceVertices(level.getLevelNo());
+        // body definition
+        BodyDef bd = new BodyDef();
+        bd.type = BodyType.STATIC;
+        
+        // body creation
+        Body body = level.getLevel().world.createBody(bd);
+        
+        surface = contentProvider.getLevelSurfaceVertices(level.getLevelNo());
+        
+        // shape (chain)
         ChainShape chain = new ChainShape();
         Vec2[] vertices = new Vec2[surface.size()];
         
@@ -30,9 +47,7 @@ class Surface{
 
         chain.createChain(vertices, vertices.length);
         
-        BodyDef bd = new BodyDef();
-        bd.type = BodyType.STATIC;
-        Body body = level.getLevel().world.createBody(bd);
+        // fixture creation
         body.createFixture(chain, 1);    
     }
     

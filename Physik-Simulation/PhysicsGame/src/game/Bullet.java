@@ -1,6 +1,5 @@
 package game;
 
-
 import org.jbox2d.collision.shapes.CircleShape;
 import org.jbox2d.common.Vec2;
 import org.jbox2d.dynamics.Body;
@@ -10,47 +9,65 @@ import org.jbox2d.dynamics.FixtureDef;
 
 import processing.core.PVector;
 
-
 class Bullet{
 	
+	/**
+	 * The bullet, which gets shot by the player. It defines the neccessary
+	 * Box2D objects and provides a display()-method to draw the bullet.
+	 */
 	
 	private Body          	body;
 	private final float   	RADIUS = 10;
     private Level         	level;
     private Game			game;
-    private int				angularVelocity;
   
     
-    Bullet(Level level, int dx, int dy, int force){ // TODO force not used
+    Bullet(Level level, int dx, int dy, int force, int spin){ // TODO force not used
         this.level = level;
         game = level.getGame();
       
+        // body definition
         BodyDef bd = new BodyDef();
         bd.position = level.getLevel().coordPixelsToWorld(80, 600);
         bd.type = BodyType.DYNAMIC;
         bd.bullet = true;
         bd.linearDamping = 0.01f;
+        
+        // body
         body = level.getLevel().world.createBody(bd);
             
+        // shape (circle)
         CircleShape cs = new CircleShape();
         cs.m_radius = level.getLevel().scalarPixelsToWorld(RADIUS);
             
+        // ficture definition
         FixtureDef fd = new FixtureDef();
         fd.shape = cs;
         fd.density = 2.0f;
         fd.friction = 0.1f;
         fd.restitution = 0.3f;
             
+        // fixture 
         body.createFixture(fd);
 
+        // applying the actual force
         PVector v = new PVector(dx, dy);
         v.normalize();
-        v.mult(game.actualForce*1.3f);
+        float ballVelocity = game.actualForce;
+  
+        v.mult(((level.hasGravity())? ballVelocity : (ballVelocity/2)) *1.3f);
         
         body.applyLinearImpulse(new Vec2(v.x, v.y), body.getPosition());
-       // body.setAngularVelocity(10000);
+        body.setAngularVelocity(spin*25);
+        
+       
+        
     }
     
+    Body getBody() {
+    	return this.body;
+    }
+
     
     void display(){
         Vec2 pos = level.getLevel().getBodyPixelCoord(body);
@@ -62,7 +79,6 @@ class Bullet{
         game.stroke(0);
         game.strokeWeight(1);
         game.ellipse(0,0,RADIUS*2, RADIUS*2);
-        game.line(0,0,RADIUS,0);
         game.popMatrix();
     }
     
