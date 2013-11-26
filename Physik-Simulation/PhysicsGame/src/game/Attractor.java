@@ -13,13 +13,14 @@ public class Attractor{
 	  Body body;
 	  float r;
 	  Level level;
-	  final float G = 500;
+	  float G;
 	  int attracts, maxConstrain;
 	  float x, y;
 	  
 	  
-	  Attractor(float r, float x, float y, Level level, int attracts, int maxConstrain) {
+	  Attractor(float r, float x, float y, Level level, int attracts, int maxConstrain, float G) {
 	    this.r = r;
+	    this.G = G;
 	    this.level = level;
 	    this.attracts = attracts;
 	    this.maxConstrain = maxConstrain;

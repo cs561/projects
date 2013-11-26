@@ -28,14 +28,14 @@ public class Game extends PApplet{
 								lost, countPoints, hoverRestart, hoverEnd2,	spinAct, tutorial;
 	public int 					actualDx, actualDy, actualForce, winCountdown, actualLevelNo, 
 								tutorialStage, totalPoints, checkCountdown, lostCountdown,
-								spin, levelHover, introCountdown, winColor;
+								spin, levelHover, introCountdown, winColor, checkColor;
 	public float 				actualAngle;
 	public PFont 				baveuse;
 	public LevelContentProvider coordProvider;
-	private boolean 			first;
-	private boolean[]			levelDone;// = {true, true, true, true, true, true, true, true, true, true, true, true};
+	private boolean[]			levelDone = {true, true, true, true, true, true, true, true, true, true, true, true};
+	private boolean[]			firstTut = {true, true, true, true, true, true};
 	
-	private final boolean		GOD_MODE = true;
+	private final boolean		GOD_MODE = false;
 
 	/**
 	 * Sets up the GUI to a certain size, loads ressources and defines default values. Also, an
@@ -45,10 +45,7 @@ public class Game extends PApplet{
 	    size(1280, 720);
 	    smooth();
 	    baveuse = loadFont("Baveuse.vlw");
-	    levelDone = new boolean[12];
-	    for(int i=0; i<12; i++){
-	    	levelDone[i] = true;
-	    }
+	    //levelDone = new boolean[12];
 	    
 	    spin1 = loadImage("spin1.png");
 	    spin2 = loadImage("spin2.png");
@@ -72,8 +69,7 @@ public class Game extends PApplet{
 	    tutorialImages.put(10, tutWind);
 	    tutorialImages.put(12, tutGravity);
 
-	    first = true;
-	    intro = false;  // TODO
+	    intro = true;  // TODO
 	    introCountdown = 400;
 	    
 	    // default
@@ -157,11 +153,16 @@ public class Game extends PApplet{
 		   
 		   drawCannon();
 		   
-		   if(tutorialStage == 5 || tutorialStage == 7 || tutorialStage == 9 
-				   || tutorialStage == 11 || tutorialStage == 13){
+		   if((tutorialStage == 5) || (tutorialStage == 7) || (tutorialStage == 9)   
+				   || (tutorialStage == 11) || (tutorialStage == 13)){
 		       drawLevelBar(); 
 		   }else{
-			   showTutorial();
+			   if((firstTut[0] && actualLevelNo == 1) || (firstTut[1] && actualLevelNo == 2) 
+					   || (firstTut[2] && actualLevelNo == 9) || (firstTut[3] && actualLevelNo == 10) || (firstTut[4] && actualLevelNo == 12)){
+				   showTutorial();
+			   }else{
+				   drawLevelBar();
+			   }
 		   }
 		   
 		   drawSpinBar();
@@ -174,13 +175,15 @@ public class Game extends PApplet{
 		   if(lost){
 		       if(checkCountdown > 0){
 		           checkCountdown -= 2;
-		           fill(0);
+		           fill(checkColor);
 		           textSize(20);
 		           text("checking...   " + (checkCountdown/100), 20, 100);  
 		       }else{
 		    	   // lostCountdown2 ist the short period, in which "YOU LOST" is displayed
 		           if(lostCountdown > 0){
 		               textSize(150);
+		               fill(255);
+		               text("YOU LOST", 218, 403);
 		               fill(255, 25, 25);
 		               text("YOU LOST", 215, 400);
 		               lostCountdown -= 7;
@@ -318,10 +321,12 @@ public class Game extends PApplet{
 	 */
 	void drawEnd(){
 	   if(winCountdown > 0){
-	       actualLevel.stepWorld(); 
-	       fill(winColor); 
+	       actualLevel.stepWorld();
 	       textFont(baveuse);
-	       textSize(150);
+	       textSize(150); 
+	       fill(255); 
+	       text("YOU WIN", 253, 403);
+	       fill(winColor);
 	       text("YOU WIN", 250, 400); 
 	       winCountdown -= 7;
 	   }else{
@@ -568,11 +573,19 @@ public class Game extends PApplet{
 	    switch(levelNo){
 	    	case 1: 
 	    		tutorialStage = 1;
-	    		tutorial = true;
+	    		if(firstTut[0]){
+	    			tutorial = true;
+	    		}else{
+		    		tutorial = false;
+	    		}
 	    		break;
 	    	case 2: 
 	    		tutorialStage = 6;
-	    		tutorial = true;
+	    		if(firstTut[1]){
+	    			tutorial = true;
+	    		}else{
+		    		tutorial = false;
+	    		}
 	    		break;
 	    	case 3: case 4: case 5: case 6: case 7: case 8:
 	    		tutorialStage = 7;
@@ -580,11 +593,19 @@ public class Game extends PApplet{
 	    		break;
 	    	case 9: 
 	    		tutorialStage = 8;
-	    		tutorial = true;
+	    		if(firstTut[2]){
+	    			tutorial = true;
+	    		}else{
+		    		tutorial = false;
+	    		}
 	    		break;
 	    	case 10: 
 	    		tutorialStage = 10;
-	    		tutorial = true;
+	    		if(firstTut[3]){
+	    			tutorial = true;
+	    		}else{
+		    		tutorial = false;
+	    		}
 	    		break;
 	    	case 11: 
 	    		tutorialStage = 11;
@@ -592,7 +613,11 @@ public class Game extends PApplet{
 	    		break;
 	    	case 12:
 	    		tutorialStage = 12;
-	    		tutorial = true;
+	    		if(firstTut[4]){
+	    			tutorial = true;
+	    		}else{
+		    		tutorial = false;
+	    		}
 	    		break;
 	    }
 	    
@@ -612,6 +637,12 @@ public class Game extends PApplet{
 	    	winColor = color(255);
 	    }else{
 	    	winColor = color(50,50,255);
+	    }
+	    
+	    if(levelNo == 3 || levelNo == 4 || levelNo == 12){
+	    	checkColor = color(255);
+	    }else{
+	    	checkColor = color(0);
 	    }
 	}
 
@@ -655,10 +686,12 @@ public class Game extends PApplet{
 	        if(hoverNext){
 	        	levelDone[actualLevelNo-1] = true;
 	            if(actualLevelNo != levelDone.length){
+	            	visitTutLevel(actualLevelNo);
 	            	startNextLevel(++actualLevelNo);
 	            }else{
 	            	actualLevelNo = 1;
 	            	totalPoints = 0;
+	            	visitTutLevel(actualLevelNo);
 	            	startNextLevel(actualLevelNo);
 	            }   
 	        }else{
@@ -699,9 +732,8 @@ public class Game extends PApplet{
 	        }
 	        
 	        if(hoverRestart){
-	        	actualLevelNo = 1;
+	        	visitTutLevel(actualLevelNo);
 	            startNextLevel(actualLevelNo);
-	            totalPoints = 0;
 	        }
 	       
 	        if(hoverEnd || hoverEnd2){
@@ -714,6 +746,26 @@ public class Game extends PApplet{
 	    
 	    // TODO check spin
 	    
+	}
+	
+	private void visitTutLevel(int lvlNo){
+		switch(lvlNo){
+			case 1:
+				firstTut[0] = false;
+				break;
+			case 2:
+				firstTut[1] = false;
+				break;
+			case 9:
+				firstTut[2] = false;
+				break;
+			case 10:
+				firstTut[3] = false;
+				break;
+			case 12:
+				firstTut[4] = false;
+				break;
+		}
 	}
 	
 	/**

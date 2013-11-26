@@ -131,30 +131,30 @@ class TowerElement{
     * - a tower element is lying horizontally on other towers
     * @return
     */
-   boolean detectIfFallen(int absX, int absY, float angle){
-	   if (level.hasGravity()) {
-		if (onGround) {
-			if (Math.abs(angle) > game.PI / 4) {
-				return true;
-			}
-		} else {
-			if (horizontal) {
-				if (absY > 20) {
+	boolean detectIfFallen(int absX, int absY, float angle){
+		if (level.hasGravity()) {
+			if (onGround) {
+				if (Math.abs(angle) > game.PI / 4) {
 					return true;
 				}
 			} else {
-				if (Math.abs(angle) > game.PI / 4 && absY > 40) {
+				if (horizontal) {
+					if (absY > 20) {
 					return true;
+					}
+				} else {
+					if (Math.abs(angle) > game.PI / 4 && absY > 40) {
+						return true;
+					}
 				}
 			}
+		}else{
+			Vec2 currentPosition = level.getLevel().getBodyPixelCoord(body);
+			if(currentPosition.x < -50 || currentPosition.x > 1330 || currentPosition.y < 0 || currentPosition.y > 770) return true;
+			else return false;
 		}
-	}else{
-		Vec2 currentPosition = level.getLevel().getBodyPixelCoord(body);
-		if(currentPosition.x < -50 || currentPosition.x > 1330 || currentPosition.y < 0 || currentPosition.y > 770) return true;
-		else return false;
+		return false;
 	}
-	return false;
-   }
     
    /**
     * Returns the coordinates of the body as Processing coords.

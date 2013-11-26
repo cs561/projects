@@ -132,7 +132,7 @@ class LevelContentProvider{
                 towers.add(new MetalElement(level, 1025, 299, 100, 20, false));
                 towers.add(new StoneElement(level, 1000, HEIGHT/2-120, 20, 100, false));
                 towers.add(new StoneElement(level, 1050, HEIGHT/2-120, 20, 100, false));
-                towers.add(new WoodElement(level, 1025, 200, 100, 20, false));
+                towers.add(new WoodElement(level, 1025, 179, 100, 20, false));
                 break;
             case 3:
                 towers.add(new WoodElement(level, 1000, HEIGHT/2, 20, 100, true));
@@ -172,8 +172,7 @@ class LevelContentProvider{
             	break;
             case 11:
             	 towers.add(new WoodElement(level, 1000, 560, 20, 100, true));
-                 towers.add(new WoodElement(level, 1050, 560, 20, 100, true));  // TODO instabiler!!!!!!!!
-                 towers.add(new WoodElement(level, 1025, 500, 100, 20, false));
+                 towers.add(new WoodElement(level, 1000, 500, 100, 20, false));
             	break;
             case 12:
             	towers.add(new MetalElement(level, 1100, 560, 20, 100, false));
@@ -276,10 +275,10 @@ class LevelContentProvider{
     	ArrayList<Attractor> attractors = new ArrayList<Attractor>();
     	switch(levelNo) {
     		case 9:
-    			attractors.add(new Attractor(30, 710, 200, level, -1, 10000));
+    			attractors.add(new Attractor(50, 710, 200, level, -1, 10000, 5000));
     			break;
     		case 12:
-    			attractors.add(new Attractor(75, WIDTH/2, HEIGHT/2, level, 1, 5));
+    			attractors.add(new Attractor(75, WIDTH/2, HEIGHT/2, level, 1, 5, 500));
     			break;
     	}
     	return attractors;
@@ -344,10 +343,7 @@ class LevelContentProvider{
     			return "blank.jpg";
     	}
     	
-    	
     	img += ".jpg";
-    	
-    	
     	return img;
     }
     
@@ -361,22 +357,20 @@ class LevelContentProvider{
         	return 999;
         }else{
 	    	switch(levelNo){
-	            case 1: case 2: 
+	            case 1: 
 	            	return 2;
-	            case 3:
+	            case 2: case 3: case 4: case 5:
 	                return 4;
-	            case 4:
-	            	return 4;
-	            case 5:
-	            	return 4;
-	            case 6:
+	            case 6: case 11: 
 	            	return 2;
-	            case 7: case 8: case 9:
-	            	return 3;
-	            case 10: case 11: 
+	            case 7: case 8:
+	            	return 3; 
+	            case 9:
+	            	return 6;
+	            case 10:
 	            	return 4;
 	            case 12: 
-	            	return 10;
+	            	return 12;
 	            default:
 	                return 3; 
 	        }	
