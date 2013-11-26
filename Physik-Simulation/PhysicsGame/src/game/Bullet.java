@@ -22,7 +22,7 @@ class Bullet{
     private Game			game;
   
     
-    Bullet(Level level, int dx, int dy, int force, int spin){ // TODO force not used
+    Bullet(Level level, int dx, int dy, int spin){
         this.level = level;
         game = level.getGame();
       
@@ -75,7 +75,11 @@ class Bullet{
         game.pushMatrix();
         game.translate(pos.x, pos.y);
         game.rotate(-a);
-        game.fill(50);
+        if(level.getLevelNo() == 3 || level.getLevelNo() == 4 || level.getLevelNo() == 12){
+        	game.fill(225);
+        }else{
+            game.fill(50);	
+        }
         game.stroke(0);
         game.strokeWeight(1);
         game.ellipse(0,0,RADIUS*2, RADIUS*2);

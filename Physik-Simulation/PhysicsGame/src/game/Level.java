@@ -125,8 +125,8 @@ class Level{
     /**
      * Adds a flying bullet to the level.
      */
-    void addBullet(int dx, int dy, int actualForce, float actualAngle, int spin){
-        bullets.add(new Bullet(this, dx, dy, actualForce, spin)); 
+    void addBullet(int dx, int dy, float actualAngle, int spin){
+        bullets.add(new Bullet(this, dx, dy, spin)); 
         decreaseBulletsLeft();
     }
     

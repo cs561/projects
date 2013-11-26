@@ -678,7 +678,7 @@ public class Game extends PApplet{
 		}
 		
 		if(!win && allowShoot){
-	        actualLevel.addBullet(actualDx, actualDy, actualForce, actualAngle, spin); 
+	        actualLevel.addBullet(actualDx, actualDy, actualAngle, spin); 
 	        if(actualLevel.getBulletsLeft() == 0){
 	            lost = true;
 	        }
@@ -738,14 +738,8 @@ public class Game extends PApplet{
 	       
 	        if(hoverEnd || hoverEnd2){
 	            System.exit(0);
-	        } 
-	        
-	        
-	        
+	        }    
 	    }
-	    
-	    // TODO check spin
-	    
 	}
 	
 	private void visitTutLevel(int lvlNo){
