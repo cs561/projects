@@ -3,7 +3,7 @@
 
 ##Stand Vortrag
 
-Timing: rot
+Timing: grün
 
 Zu verwendende Quellen:
 

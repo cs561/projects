@@ -1,0 +1,12 @@
+MongoDB shell version: 2.4.6
+connecting to: foo
+type "help" for help
+Server has startup warnings: 
+Mon Oct 28 18:41:49.629 [initandlisten] 
+Mon Oct 28 18:41:49.629 [initandlisten] ** NOTE: This is a 32 bit MongoDB binary.
+Mon Oct 28 18:41:49.629 [initandlisten] **       32 bit builds are limited to less than 2GB of data (or less with --journal).
+Mon Oct 28 18:41:49.629 [initandlisten] **       Note that journaling defaults to off for 32 bit and is currently off.
+Mon Oct 28 18:41:49.629 [initandlisten] **       See http://dochub.mongodb.org/core/32bit
+Mon Oct 28 18:41:49.629 [initandlisten] 
+> [3G[J[3G^C
+bye

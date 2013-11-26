@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7"/>
+	<classpathentry kind="lib" path="core.jar"/>
+	<classpathentry kind="lib" path="jbox2d_2.1.2_ds_v2.jar"/>
+	<classpathentry kind="lib" path="jbox2d.jar"/>
+	<classpathentry kind="lib" path="pbox2d.jar"/>
+	<classpathentry kind="lib" path="slf4j-api-1.6.4.jar"/>
+	<classpathentry kind="lib" path="slf4j-nop-1.6.4.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

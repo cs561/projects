@@ -3,7 +3,7 @@
 
 ##Stand Vortrag
 
-Timing: gelb/grün
+Timing: grün
 
 Zu verwendende Quellen:  
 siehe Präsentation  
@@ -22,7 +22,7 @@ Gefundene Informationen:
 siehe Präsentation
 
 Todos:
-Beispiele suchen
+
 
 ##Stand Projektausarbeitung
 

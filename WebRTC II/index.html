@@ -1,0 +1,503 @@
+<!doctype html>
+<html lang="de">
+
+	<head>
+		<meta charset="iso-8859-1">
+
+		<title>reveal.js - The HTML Presentation Framework</title>
+
+		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+		<meta name="author" content="Hakim El Hattab">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="css/reveal.min.css">
+		<link rel="stylesheet" href="css/theme/sky.css" id="theme">
+
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- If the query includes 'print-pdf', use the PDF print sheet -->
+		<script>
+			document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+		
+		<script src="js/jquery-1.9.1.js"></script>
+		<script src="js/jquery-ui-1.10.3.custom.min.js"></script>
+		<link rel="stylesheet" href="css/ui-lightness/jquery-ui-1.10.3.custom.min.css"/>
+		<script>
+		    $(function() {
+		        $( document ).tooltip();
+		    });
+		</script>
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+		<div class="slides">
+    <section>
+        <h1>Webrtc</h1>
+<div>
+        <br>
+    </div>
+<div>
+    <font color="#333">Alena Brandenburg, Thomas Jakobsche, Mirko Riesterer</font>
+</div>
+</section>
+<section>
+    <h2>Themen</h2>
+    <div>
+        <ul>
+            <font style="font-size: 42px;" color="#333">
+                <li>Einführung</li>
+                <li>Technik</li>
+                <li>Verbindungsaufbau</li>
+            </font>
+        </ul>
+    </div>
+</section>
+<section>
+    <h2>Einführung WebRTC</h2>
+    <div>
+        <br>
+    </div>
+    <div>
+        <font color="#333">Offenes Framework für das Web,</font>
+    </div>
+    <div>
+        <font color="#333">das Echtzeitkommunikation zwischen Browsern ermöglicht</font>
+    </div>
+    <div>
+        <font color="#333">
+            <br>
+        </font>
+    </div>
+    <div>
+        <font color="#333">beinhaltet grundlegende Strukturen</font>
+    </div>
+    <div>
+        <font color="#333">
+            <br>
+        </font>
+    </div>
+    <div>
+        <font color="#333">Netzwerk, Audio und Video Komponenten</font>
+    </div>
+</section>
+<section>
+    <h2>Anwendung</h2>
+<div>
+    <br>
+</div>
+<div>
+<font color="#333">Aufnahme, Kodierung und <a title="Peer-to-Peer / P2P: (engl. peer – dt. Gleichgestellter) sind Direktverbindungen von Rechner zu Rechner ohne Server. Diese kommunizieren in der Regel gleichberechtigt.">Peer-to-Peer</a> Übertragung von Multimedia-Inhalten und Dateien</font>
+</div>
+<div>
+    <font color="#333">
+        <br>
+    </font>
+</div>
+<div>
+    <font color="#333">Chat, <a title="VoIP – Voice over Internet Protocol: Telefonie über Computernetzwerke, die nach Internet-Standards aufgebaut sind. IP-Telefonie ist eine Technologie, die es ermöglicht, den Telefondienst auf IP-Infrastruktur zu realisieren.">VoIP</a>, Desktop-Sharing,&nbsp;</font>
+    <span>Document-Sharing,&nbsp;</span>
+</div>
+<div>
+    <font color="#333">Video-Conferencing</font>
+</div>
+</section>
+<section>
+    <h2>Ziel</h2>
+    <div>
+        <br>
+    </div>
+    <div>
+        <font color="#333">Entwickler sollen die Möglichkeit haben</font>
+    </div>
+    <div>
+        <font color="#333">Echtzeit Multimedia Applikationen</font>
+    </div>
+    <div>
+        <font color="#333">
+            <span>Plattformunabhängig&nbsp;</span>
+        </font>
+    </div>
+    <div>
+        <font color="#333">
+            <span>nativ im Browser zu erstellen</span>
+        </font>
+    </div>
+</section>
+<section>
+    <h2>Why WebRTC?</h2>
+    <div>
+        <br>
+    </div>
+    <div>
+        <font color="#333">Offen, frei implementierbar, hohe Qualität</font>
+    </div>
+    <div>
+        <font color="#333">beinhaltet <a title="NAT – Network Address Translation: Automatisierter Austausch von Adressinformationen in Datenpaketen um verschiedene Netzwerke zu verbinden. Wird in Routern genutzt.">NAT</a> und Firewall Traversal mit ICE</font>
+    </div>
+    <div>
+        <font color="#333">RTP-over-TCP und Proxy Unterstützung</font>
+    </div>
+</section>
+<section>
+    <h2>Geschichte</h2>
+    <div>
+        <br>
+    </div>
+    <div>
+        <span id="docs-internal-guid-6fa5592a-6b8a-1831-2d4e-f505799e8aef">
+            <font color="#333" style="font-size: 32px;">
+                Google kauft <a title="Global IP Solutions: 1999 in Stockholm gegründet und 2010 von Google Inc. Aufgekauft. Die Firma stellte eingebettete Systeme zur Echtzeitkommunikation über IP basierte Netzwerke her und entwichelte die Grundlagen für WebRTC.">Global IP Solutions</a> (Grundlegende Technik)<br/>Mai 2011 -&gt; Projekt “WebRTC” veröffentlicht von Google
+                <br><br/>
+                <a title="IETF - Internet Engineering Task Force: Eine Organisation, die sich mit der technischen Weiterentwicklung des Internets befasst, um dessen Funktionsweise zu verbessern. Die Arbeit der Organisation umfasst die Erstellung von Dokumenten wie Internetprotokollstandards und die Standardisierung der im Internet eingesetzten Kommunikationsprotokolle wie IP, UDP, TCP und SCTP.">IETF</a> -&gt; Standartisierung der Protokolle <br/>W3C -&gt; Browser API’s
+                <br><br/>
+                <a title="W3C - World Wide Web Consortium Im Oktober 1994 am MIT gegründetets Standardisierungsgremium für das World Wide Web.">W3C</a> -&gt; ConnectionAPI (work in progress)<br/> Vorarbeit von <a title="WHATWG - Web Hypertext Application Technology Working Group: Eine Arbeitsgruppe für die Entwicklung von neuen Technologien aus bereits bestehenden Technologien zur Erleichterung neuer Anwendungen. WHATWG wird von Unternehmen wie Mozilla Foundation, Opera Software ASA und Apple Inc. Betrieben und wurde als Reaktion auf die schleppende Entwicklung von Web-Standards durch das W3C gegründet.">WHATWG</a> (Programmierschnittstelle)<br/> fortgeschrittene Implementationen für Chrome, Opera und Firefox
+                <br><br/>
+                1. Juni 2011 -&gt; Google veröffentlicht Referenz Software Framework als freie Software (<a title="BSD-Lizenz – Berkeley Software Distribution Lizenz: bezeichnet eine Gruppe von Lizenzen aus dem Open-Source-Bereich. SW unter BSD-Lizenz darf frei kopiert, verändert und verbreitet werden solange der Copyright-Vermerk des Ursprungsprogramms nicht entfernt wird.">BSD-Lizenz</a>)
+            </font>
+        </span>
+        <br>
+    </div>
+</section>
+<section>
+    <h2>Konkurrenz</h2>
+    <div>
+        <br>
+    </div>
+    <div>
+        <font color="#333">WebRTC wird als Angriff auf das Monopol&nbsp;</font>
+    </div>
+    <div>
+        <font color="#333">von Skype (Microsoft) gesehen</font>
+    </div>
+    <div>
+        <font color="#333">
+            <br>
+        </font>
+    </div>
+    <div>
+        <font color="#333">Microsoft arbeitet an einer Implementierung der Programmierschnittstelle für den <a title="IE - Internet Explorer: Möchte auch gern ein ernstzunehmender Browser sein.">Internet Explorer</a> und will den eigenen Standard <a title="UC-RTC – Unified Communication RealTimeCommunication Microsofts Vorschlag eines Open Standards.">UC-RTC</a> als Standard bei W3C etablieren</font>
+    </div>
+</section>
+<section>
+    <h2>Design</h2>
+    <div>
+        <br>
+    </div>
+    <div>
+        <font color="#333">getUserMedia:</font>
+    </div>
+    <div>
+        <font color="#333">Browserzugriff zu Kamera, Mikrofon und Desktop</font>
+    </div>
+    <div>
+        <font color="#333">
+            <br>
+        </font>
+    </div>
+    <div>
+        <font color="#333">PeerConnection:</font>
+    </div>
+    <div>
+        <font color="#333">
+            <span>Aufbau Audio-/Videoverbindung</span>
+        </font>
+    </div>
+    <div>
+        <font color="#333">
+            <span>
+                <br>
+            </span>
+        </font>
+    </div>
+    <div>
+        <font color="#333">
+            <span>DataChannels:</span>
+        </font>
+    </div>
+    <div>
+        <font color="#333">
+            <span>Peer-to-Peer Datenaustausch</span>
+        </font>
+    </div>
+</section>
+<section>
+<h2>getUserMedia</h2>
+<pre style="background:#222;;padding:5px;color:#eee;">
+navigator.getMedia = ( navigator.getUserMedia ||
+                       navigator.webkitGetUserMedia ||
+                       navigator.mozGetUserMedia ||
+                       navigator.msGetUserMedia);
+
+navigator.getMedia (
+
+   // constraints
+   {
+      video: true,
+      audio: true
+   },
+
+   // successCallback
+   function(localMediaStream) {
+      var video = document.querySelector('video');
+      video.src = window.URL.createObjectURL(localMediaStream);
+      video.onloadedmetadata = function(e) {
+         // Do something with the video here.
+      };
+   },
+
+   // errorCallback
+   function(err) {
+    console.log("The following error occured: " + err);
+   }
+);
+</pre>
+</section>
+<section>
+    <h2>Technik</h2>
+    <div>
+        <br>
+    </div>
+    <div>
+        <font color="#333">Framework basiert auf HTML und JavaScript</font>
+    </div>
+    <div>
+        <font color="#333">
+            <br>
+        </font>
+    </div>
+    <div>
+        <font color="#333">Übertragung erfolgt mit <a title="SRTP – Secure Real Time Protocol: mit AES verschlüsseltes RTP.">(S)RTP</a></font>
+    </div>
+    <div>
+        <font color="#333">über die <a title="XMPP – Extensible Messaging and Presence Protocol: ist ein primär für Instant Messaging eingesetzter, von der IETF veröffentlichter Internetstandard für XML-Routing, der früher unter der Bezeichnung Jabber bekannt war.">XMPP</a>-Erweiterung <a title="Jingle ist eine Erweiterung des XMPP, das Peer-to-Peer Sitzungen ermöglicht und hauptsächlich für VoIP genutzt wird. ">Jingle</a></font>
+    </div>
+    <div>
+        <font color="#333">mit JavaScript Session Establishment Protocol (<a title="JSEP – Javascript Session Establishment Protocol: Pulls the signaling state machine out of the browser and into Javascript. This mechanism effectively removes the browser almost completely from the core signaling flow; the only interface needed is a way for the application to pass in the local and remote session descriptions negotiated by whatever signaling mechanism is used, and a way to interact with the ICE state machine.">JSEP</a>)</font>
+    </div>
+    <div>
+        <font color="#333">
+            <br>
+        </font>
+    </div>
+    <div>
+        <font color="#333">ausgehandelte Direktverbindung Peer-to-Peer</font>
+    </div>
+</section>
+<section>
+    <h2>RTP over TCP</h2>
+    <div>
+        <br>
+    </div>
+    <div>
+        <font color="#333">Multimedia-Streaming ohne Package-Loss</font>
+    </div>
+    <div>
+        <font color="#333">
+            <br>
+        </font>
+    </div>
+    <div>
+        <font color="#333">+ Nur 1 Port für Daten und Command</font>
+    </div>
+    <div>
+        <font color="#333">+ TCP Ports werden weniger gefiltert</font>
+    </div>
+    <div>
+        <font color="#333">+ TCP streamt Daten verlässlicher</font>
+    </div>
+    <div>
+        <font color="#333">
+            <br>
+        </font>
+    </div>
+    <div>
+        <font color="#333">- Kompliziertere Paketverarbeitung</font>
+    </div>
+    <div>
+        <font color="#333">- TCP Overhead kann zu delay führen</font>
+    </div>
+</section>
+<section>
+    <h2>Codecs</h2>
+    <div>
+        <br>
+    </div>
+    <div>
+        <font color="#333">Audio</font>
+    </div>
+    <div>
+        <font color="#333">Opus: (IETF <a href="http://tools.ietf.org/html/rfc6716" target="_blank">RFC 6716</a>) gesamtes menschliches Hörspektrum</font>
+    </div>
+    <div>
+        <font color="#333"><a title="iSAC - Internet Speech Audio Codec ist ein offen dokumentierter, lizenzgebührenfreier Breitband-Sprachcodec, der sich für IP-Telefonie-Anwendungen und Streaming Audio eignet. Die codierten Blöcke müssen zur Übertragung in ein geeignetes Protokoll wie RTP verpackt werden.">iSAC</a>: robust, adaptive Bandbreite (Breitband, Super-Breitband)</font>
+    </div>
+    <div>
+        <font color="#333"><a title="iLBC - internet Low Bitrate Codec ist ein offen dokumentierter, lizenzgebührenfreier Sprachcodec, der hauptsächlich bei VoIP verwendet wird.">iLBC</a>: Schmalband</font>
+    </div>
+    <div>
+        <font color="#333">ITU G.711 (<a title="PCMA/PCMU bzw. ITU G.711 ist eine Richtlinie der International Telecommunication Union zur Digitalisierung analoger Audiosignale mittels Puls-Code-Modulation (PCM). Einsatzbereiche dieses Codecs sind die klassische Festnetz-Telefonie und IP-Telefonie.">PCMA/PCMU</a>, <a title="DTMF - Dual-tone multi-frequency signaling ist die in der analogen Telefontechnik gebräuchliche Wähltechnik und seit den 1990er Jahren bei analogen Teilnehmeranschlussleitungen das überwiegend genutzte Verfahren zur Übermittlung der Rufnummer an die Vermittlungsstelle oder eine Telefonanlage.">DTMF</a>): Telefonnetz</font>
+    </div>
+    <div>
+        <font color="#333">
+            <br>
+        </font>
+    </div>
+    <div>
+        <font color="#333">Video</font>
+    </div>
+    <div>
+        <font color="#333">VP8 (Google)</font>
+    </div>
+    <div>
+        <font color="#333">gilt als alternativlos</font>
+    </div>
+</section>
+<section>
+    <h2 style="font-size:75px;">Browserunterstützung</h2>
+    <div>
+        <br>
+    </div>
+    <div>
+        <span id="docs-internal-guid-266203b1-6b95-e31a-9946-f7674a1929ab">
+            <img src="https://lh6.googleusercontent.com/Jm5ljHfvJJoLvIuYZzRpIFXKDB2rvotAAM5RWj81_oN-i4oebFJFJKD7xBz1IBuK3qzoWWLtHKff2vVpk81HFmsEySgcgsF1bp3DqGLvqjIoZNroI1y81uFhaJK6" width="695px;" height="346px;" style="width: 940.1003042385478px; height: 464.6079036655451px; max-height: none; max-width: none;">
+        </span>
+        <br>
+    </div>
+</section>
+<section>
+    <h2>ICE</h2>
+    <div>
+        <br>
+    </div>
+    <div>
+        <font color="#333">IPv4-Adressen limitiert</font>
+    </div>
+    <div>
+        <font color="#333">
+            <br>
+        </font>
+    </div>
+    <div>
+        <font color="#333">Clients sind hinter NAT-Geräten (Router)</font>
+    </div>
+    <div>
+        <font color="#333">
+            <br>
+        </font>
+    </div>
+    <div>
+        <font color="#333">IP Adressen müssen gemapped werden</font>
+    </div>
+    <div>
+        <font color="#333">
+            <br>
+        </font>
+    </div>
+    <div>
+        <font color="#333">ICE Framework für sucht optimalen Verbindungsweg und baut die Verbindung auf (STUN + TURN)</font>
+    </div>
+</section>
+<section>
+    <h2>STUN</h2>
+    <div>
+        <br>
+    </div>
+    <div>
+        <font color="#333">Erkennt&nbsp;</font>
+    </div>
+    <div>
+        <font color="#333">verschiedene NAT Typen, Firewalls</font>
+    </div>
+    <div>
+        <font color="#333">Traversal-Möglichkeiten&nbsp;</font>
+    </div>
+    <div>
+        <font color="#333">
+            <br>
+        </font>
+    </div>
+    <div>
+        <font color="#333">Ermittelt</font>
+    </div>
+    <div>
+        <font color="#333">öffentliche IP-Adresse des Clients</font>
+    </div>
+    <div>
+        <font color="#333">Gegenstelle benötigt Adressierung für die Verbindung</font>
+    </div>
+</section>
+<section>
+    <h2>TURN</h2>
+    <div>
+        <br>
+    </div>
+    <div>
+        <font color="#333">Ermöglicht Client hinter NAT eine TCP/UDP Verbindung aufzubauen</font>
+    </div>
+    <div>
+        <font color="#333">
+            <br>
+        </font>
+    </div>
+    <div>
+        <font color="#333">Useful bei Symmetric NAT (kein STUN möglich)</font>
+    </div>
+    <div>
+        <font color="#333">
+            <br>
+        </font>
+    </div>
+    <div>
+        <font color="#333">Daten werden über Server geleitet</font>
+    </div>
+    <div>
+        <font color="#333">verursacht hohen Traffic</font>
+    </div>
+</section>
+</div>
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.min.js"></script>
+
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
