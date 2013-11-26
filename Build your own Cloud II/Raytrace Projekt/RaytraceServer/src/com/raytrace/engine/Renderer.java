@@ -46,6 +46,8 @@ public class Renderer {
 				float[] color = rayTrace(origin, direction, maxRecursion);
 				bufferedImage.setRGB(x, y, (((int)(color[0]*255))<<16) + (((int)(color[1]*255))<<8) + ((int)(color[2]*255)));
 			}
+			
+			System.out.println(x + " / " + width);
 		}
 		
 		return bufferedImage;

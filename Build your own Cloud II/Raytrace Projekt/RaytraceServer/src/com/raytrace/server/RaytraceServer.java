@@ -117,15 +117,15 @@ public class RaytraceServer {
 		
 		// load mesh
 		WavefrontMesh mesh = new WavefrontMesh(new File("mesh/jeep.obj"));
-		float[] scale = {0.10f, 0.10f, 0.10f};
+		float[] scale = {0.05f, 0.05f, 0.05f};
 		mesh.scale(scale);
-		float[] translate = {0,-30,50};
+		float[] translate = {0,-12,33};
 		mesh.translate(translate);
 		renderer.addMesh(mesh);
 		
 		//debug
 		try {
-			ImageIO.write(renderer.renderScene(160, 90, 3), "png", new File("/Users/jan_ebbe/desktop/ray.png"));
+			ImageIO.write(renderer.renderScene(1600, 900, 5), "png", new File("/Users/jan_ebbe/desktop/ray.png"));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
