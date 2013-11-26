@@ -1,0 +1,36 @@
+Verteilte Systeme Projekt
+-------------------------
+
+HTML / JavaScript Client:
+
+- nur html,javascript,css (kein php, etc.) -> google chrome
+- mehrere raytracing server werden per formular eingetragen / entfernt (ip, port)
+- framebuffer breite / höhe und die maximale anzahl reflektionen kann definiert werden
+- html canvas für das gerenderte bild (muss grösse des framebuffers haben)
+- "start rendering" button
+- wird das rendern gestartet, so werden per ajax requests an die server gesendet, welche dann eine bestimmte bildzeile rendern
+- der request: http://[server]:[ip]/render-[framebuffer breite]-[framebuffer höhe]-[bildzeile]-[max. reflektionen]
+- wichtig: cross origin ajax in chrome nur mit "--disable-web-security" möglich
+- als antwort kommen binärdaten im format [byte,red,x=0][byte,green,x=0][byte,blue,x=0][byte,00]...[byte,red,x=breite-1][byte,green,x=breite-1][byte,blue,x=breite-1][byte,00]
+- es werden solange requests an die server gesendet, bis alle bildzeilen gerendert sind
+- schlussendlich soll noch angezeigt werden wie lange das rendern dauerte (erster request bis letzter)
+
+
+demo ajax request:
+function WebSocketTest() {
+	var oReq = new XMLHttpRequest();
+	oReq.open("GET","http://localhost:1337/render-800-800-400-2",true);
+	oReq.responseType = "arraybuffer";
+
+	oReq.onload = function (oEvent) {
+		var arrayBuffer = oReq.response; // Note: not oReq.responseText
+		if (arrayBuffer) {
+			var byteArray = new Uint8Array(arrayBuffer);
+			for (var i = 0; i < byteArray.byteLength; i++) {
+				alert(byteArray[i]);
+			}
+		}
+	};
+
+	oReq.send(null);
+}
