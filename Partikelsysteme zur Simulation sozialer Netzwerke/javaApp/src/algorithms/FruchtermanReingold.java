@@ -8,7 +8,6 @@ import edu.uci.ics.jung.graph.util.Pair;
 import graph.Link;
 import graph.Node;
 
-//TODO NEEDS TO BE FIXED!!!
 /**
  * Computes the Fruchterman-Reingold algorithm for a graph. Algorithm
  * implemented after
@@ -64,8 +63,7 @@ public class FruchtermanReingold extends AbstractIterativeAlgorithm {
 			for (Node u : graph.getVertices()) {
 				if (!v.equals(u)) {
 					double dist = v.getPos().distance(u.getPos());
-					if (Double.isNaN(1.0 / dist)) { // TODO fix this
-						System.out.println("oops2");
+					if (Double.isNaN(1.0 / dist)) {
 						dist = 1.0;
 					}
 					Point2d delta = (Point2d) v.getPos().clone();
@@ -85,8 +83,7 @@ public class FruchtermanReingold extends AbstractIterativeAlgorithm {
 			Node v = nodes.getFirst();
 			Node u = nodes.getSecond();
 			double dist = v.getPos().distance(u.getPos());
-			if (Double.isNaN(1.0 / dist)) { // TODO fix this
-				System.out.println("oops3");
+			if (Double.isNaN(1.0 / dist)) {
 				dist = 1.0;
 			}
 			Point2d delta = (Point2d) v.getPos().clone();
