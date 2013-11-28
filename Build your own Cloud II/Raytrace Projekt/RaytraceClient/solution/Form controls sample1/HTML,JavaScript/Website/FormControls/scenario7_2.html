@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<!-- Copyright © Microsoft Corporation. All rights reserved. -->
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Internet Explorer Developer Sample</title>
+    <link rel="stylesheet" type="text/css" href="css/base-sdk.css" />
+    <link rel="stylesheet" type="text/css" href="css/formLayout.css" />
+    <link rel="stylesheet" type="text/css" href="css/scenario7_2.css" />
+    <script type="text/javascript" src="script/base-sdk.js"></script>
+    <script type="text/javascript" src="script/scenario7_2.js"></script>
+</head>
+<body role="application">
+    <div id="header" role="contentinfo"></div>
+
+    <h1 id="sampleTitle">Form controls: Range</h1>
+
+    <!--Sample title-->
+    <h2>Scenario 7.2: Video seek bar example</h2>
+    <p>
+        <a href="scenario7.html">Back to Range control scenarios menu</a>
+    </p>
+
+    <!--Description and code snippet-->
+    <div class="descRegion" role="region" aria-labelledby="descLabel" aria-live="assertive">
+        <h3 id="descLabel">Description</h3>
+        <div class="descContent">
+            <p>
+                The range control is ideal to use as a video seek bar.
+                This example shows how to programmatically use a stylized range
+                control with an HTML5 &lt;video&gt; element.
+            </p>
+            <h3 class="codeLabel">Code</h3>
+<pre>
+&lt;!-- video seek bar
+    &lt;div id="videoPlaybackError"&gt;
+    &lt;/div&gt;
+    &lt;div id="playerContainer"&gt;
+        &lt;div id="playerdiv"&gt;
+            &lt;div id="video"&gt;
+                &lt;video id="player" autoplay&gt;&lt;/video&gt;
+            &lt;/div&gt;
+            &lt;div id="playbuttondiv"&gt;
+                &lt;button id="playbutton" class="playing" title="Play"&gt;&lt;/button&gt;
+            &lt;/div&gt;
+            &lt;div id="seekbardiv"&gt;
+                &lt;input type="range" id="seekbar" /&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    
+    var player = null;
+    var seekbar = null;
+    var popupDiv = null;
+    var videoUrl = "";
+    
+    // when the user is interacting with the seek bar, pause the video, seek it,
+    // and don't look at position change events from the video.
+    var interactingWithSeekBar = false;
+
+    function playVideo(videoName, autoplay) {
+        player.pause();
+        player.src = videoName;
+        player.autoplay = autoplay;
+        player.load();
+
+        // reset the interaction status
+        interactingWithSeekBar = false;
+    }
+
+    // Switch the CSS class that contains the font glyph. Also change the title tooltip.
+    function switchPlayButton(playing) {
+        if (playing) {
+            document.getElementById("playbutton").setAttribute("class", "playing");
+            document.getElementById("playbutton").setAttribute("title", "Pause");
+        } else {
+            document.getElementById("playbutton").setAttribute("class", "paused");
+            document.getElementById("playbutton").setAttribute("title", "Play");
+        }
+    }
+
+    function startInteractingWithSeekBar() {
+        interactingWithSeekBar = true;
+
+        // pause the player
+        if ((player.readyState >= 2) && (!player.paused)) {
+            player.pause();
+        }
+    }
+
+    function stopInteractingWithSeekBar() {
+        interactingWithSeekBar = false;
+
+        // resume the player
+        if (player.paused) {
+            player.play();
+        }
+    }
+
+    function setupPlayer() {
+        seekbar = document.getElementById("seekbar");
+        seekbar.value = 0;
+        seekbar.addEventListener("change", seekVideo, false);
+
+        // the user started interacting with the seek bar
+        seekbar.addEventListener("keydown", startInteractingWithSeekBar, false);
+        seekbar.addEventListener("MSPointerDown", startInteractingWithSeekBar, false);
+
+        // the user finished interacting with the seek bar
+        seekbar.addEventListener("keyup", stopInteractingWithSeekBar, false);
+        seekbar.addEventListener("MSPointerUp", stopInteractingWithSeekBar, false);
+        seekbar.addEventListener("MSPointerCancel", stopInteractingWithSeekBar, false);
+
+        player = document.getElementById("player");
+        player.addEventListener("durationchange", setupSeekbar, false);
+        player.addEventListener("timeupdate", updateUI, false);
+        player.addEventListener("ended", ended, false);
+        player.addEventListener("error", error, false);
+        player.addEventListener("play", function () { switchPlayButton(true); }, false);
+        player.addEventListener("pause", function () { switchPlayButton(false); }, false);
+
+        document.getElementById("playbutton").setAttribute("class", "paused");
+        document.getElementById("playbutton").addEventListener("click", playPause, false);
+
+        // click anywhere except the seek bar will play/pause
+        document.getElementById("player").addEventListener("click", playPause, false);
+
+
+        if (videoUrl) {
+            playVideo(videoUrl, false);
+        }
+    }
+
+    function error(event) {
+        document.getElementById("videoPlaybackError").innerText =
+            "Error: can't play the video. Please make sure the file path
+             and file type are correct.";
+    }
+
+    function setupSeekbar() {
+        seekbar.min = 0;
+        seekbar.max = player.duration;
+        seekbar.value = 0;
+    }
+
+    function updateUI() {
+        if ((!interactingWithSeekBar) && (player.playing)) {
+            // the user is not interacting with the seek bar and the video is playing,
+            // thus the change in video playback position should be reflected to
+            // the seek bar position.
+            seekbar.value = player.currentTime;
+        }
+    }
+
+    function ended() {
+        seekbar.value = 0;
+        player.pause();
+        player.currentTime = 0;
+    }
+
+    function seekVideo(event) {
+        if (player.readyState &lt; 2) {
+            event.target.value = "0";
+            return;
+        }
+
+        // seek using slider value
+        player.currentTime = event.target.valueAsNumber;
+    }
+
+    function playPause(event) {
+        if ("" === videoUrl) {
+
+            // point to a sample video. you could change this to load your own video.
+            videoUrl = "http://ie.microsoft.com/testdrive/Videos/BehindIE9ModernWebStandards/Video.mp4";
+            playVideo(videoUrl, true);
+            return;
+        }
+
+        if (player.readyState &lt; 2) { return; }
+
+        if (player.paused) {
+            player.play();
+
+        } else {
+            player.pause();
+        }
+    }
+
+    #playerContainer
+    {
+        display: inline-block;
+    }
+
+    #playerdiv
+    {
+        background-color: Black;
+        border-radius: 20px;
+        margin: 30px 0px 30px 60px;
+        padding: 30px 50px 30px 50px;
+        box-shadow: 0 4px 20px #222222;
+        display: -ms-grid;
+        -ms-grid-columns: auto;
+        -ms-grid-rows: auto;
+        -ms-writing-mode: lr-tb;
+    }
+
+    #video
+    {
+        -ms-grid-row: 1;
+        -ms-grid-column: 1;
+    }
+
+    #player
+    {
+        width: 640px;
+        height: 360px;
+
+        /* to remove the strut underneath the element that pushes
+           the parent div unnecessarily taller. */
+        vertical-align: bottom;
+    }
+
+    #playbuttondiv
+    {
+        -ms-grid-column: 1;
+        -ms-grid-row: 1;
+        display: -ms-flexbox;
+        -ms-flex-align: center;
+        -ms-flex-pack: center;
+    }
+
+    #playbutton
+    {
+        font-family: "Segoe UI Symbol";
+        font-size: 50px;
+        width: 100px;
+        height: 100px;
+        vertical-align: middle;
+        text-align: center;
+        min-width: 0px;
+        padding: 0px;
+        color: white;
+        background-color: rgba(0, 0, 0, 0.53);
+        background-origin: content-box;
+        border: 2px solid white;
+        border-radius: 100%;
+
+        /* line height should be the same as the height of content box,
+        so that font glyph can be centered correctly */
+        line-height: 96px;
+    }
+
+    #playbutton:active
+    {
+        background-color: White;
+        border: 0px;
+        width: 104px;
+        height: 104px;
+        color: Black;
+    }
+
+    #playbutton
+    {
+        margin: 0px 20px 16px 20px;
+    }
+
+    #playbutton.paused:before
+    {
+        content: "\E102";       /* play glyph */
+    }
+
+    #playbutton.playing:before
+    {
+        content: "\E103";    /* pause glyph */
+    }
+
+    #seekbardiv
+    {
+        -ms-grid-column: 1;
+        -ms-grid-row: 1;
+        display: -ms-flexbox;
+        -ms-flex-direction: column;
+        -ms-flex-pack: end;
+
+        /* horizontally stretch the seekbar to fill up the width */
+        -ms-flex-align: stretch; 
+    }
+
+    #seekbar
+    {
+        width: auto;    /* let flexbox container decide the width */
+        height: 84px;
+        margin: 0px;
+        padding: 0px 20px 0px 20px;
+        background-color: rgba(0, 0, 0, 0.53);
+    }
+
+    #seekbar::-ms-tooltip
+    {
+        visibility: hidden;
+    }
+
+    #seekbar::-ms-track
+    {
+        background-color: transparent;
+        border-width: 0px;
+        padding: 23px 0px 18px 0px;
+        margin: 0px;
+        color: transparent;
+        height: 43px;
+    }
+
+    #seekbar::-ms-fill-lower
+    {
+        background-color: transparent;
+        height: 40px;
+        border: 0px;
+        margin-left: 17px;
+        border-top: 3px solid white;
+    }
+
+    #seekbar::-ms-fill-upper
+    {
+        background-color: transparent;
+        height: 40px;
+        border: 0px;
+        margin-right: 17px;
+        border-top: 3px solid rgba(255, 255, 255, 0.65);
+    }
+
+    #seekbar::-ms-thumb
+    {
+        border: 2px solid white;
+        background-color: rgb(33,33,33);
+        width: 31px;
+        height: 31px;
+        border-radius: 100%;
+        margin: 14px 0px 0px 0px;
+    }
+
+    #videoInfo, #videoPlaybackError
+    {
+        margin-left: 80px;
+    }
+    --&gt;
+</pre>
+        </div>
+    </div>
+
+    <!--Rendered result-->
+    <div class="resultRegion" role="region" aria-labelledby="resultLabel" aria-live="assertive">
+        <h3 id="resultLabel">Result</h3>
+        <div class="resultContent">
+            <fieldset class="formSection">
+                <legend class="formSectionHeading">Video Seek Bar</legend>
+                <div id="videoPlaybackError"></div>
+                <div id="playerContainer">
+                    <div id="playerdiv">
+                        <div id="video">
+                            <video id="player" autoplay></video>
+                        </div>
+                        <div id="playbuttondiv">
+                            <button id="playbutton" class="playing" title="Play"></button>
+                        </div>
+                        <div id="seekbardiv">
+                            <input type="range" id="seekbar" />
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+        </div>
+    </div>
+
+    <div id="footer" role="contentinfo"></div>
+</body>
+</html>

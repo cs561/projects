@@ -1,0 +1,219 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+    <head><link rel="stylesheet" type="text/css" href="description/Combined.css,0:header,0:SearchBox,1:IeImageSprite;/Areas/Epx/Themes/Metro/Content:0,/Areas/Epx/Themes/Ie/Content:1&amp;amp;hashKey=5084F564E9533D332F572B0B2D5C40D4" xmlns="http://www.w3.org/1999/xhtml" />
+<link rel="stylesheet" type="text/css" href="description/Combined.css,0:footer,1:IeImageSprite;/Areas/Epx/Themes/Metro/Content:0,/Areas/Epx/Themes/Ie/Content:1&amp;amp;hashKey=6A36A7B96AEBC3A894ACAE507D7E3777" xmlns="http://www.w3.org/1999/xhtml" />
+
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>Form controls sample</title>
+        <link href="description/Galleries.css" type="text/css" rel="Stylesheet" /><link href="description/Layout.css" type="text/css" rel="Stylesheet" /><link href="description/Brand.css" type="text/css" rel="Stylesheet" /><link href="description/4cb13e33-70e6-47d1-a876-48bcbfa5e287Brand.css" type="text/css" rel="Stylesheet" />
+        <link href="description/iframedescription.css" rel="Stylesheet" type="text/css" />
+        <script src="description/offline.js" type="text/javascript"></script>
+        <style type="text/css">
+            #projectInfo {
+                overflow: auto;
+            }
+            #longDesc {
+                clear:both;
+                margin: 25px 0 10px 0;
+            }
+
+            #SampleIndexList{
+                margin-left: 15px;
+            }
+        </style>
+    </head>
+<body>
+    <div id="offlineDescription">
+        <h1>Form controls sample</h1>
+        <br/>
+        <div id="projectInfo">
+            <div class="section">
+                    <div class="itemBarLong tagsContainer">
+                        <label for="Technologies">Technologies</label>
+                        <div id="Technologies">
+                            HTML5, Internet Explorer 10
+                        </div>
+                    </div>
+                    <div class="itemBarLong tagsContainer">
+                        <label for="Topics">Topics</label>
+                        <div id="Topics">
+                            Form controls, Input fields, Buttons, HTML5 Forms
+                        </div>
+                    </div>
+                <div class="itemBarLong">
+                    <label for="Platforms">Platforms</label>
+                    <div id="Platforms">
+                        Web
+                    </div>
+                </div>
+                <div class="itemBarLong">
+                    <label for="Requirements">Requirements</label>
+                    <div id="Requirements">
+                        
+                    </div>
+                </div>
+                <div class="itemBar">
+                    <label for="LastUpdated">Primary Language</label>
+                    <div id="LastUpdated">en-US</div>
+                </div>
+                <div class="itemBar">
+                    <label for="LastUpdated">Last Updated</label>
+                    <div id="LastUpdated">12/19/2012</div>
+                </div>
+                <div class="itemBarLong">
+                    <label for="License">License</label>
+                    <div id="License">
+                        <a href="license.rtf">Apache License, Version 2.0</a></div>
+                </div>
+                <div class="itemBar">
+                    <div class="viewonlinecont">
+                        <a data-link="online" href="http://code.msdn.microsoft.com/ie/Form-controls-part-1-abae6a9e">View this sample online</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+                   
+<script type="text/javascript">
+    function initializePage() {
+        var otherTabClass = 'otherTab';
+        var hiddenPreClass = 'hidden';
+
+        var htmlDecode = function(encodedData) {
+            var decodedData = "";
+            if (encodedData) {
+                var div = document.createElement('div');
+                div.innerHTML = encodedData;
+                decodedData = div.firstChild.nodeValue.replace( /\\r\\n/ig , '\r\n');
+            }
+            return decodedData;
+        };
+                
+        Galleries.iterateElem(Galleries.findElem(null, 'div', 'scriptcode'), function (index, scriptBlock) {
+            var titleElem = Galleries.findElem(scriptBlock, 'div', 'title')[0];
+            var labelElems = Galleries.findElem(titleElem, 'span');
+            if (labelElems.length == 0) {
+                labelElems = titleElem;
+            }
+            var languageSpans = Galleries.findElem(scriptBlock, 'span', 'hidden');
+            var pres = Galleries.findElem(scriptBlock, 'pre');
+            if (languageSpans.length > 0 && pres.length > 1) {
+                Galleries.iterateElem(labelElems, function(index, elem) {
+                    var codePre = pres[index];
+                    var labelSpan = elem;
+                    var languageSpan = languageSpans[index];
+                            
+                    elem.code = codePre.innerHTML.replace( /(\r(\n)?)|((\r)?\n)/ig , '\\r\\n');
+                            
+                    codePre.className = codePre.className.replace(hiddenPreClass, '');
+                            
+                    languageSpan.parentNode.removeChild(languageSpan);
+                });
+
+                pres = Galleries.findElem(scriptBlock, 'pre');
+                Galleries.iterateElem(labelElems, function(index, elem) {
+                    var codePre = pres[index];
+                    var labelSpan = elem;
+                    if (index == 0) {
+                        scriptBlock.activeTab = 0;
+                    }
+                    else {
+                        labelSpan.className += otherTabClass;
+                        codePre.className += hiddenPreClass;
+                    }
+                    Galleries.attachEventHandler(labelSpan, 'click', function(e) {
+                        var activeTab = scriptBlock.activeTab;
+                        labelElems[activeTab].className += otherTabClass;
+                        pres[activeTab].className += hiddenPreClass;
+
+                        codePre.className = codePre.className.replace(hiddenPreClass, '');
+                        labelSpan.className = labelSpan.className.replace(otherTabClass, '');
+                        scriptBlock.activeTab = index;
+                    });
+                });
+
+                var preview = Galleries.findElem(scriptBlock, 'div', 'preview');
+                if (preview.length == 0) {
+                    preview.push(pres[pres.length - 1]);
+                }
+                Galleries.iterateElem(preview, function(index, elem) {
+                    elem.parentNode.removeChild(elem);
+                });
+
+                if (window.clipboardData && clipboardData.setData) {
+                    var copyLink = document.createElement('a');
+                    copyLink.href = 'javascript:void(0);';
+                    copyLink.className = 'copyCode';
+                    copyLink.innerHTML = 'Copy Code';
+                    Galleries.attachEventHandler(copyLink, 'click', function (e) {
+                        clipboardData.setData("Text", htmlDecode(labelElems[scriptBlock.activeTab].code));
+                        return false;
+                    });
+                    scriptBlock.insertBefore(copyLink, scriptBlock.childNodes[0]);
+                }
+            }
+        });
+    }
+
+    Galleries.onWindowLoad(function(){
+        initializePage();
+    });
+
+</script>
+<div id="longDesc">
+    
+<div><a href="http://samples.msdn.microsoft.com/iedevcenter/FormControls/default.html" style="text-decoration:none">
+<div style="background:#ff8c00; color:white; width:100px; padding:5px 15px; margin:15px 0; line-height:135%; font-family:inherit; font-size:1.1em; text-decoration:none">
+View sample</div>
+</a></div>
+<h1><span style="font-size:20px; font-weight:bold">Description</span></h1>
+<p>This sample provides&nbsp;examples of input and form controls, including the HTML5 Progress element and the input type=&rdquo;range&rdquo; control. CSS styling lets you customize controls to match the look and feel of your app.&nbsp;Using CSS, custom background
+ images or SVG graphics can be applied to &quot;skin&quot; your controls to go with the design of your page.</p>
+<p>The <strong>checkbox&nbsp;button, and radio button&nbsp;</strong>examples show how elements can now be styled with standard CSS styling to let you match the visual design of your app.</p>
+<p>The <strong>Text input control</strong>&nbsp;example shows&nbsp;support more input types, including number, telephone, email, and URL. The select control example demonstrates using and styling single and multi-line select boxes and drop-down lists.
+<br>
+<br>
+The <strong>File upload&nbsp;control</strong> example show how it simplifies supporting single and multi-file selection. User actions like selecting pictures to upload to a photo site can be easier using the accept attribute to specify acceptable file mime
+ types. Clicking the &quot;browse&quot; button brings up the file dialog so you can select files from your local disk. Files can be sent to the server as part of the formdata when the form is submitted.<br>
+&nbsp;<br>
+The <strong>Range</strong> example shows how to use the input range control to&nbsp;create a slider to pick non-precise numbers quickly. The input range can be customized for your app&rsquo;s needs with the min, max, and step attributes. The example shows how
+ to use and style the&nbsp;slider control for custom looks.&nbsp;</p>
+<p>The <strong>Progress</strong> example shows how to show activity or a task&rsquo;s progress, for example, when loading a large file, or doing intensive calculations. The progress control can be either indeterminate (just showing activity) when no value attribute
+ is provide, or a visual progress toward a goal when a value is provided. The progress control defaults to a floating point range of 0 to 1, but you can set the max attribute to any positive number. The example shows how to make a circular or linear progress
+ bar.</p>
+<p>The <strong>Form layout </strong>example shows how to use CSS grid and columns to lay out fields on a webpage.</p>
+<h1>See also</h1>
+<p><strong>Reference</strong><br>
+<a href="http://msdn.microsoft.com/en-us/library/ie/ms535260(v=vs.85).aspx" >input element</a><br>
+<a href="http://msdn.microsoft.com/en-us/library/ie/hh772953(v=vs.85).aspx" >progress element</a><br>
+<br>
+<strong>Conceptual</strong><br>
+<a href="http://msdn.microsoft.com/en-us/library/ie/hh673544(v=vs.85).aspx" >Internet Explorer 10 Developer Guide: HTML5 Forms</a><br>
+<br>
+<strong>Internet Explorer Test Drive</strong><br>
+<a href="http://ie.microsoft.com/testdrive/Browser/TouchFirstControls/Default.html" >Touch First Controls</a><br>
+<br>
+<strong>IEBlog</strong><br>
+<a href="http://blogs.msdn.com/b/ie/archive/2012/04/20/guidelines-for-building-touch-friendly-sites.aspx" >Guidelines for Building Touch-friendly Sites</a><br>
+<br>
+<strong>Internet Explorer Testing Center</strong><br>
+<a href="http://samples.msdn.microsoft.com/ietestcenter/#html5Forms" >HTML5 Forms</a><br>
+<br>
+<strong>Windows app samples</strong><br>
+<a href="http://code.msdn.microsoft.com/windowsapps/Common-HTML-controls-and-09a72a24" >HTML essential controls sample</a><br>
+<br>
+</p>
+<h1>Further information</h1>
+<p>The Internet Explorer Samples Gallery contains a variety of code samples that demonstrate new features available in Internet Explorer. These downloadable samples are provided as compressed ZIP files that contain the HTML, JavaScript, CSS, and image resources
+ for the sample, along with the license agreement and sample description metadata. After you&rsquo;ve downloaded and unzipped the compressed files, the sample files can be found in the following location:</p>
+<p style="padding-left:30px">(unzipped folder)\HTML,JavaScript\Website \<strong>(Sample)</strong></p>
+<p>This sample is provided as-is in order to indicate or demonstrate the functionality of the feature APIs for Internet Explorer&nbsp;10. We appreciate your comments and questions on this sample!</p>
+<p>For download info, visit <a href="http://msdn.microsoft.com/en-us/ie/aa740471.aspx">
+Internet Explorer downloads</a>.</p>
+
+</div>
+
+
+    </div>
+</body>
+</html>

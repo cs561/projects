@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<!-- Copyright © Microsoft Corporation. All rights reserved. -->
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Internet Explorer Developer Sample</title>
+    <link rel="stylesheet" type="text/css" href="css/base-sdk.css" />
+    <link rel="stylesheet" type="text/css" href="css/formLayout.css" />
+    <link rel="stylesheet" type="text/css" href="css/scenario3.css" />
+    <script type="text/javascript" src="script/base-sdk.js"></script>
+</head>
+<body role="application">
+    <div id="header" role="contentinfo"></div>
+
+    <h1 id="sampleTitle">Form controls</h1>
+
+    <!--Sample title-->
+    <h2>Scenario 3: Radio button</h2>
+    <p>
+        <a href="default.html">Back to scenarios menu</a>
+    </p>
+
+    <!--Description and code snippet-->
+    <div class="descRegion" role="region" aria-labelledby="descLabel" aria-live="assertive">
+        <h3 id="descLabel">Description</h3>
+        <div class="descContent">
+            <p>
+                Radio button can be used for single selection. All of the radio buttons under
+                the same "name" attribute are part of the same group and only one of them
+                can be selected at a time.
+            </p>
+            <h3 class="codeLabel">Code</h3>
+<pre>
+&lt;!-- radio button group 
+    &lt;label class="radioLabel horizontalLabelLayout"&gt;
+        &lt;input type="radio" name="sauce" checked /&gt;BBQ Sauce
+    &lt;/label&gt;
+    &lt;label class="radioLabel horizontalLabelLayout"&gt;
+        &lt;input type="radio" name="sauce" /&gt;Tomato Sauce
+    &lt;/label&gt;
+    &lt;label class="radioLabel horizontalLabelLayout"&gt;
+        &lt;input type="radio" name="sauce" /&gt;White Sauce
+    &lt;/label&gt;
+    --&gt;
+
+&lt;!-- change radio dot color
+    input[type="radio"].differentRadioColor::-ms-check
+    {
+        color: green;
+    }
+    --&gt;
+
+&lt;!-- thumb-up / thumb-down rating
+    &lt;input type="radio" name="thumbUpDownGroup" class="thumbUpDown thumbUp" /&gt;
+    &lt;input type="radio" name="thumbUpDownGroup" class="thumbUpDown thumbDown" /&gt;
+
+    /* reset default styles */
+    input[type="radio"].thumbUpDown,
+    input[type="radio"].thumbUpDown::-ms-check,
+    input[type="radio"].thumbUpDown:hover::-ms-check,
+    input[type="radio"].thumbUpDown:active::-ms-check,
+    input[type="radio"].thumbUpDown:hover:active::-ms-check,
+    input[type="radio"].thumbUpDown:hover:active:disabled::-ms-check
+    {
+        color: transparent;
+        border: 0px;
+        background-color: transparent;
+        padding: 0px;
+        margin: 0px;
+    }
+
+    input[type="radio"].thumbUpDown
+    {
+        width: 60px;
+        height: 60px;
+        border: 0px;
+        border-radius: 0px;
+        margin: 0px;
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: 100% 100%;
+    }
+
+    input[type="radio"].thumbUpDown:hover
+    {
+        opacity: 0.8;
+    }
+
+    input[type="radio"].thumbUp
+    {
+        background-image: url("../images/thumb.svg");
+    }
+
+
+    input[type="radio"].thumbUp:checked
+    {
+        background-image: url("../images/thumb_filled.svg");
+    }
+
+
+    input[type="radio"].thumbDown
+    {
+        background-image: url("../images/thumbDown.svg");
+    }
+
+
+    input[type="radio"].thumbDown:checked
+    {
+        background-image: url("../images/thumbDown_filled.svg");
+    }
+    --&gt;
+</pre>
+        </div>
+    </div>
+
+    <!--Rendered result-->
+    <div class="resultRegion" role="region" aria-labelledby="resultLabel" aria-live="assertive">
+        <h3 id="resultLabel">Result</h3>
+        <div class="resultContent">
+            <fieldset id="Fieldset5" class="formSection">
+                <legend class="formSectionHeading">Basics</legend>
+                <div class="twoColumnGridContainer-ControlList">
+                    <div style="-ms-grid-row: 1; -ms-grid-column: 1;">
+                        Single select
+                    </div>
+                    <div style="-ms-grid-row: 1; -ms-grid-column: 2;">
+                        <fieldset class="controlGroup">
+                            <legend class="controlGroupName">Pizza Sauce</legend>
+                            <label class="radioLabel horizontalLabelLayout">
+                                <input type="radio" name="sauce" checked />BBQ Sauce
+                            </label>
+                            <label class="radioLabel horizontalLabelLayout">
+                                <input type="radio" name="sauce" />Tomato Sauce
+                            </label>
+                            <label class="radioLabel horizontalLabelLayout">
+                                <input type="radio" name="sauce" />White Sauce
+                            </label>
+                        </fieldset>
+                    </div>
+                </div>
+            </fieldset>
+            <fieldset id="Fieldset6" class="formSection">
+                <legend class="formSectionHeading">Styling</legend>
+                <div class="twoColumnGridContainer-ControlList">
+                    <div style="-ms-grid-row: 1; -ms-grid-column: 1;">
+                        Change radio dot color
+                        <div class="detail">
+                            ::-ms-check{ color: green; }</div>
+                    </div>
+                    <div style="-ms-grid-row: 1; -ms-grid-column: 2;">
+                        <label class="radioLabel">
+                            <input type="radio" class="differentRadioColor" checked />Radio button
+                        </label>
+                    </div>
+                    <div style="-ms-grid-row: 2; -ms-grid-column: 1;">
+                        Thumb-up / thumb-down rating
+                        <div class="detail">
+                            Styling the background image with SVG.</div>
+                    </div>
+                    <div style="-ms-grid-row: 2; -ms-grid-column: 2;">
+                        <input type="radio" name="thumbUpDownGroup" class="thumbUpDown thumbUp" />
+                        <input type="radio" name="thumbUpDownGroup" class="thumbUpDown thumbDown" />
+                    </div>
+                </div>
+            </fieldset>
+        </div>
+    </div>
+
+    <div id="footer" role="contentinfo"></div>
+</body>
+</html>

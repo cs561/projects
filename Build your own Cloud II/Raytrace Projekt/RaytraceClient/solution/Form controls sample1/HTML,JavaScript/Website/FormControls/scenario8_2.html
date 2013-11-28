@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<!-- Copyright © Microsoft Corporation. All rights reserved. -->
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Internet Explorer Developer Sample</title>
+    <link rel="stylesheet" type="text/css" href="css/base-sdk.css" />
+    <link rel="stylesheet" type="text/css" href="css/formLayout.css" />
+    <link rel="stylesheet" type="text/css" href="css/scenario8_2.css" />
+    <script type="text/javascript" src="script/base-sdk.js"></script>
+    <script type="text/javascript" src="script/scenario8_2.js"></script>
+</head>
+<body role="application">
+    <div id="header" role="contentinfo"></div>
+
+    <h1 id="sampleTitle">Form controls: Progress</h1>
+
+    <!--Sample title-->
+    <h2>Scenario 8.2: File download example</h2>
+    <p>
+        <a href="scenario8.html">Back to Progress control scenarios menu</a>
+    </p>
+
+    <!--Description and code snippet-->
+    <div class="descRegion" role="region" aria-labelledby="descLabel" aria-live="assertive">
+        <h3 id="descLabel">Description</h3>
+        <div class="descContent">
+            <p>
+                This example shows how to use the progress control to monitor a file download. 
+            </p>
+            <h3 class="codeLabel">Code</h3>
+<pre>
+&lt;!-- file download
+    &lt;div id="downloadContainer" role="button" onclick="progressPauseResume();"&gt;
+        &lt;div id="downloadIcon"&gt;&lt;/div&gt;
+        &lt;div id="downloadTitle"&gt;
+            David's Wedding.wmv&lt;/div&gt;
+        &lt;div id="downloadControl"&gt;
+                &lt;progress id="downloadProgress"&gt;&lt;/progress&gt;
+                &lt;button id="downloadPauseButton" class="backbutton downloading"&gt;&lt;/button&gt;
+        &lt;/div&gt;
+        &lt;div id="downloadStatus"&gt;Connecting&lt;/div&gt;
+    &lt;/div&gt;
+    
+    // css
+    #downloadContainer
+    {
+        display: -ms-grid;
+        margin: 0px 8px 8px 8px;
+    }
+
+    #downloadIcon
+    {
+        -ms-grid-column: 1;
+        -ms-grid-row-span: 3;
+        width: 62px;
+        height: 62px;
+        margin: 0px 16px 0px 0px;
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        background-image: url("../images/SauceCaramel.png");
+        background-position: center top;
+        background-origin: border-box;
+        background-size: 64px 64px;
+        background-repeat: no-repeat;
+    }
+
+    #downloadTitle
+    {
+        -ms-grid-column: 2;
+        -ms-grid-row: 1;
+        font-size: 11pt;
+        line-height: 15pt;
+        font-family: "Segoe UI Semibold";
+        white-space: nowrap;
+        overflow-x: hidden;
+        -ms-text-overflow: ellipsis;
+    }
+
+    #downloadControl
+    {
+        -ms-grid-column: 2;
+        -ms-grid-row: 2;
+        display: -ms-flexbox;
+        -ms-flex-align: center;
+        height: 22px;
+    }
+
+    #downloadStatus
+    {
+        -ms-grid-column: 2;
+        -ms-grid-row: 3;
+        font-size: 11pt;
+        line-height: 15pt;
+        font-family: "Segoe UI Semilight";
+    }
+
+    #downloadProgress
+    {
+        width: 192px;
+    }
+
+    /* animation when pausing a determinate progress bar */
+    @keyframes progress-fade-out {
+        from {
+            opacity: 1.0;
+        }
+        to {
+            opacity: 0.5;
+        }
+    }
+
+    progress.paused:not(:indeterminate) {
+        animation-name: progress-fade-out;
+        animation-duration: 3s;
+        animation-timing-function: cubic-bezier(0.03, 0.76, 0.31, 1.0);
+        opacity: 0.5;
+    }
+
+    /* fade-in animation when switching from indeterminate progress bar
+       to determinate progress bar */
+    @keyframes progress-switch-determinate {
+        from {
+            opacity: 0.0;
+        }
+        to {
+            opacity: 1.0;
+        }
+    }
+
+    progress.switchDeterminate
+    {
+        animation-name: progress-switch-determinate;
+        animation-duration: 0.4s;
+        animation-timing-function: linear;
+    }
+
+    #downloadPauseButton
+    {
+        /* most styles are from .backbutton class */
+        width: 20px;
+        height: 20px;
+        margin: 0px 8px 0px 12px;
+        border-width: 1px;
+        font-size: 10px;    /* override the style from .backbutton to set the
+                               size of the glyph */
+        line-height: 18px;  /* override this from backbutton to match the current content
+                               box height, otherwise glyph won't center vertically. */
+        visibility: hidden; /* hidden at the beginning because it's connecting to the
+                               server at the beginning and that activity can't be
+                               paused/resumed. */
+    }
+
+    button#downloadPauseButton.paused:before
+    {
+        content: "\E102";       /* continue glyph */
+    }
+
+    button#downloadPauseButton.downloading:before
+    {
+        content: "\E103";       /* pause glyph */
+    }
+
+    .backbutton
+    {
+        display: inline-block;
+        min-width: 0px;
+        min-height: 0px;
+        background-clip: border-box;
+        box-sizing: border-box;
+        border-radius: 50%;
+        border-width: 2px;
+        border-style: solid;
+        padding: 0px;
+        text-align: center;
+
+        width: 41px;
+        height: 41px;
+        font-size: 14pt;
+        line-height: 37px; /* line-height must match the content box height. */
+        vertical-align: baseline;
+    
+        margin-right: 10px;
+    }
+
+    .backbutton:hover, .backbutton:hover:active
+    {
+        border-width: 2px;
+        border-style: solid;
+        border-radius: 50%;
+    }
+
+    .backbutton::before
+    {
+        font-family: "Segoe UI Symbol";
+        font-weight: normal;
+        content: "\E0D5";
+        vertical-align: 50%;
+    }
+
+    .backbutton:disabled, .backbutton:hover:active:disabled
+    {
+        background-clip: padding-box;
+        visibility: hidden;
+    }
+
+    .backbutton
+    {
+        background-color: transparent;
+        border-color: rgb(0, 0, 0);
+        color: rgb(0, 0, 0);
+    }
+
+    .backbutton:hover
+    {
+        background-color: rgba(0, 0, 0, 0.13);
+        border-color: rgb(0, 0, 0);
+    }
+
+    .backbutton:hover:active
+    {
+        background-color: rgb(0, 0, 0);
+        border-color: rgb(0, 0, 0);
+        color: rgb(255, 255, 255);
+    }
+
+    .backbutton:disabled, .backbutton:disabled:active
+    {
+        background-color: transparent;
+        border-color: rgba(0, 0, 0, 0.4);
+        color: rgba(0, 0, 0, 0.4);
+    }
+
+    // javascript
+
+    var status = null;
+    var progress = null;
+    var completeTimer = null;
+
+    (function () {
+
+        function initialize() {
+            initializeProgress();   // initialize the file download example
+        }
+
+        document.addEventListener("DOMContentLoaded", initialize, false);
+    })();
+
+    // helper functions for CSS class
+    function hasClass(ele, cls) {
+        return ele.className.match(new RegExp('(\\s|^)' + cls + '(\\s|$)'));
+    }
+
+    function addClass(ele, cls) {
+        if (!this.hasClass(ele, cls)) {
+            ele.className += " " + cls;
+        }
+    }
+
+    function removeClass(ele, cls) {
+        if (hasClass(ele, cls)) {
+            var reg = new RegExp('(\\s|^)' + cls + '(\\s|$)');
+            ele.className = ele.className.replace(reg, ' ');
+        }
+    }
+
+    function initializeProgress() {
+        progress = document.getElementById("downloadProgress");
+        status = document.getElementById("downloadStatus");
+    }
+
+    function progressPauseResume() {
+        var btn = document.getElementById("downloadPauseButton");
+        var container = document.getElementById("downloadContainer");
+
+        // Position -1 means the progress control is indeterminate.
+        // When determinate, position equals value/max.
+        if (("hidden" === btn.style.visibility) || (-1 === progress.position)) {
+            // still during connecting. can't pause/resume.
+            return;
+        }
+
+        if (hasClass(btn, "paused")) {
+            // the download was paused, therefore now we resume it.
+
+            // Add your code here to resume download
+
+            removeClass(progress, "paused");
+            status.innerText = "Downloading";
+
+            removeClass(btn, "paused");
+            addClass(btn, "downloading");
+
+            // add a tooltip to the container to tell what will happen
+            // if the user clicks again.
+            container.title = "Pause";
+
+            document.getElementById("increaseValue").disabled = false;
+        }
+        else if (hasClass(btn, "downloading")) {
+            // the download was running, therefore now we pause it.
+
+            // Add your code here to pause download
+
+            addClass(progress, "paused");
+            status.innerText = "Paused";
+
+            removeClass(btn, "downloading");
+            addClass(btn, "paused");
+
+            // add a tooltip to the container to tell what will happen
+            // if the user clicks again.
+            container.title = "Resume";
+
+            document.getElementById("increaseValue").disabled = true;
+        }
+    }
+
+    function progressSwitchDeterminate() {
+        // Position -1 means the progress control is indeterminate.
+        if (-1 === progress.position) {
+            // Add your code here to finish the initialization/estimation 
+            // and start the download
+
+            // Do a fade-in animation whenever switching from indeterminate progress bar
+            // to determinate progress bar
+            removeClass(progress, "switchDeterminate");
+            addClass(progress, "switchDeterminate");
+
+            progress.setAttribute("value", "0");
+
+            status.innerText = "Downloading";
+            
+            // show the pause/resume button
+            document.getElementById("downloadPauseButton").style.visibility = "visible";
+
+            // can be paused now
+            document.getElementById("downloadContainer").title = "Pause";
+
+            // allow increasing the value of progress
+            document.getElementById("increaseValue").disabled = false;
+
+            document.getElementById("switchDeterminate").disabled = true;
+        }
+    }
+
+    function progressIncrease() {
+        progress.value = progress.value + 0.2;  // default max is 1.0
+
+        if (parseInt(progress.value) &gt;= 1) {
+            // Since the progress fill may need more time to animate to 100%,
+            // please wait for 1s here before hiding the download UI.
+            completeTimer = setTimeout("downloadComplete();", 1000);
+        }
+    }
+
+    function downloadComplete() {
+        document.getElementById("downloadPauseButton").style.visibility = "hidden";
+        document.getElementById("downloadControl").style.visibility = "hidden";
+        status.innerText = "Completed";
+        document.getElementById("increaseValue").disabled = true;
+    }
+
+    function progressReset() {
+        // avoid the completion timer changing status after this is called
+        clearTimeout(completeTimer);
+
+        progress.setAttribute("value", "0");
+        progress.removeAttribute("value");
+
+        var btn = document.getElementById("downloadPauseButton");
+        removeClass(btn, "paused");
+        addClass(btn, "downloading");
+
+        // because the indeterminate activity of connecting to the server
+        // can't be paused/resumed.
+        btn.style.visibility = "hidden";
+
+        document.getElementById("downloadControl").style.visibility = "visible";
+
+        status.innerText = "Connecting";
+
+        removeClass(progress, "paused");
+
+        // remove the "pause"/"resume" tooltip since it's not allowed in this state.
+        document.getElementById("downloadContainer").title = "";
+
+        // should switch to determinate first.
+        document.getElementById("increaseValue").disabled = true;
+        document.getElementById("switchDeterminate").disabled = false;
+    }
+    --&gt;
+</pre>
+        </div>
+    </div>
+
+    <!--Rendered result-->
+    <div class="resultRegion" role="region" aria-labelledby="resultLabel" aria-live="assertive">
+        <h3 id="resultLabel">Result</h3>
+        <div class="resultContent">
+            <fieldset class="formSection">
+                <legend class="formSectionHeading">File Download</legend>
+                <div style="max-width: 600px;">                            
+                    <p>
+                        A good practice is to show the indeterminate progress bar style if it takes some time
+                        to initiate and calculate the estimated time on a task. Once finished, set a value attribute
+                        and the control will turn into determinate style.</p>
+                    <p>
+                        Use the buttons under the example to switch to determinate mode and increase the value.</p>
+                </div>
+                <div style="display: inline-block; margin-top: 50px;">
+                    <!-- to increase the hit target without putting a big button, the whole item is used as a big pause/resume button, and the round button is kept small -->
+                    <div id="downloadContainer" role="button" onclick="progressPauseResume();">
+                        <div id="downloadIcon"></div>
+                        <div id="downloadTitle">
+                            David's Wedding.wmv</div>
+                        <div id="downloadControl">
+                                <progress id="downloadProgress"></progress>
+                                <button id="downloadPauseButton" class="backbutton downloading"></button>
+                        </div>
+                        <div id="downloadStatus">
+                            Connecting</div>
+                    </div>
+                </div>
+                <div style="margin-top: 50px;">
+                    <button class="horizontalButtonLayout" id="switchDeterminate" onclick="progressSwitchDeterminate();">Switch to determinate</button>                            
+                    <button class="horizontalButtonLayout" id="increaseValue" disabled onclick="progressIncrease();">Increase value</button>
+                    <button type="reset" class="horizontalButtonLayout" onclick="progressReset();">Reset</button>
+                </div>
+            </fieldset>
+        </div>
+    </div>
+
+    <div id="footer" role="contentinfo"></div>
+</body>
+</html>

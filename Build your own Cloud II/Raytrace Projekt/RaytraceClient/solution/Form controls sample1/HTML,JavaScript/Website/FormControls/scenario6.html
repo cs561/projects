@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<!-- Copyright © Microsoft Corporation. All rights reserved. -->
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Internet Explorer Developer Sample</title>
+    <link rel="stylesheet" type="text/css" href="css/base-sdk.css" />
+    <link rel="stylesheet" type="text/css" href="css/formLayout.css" />
+    <link rel="stylesheet" type="text/css" href="css/scenario6.css" />
+    <script type="text/javascript" src="script/base-sdk.js"></script>
+</head>
+<body role="application">
+    <div id="header" role="contentinfo"></div>
+
+    <h1 id="sampleTitle">Form controls</h1>
+
+    <!--Sample title-->
+    <h2>Scenario 6: File upload</h2>
+    <p>
+        <a href="default.html">Back to scenarios menu</a>
+    </p>
+
+    <!--Description and code snippet-->
+    <div class="descRegion" role="region" aria-labelledby="descLabel" aria-live="assertive">
+        <h3 id="descLabel">Description</h3>
+        <div class="descContent">
+            <p>
+                The file upload control opens the file dialog so users can browse and select
+                files. The files are sent as part of the form data when the form is submitted.
+            </p>
+            <h3 class="codeLabel">Code</h3>
+<pre>
+&lt;!-- only accept jpeg, png and gif files
+    &lt;input type="file" accept="image/jpeg, image/png, image/gif" /&gt;
+     --&gt;
+
+&lt;!-- allow selecting multiple files
+    &lt;input type="file" multiple /&gt;
+     --&gt;
+
+&lt;!-- Style the browse button
+    &lt;input type="file"  class="differentFileUploadStyle" /&gt;
+
+    input[type="file"].differentFileUploadStyle {
+        background-color: rgba(242, 242, 242, 0.3);
+        border: 0px;
+        border-radius: 5px;
+        width: 296px;
+        padding: 0px;
+        height: 30px;
+    }
+
+    input[type="file"].differentFileUploadStyle::-ms-value {
+        border: 0px;
+        color: rgb(161, 161, 161);
+
+        /* let the background color of the control show through */
+        background-color: transparent;
+
+        /* add some margin to the left and right so that
+           the text doesn't go edge to edge */
+        margin: 0px 10px 0px 10px;
+    }
+
+    input[type="file"].differentFileUploadStyle::-ms-browse {
+        background-color: rgb(249, 184, 208);
+        border: 0px;
+        border-radius: 0px 5px 5px 0px;
+        width: 30px;
+        padding: 0px;
+        color: transparent;             /* hide the default "Browse..." text */
+        background-image: url("../images/plus.svg");
+        background-size: 14px 14px;     /* resize the svg image */
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+
+    input[type="file"].differentFileUploadStyle::-ms-browse:hover {
+        background-color: rgb(246, 152, 187);
+        color: transparent;
+    }
+
+    input[type="file"].differentFileUploadStyle::-ms-browse:hover:active {
+        background-color: rgb(239, 73, 134);
+        color: transparent;
+    }
+    --&gt;
+</pre>
+        </div>
+    </div>
+
+    <!--Rendered result-->
+    <div class="resultRegion" role="region" aria-labelledby="resultLabel" aria-live="assertive">
+        <h3 id="resultLabel">Result</h3>
+        <div class="resultContent">
+            <fieldset id="Fieldset11" class="formSection">
+                <legend class="formSectionHeading">Basics</legend>
+                <div class="twoColumnGridContainer-ControlList">
+                    <div style="-ms-grid-row: 1; -ms-grid-column: 1;">
+                        Setting acceptable file type
+                        <div class="detail">
+                            &lt;input type="file" accept="image/jpeg, image/png, image/gif"/&gt;</div>
+                    </div>
+                    <div style="-ms-grid-row: 1; -ms-grid-column: 2;">
+                        <input type="file" accept="image/jpeg, image/png, image/gif"  title="JPEG, PNG or GIF files only" />
+                    </div>
+                    <div style="-ms-grid-row: 2; -ms-grid-column: 1;">
+                        Multi-file upload
+                        <div class="detail">
+                            &lt;input type="file" multiple/&gt;</div>
+                    </div>
+                    <div style="-ms-grid-row: 2; -ms-grid-column: 2;">
+                        <input type="file" multiple />
+                    </div>
+                </div>
+            </fieldset>
+            <fieldset id="Fieldset12" class="formSection">
+                <legend class="formSectionHeading">Styling</legend>
+                <div class="twoColumnGridContainer-ControlList">
+                    <div style="-ms-grid-row: 1; -ms-grid-column: 1;">
+                        Style the browse button
+                        <div class="detail">
+                            via ::-ms-browse</div>
+                    </div>
+                    <div style="-ms-grid-row: 1; -ms-grid-column: 2;">
+                        <input type="file" class="differentFileUploadStyle" />
+                    </div>
+                </div>
+            </fieldset>
+        </div>
+    </div>
+
+    <div id="footer" role="contentinfo"></div>
+</body>
+</html>

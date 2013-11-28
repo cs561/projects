@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<!-- Copyright © Microsoft Corporation. All rights reserved. -->
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Internet Explorer Developer Sample</title>
+    <link rel="stylesheet" type="text/css" href="css/base-sdk.css" />
+    <link rel="stylesheet" type="text/css" href="css/formLayout.css" />
+    <script type="text/javascript" src="script/base-sdk.js"></script>
+</head>
+<body role="application">
+    <div id="header" role="contentinfo"></div>
+
+    <h1 id="sampleTitle">Form controls</h1>
+
+    <!--Sample title-->
+    <h2>Scenario 9: Form layout</h2>
+    <p>
+        <a href="default.html">Back to scenarios menu</a>
+    </p>
+
+    <!--Description and code snippet-->
+    <div class="descRegion" role="region" aria-labelledby="descLabel" aria-live="assertive">
+        <h3 id="descLabel">Description</h3>
+        <div class="descContent">
+            <p>
+                This example shows a recommended way to layout form control margins and
+                reading order for a two column form. The reading and keyboard tab order goes
+                from user name to password, then to email, and so forth. If there aren't too
+                many controls, you can do a one column form layout instead. 
+            </p>
+            <h3 class="codeLabel">Code</h3>
+<pre>
+&lt;!-- form layout
+    &lt;form onsubmit="return false;" class="verticalStacking"&gt;
+    &lt;fieldset class="formSection"&gt;
+        &lt;legend class="formSectionHeading"&gt;Registration&lt;/legend&gt;
+        &lt;div class="twoColumnFormContainer"&gt;
+            &lt;div style="-ms-grid-row: 1; -ms-grid-column: 1;"&gt;
+                &lt;label&gt;
+                    User Name&lt;br /&gt;
+                    &lt;input type="text" name="userName" /&gt;
+                &lt;/label&gt;
+            &lt;/div&gt;
+            &lt;div style="-ms-grid-row: 1; -ms-grid-column: 2;"&gt;
+                &lt;label&gt;
+                    Password&lt;br /&gt;
+                    &lt;input type="password" name="password" /&gt;
+                &lt;/label&gt;
+            &lt;/div&gt;
+            &lt;div style="-ms-grid-row: 2; -ms-grid-column: 1;"&gt;
+                &lt;label&gt;
+                    Email&lt;br /&gt;
+                    &lt;input type="email" name="email" /&gt;
+                &lt;/label&gt;
+            &lt;/div&gt;
+            &lt;div style="-ms-grid-row: 2; -ms-grid-column: 2;"&gt;
+                &lt;label&gt;
+                    Telephone number&lt;br /&gt;
+                    &lt;input type="tel" name="telephone" /&gt;
+                &lt;/label&gt;
+            &lt;/div&gt;
+            &lt;div style="-ms-grid-row: 3; -ms-grid-column: 1;"&gt;
+                &lt;label&gt;
+                    City&lt;br /&gt;
+                    &lt;input type="text" name="city" /&gt;
+                &lt;/label&gt;
+            &lt;/div&gt;
+            &lt;div style="-ms-grid-row: 3; -ms-grid-column: 2;"&gt;
+                &lt;label&gt;
+                    State&lt;br /&gt;
+                    &lt;select name="state"&gt;
+                        &lt;option selected value=""&gt;&lt;/option&gt;
+                        &lt;option value="AL"&gt;Alabama&lt;/option&gt;
+                        &lt;option value="AK"&gt;Alaska&lt;/option&gt;
+                        ...
+                        &lt;option value="WI"&gt;Wisconsin&lt;/option&gt;
+                        &lt;option value="WY"&gt;Wyoming&lt;/option&gt;
+                    &lt;/select&gt;
+                &lt;/label&gt;
+            &lt;/div&gt;
+            &lt;div style="-ms-grid-row: 4; -ms-grid-column: 1;"&gt;
+                &lt;label&gt;
+                    Birth Year&lt;br /&gt;
+                    &lt;input type="number" name="birthYear" /&gt;
+                &lt;/label&gt;
+            &lt;/div&gt;
+            &lt;div style="-ms-grid-row: 5; -ms-grid-column: 1; -ms-grid-column-span: 2;"&gt;
+                &lt;fieldset class="controlGroup"&gt;
+                    &lt;legend class="controlGroupName"&gt;
+                        How did you learn about our site?
+                    &lt;/legend&gt;
+                    &lt;label class="radioLabel"&gt;
+                        &lt;input type="radio" name="learn" value="friend" /&gt;
+                        Through a friend
+                    &lt;/label&gt;
+                    &lt;br /&gt;
+                    &lt;label class="radioLabel"&gt;
+                        &lt;input type="radio" name="learn" value="web" /&gt;
+                        Read about it on a website
+                    &lt;/label&gt;
+                    &lt;br /&gt;
+                    &lt;label class="radioLabel"&gt;
+                        &lt;input type="radio" name="learn" value="radio" /&gt;
+                        Heard a radio advertisement
+                    &lt;/label&gt;
+                    &lt;br /&gt;
+                    &lt;label class="radioLabel"&gt;
+                        &lt;input type="radio" name="learn" value="other" /&gt;Other source
+                    &lt;/label&gt;
+                &lt;/fieldset&gt;
+                &lt;label class="checkboxLabel wrapContainer"&gt;
+                    &lt;input type="checkbox" name="agreement"  /&gt;
+                    &lt;span class="wrapText"&gt;
+                        I agree to the terms of service for this site.
+                    &lt;/span&gt;
+                &lt;/label&gt;
+            &lt;/div&gt;
+            &lt;div style="-ms-grid-row: 6; -ms-grid-column: 1; -ms-grid-column-span: 2;"&gt;
+                &lt;fieldset class="controlGroup buttonGroup"&gt;
+                    &lt;button type="submit" class="horizontalButtonLayout"&gt;
+                        Submit&lt;/button&gt;
+                    &lt;button type="button" class="horizontalButtonLayout"&gt;
+                        Cancel&lt;/button&gt;
+                &lt;/fieldset&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/fieldset&gt;
+    &lt;/form&gt;
+
+
+    /*-----------------------------------------------------------------------------  
+        checkbox and radio button labels
+    -----------------------------------------------------------------------------*/
+
+    .checkboxLabel, .radioLabel
+    {
+        font-family:"Segoe UI";
+        color: rgb(33, 33, 33);
+    }
+
+    /* put the checkbox/radio button and its label into flexbox, so that the second line
+       of the label left-align with the first line and doesn't go underneath the
+       checkbox/radio button. */
+    .wrapContainer
+    {
+        display:-ms-flexbox; 
+        -ms-flex-align: baseline;
+    }
+
+    /* the actual label text that wraps */
+    .wrapText
+    {
+        -ms-flex: 1 1 auto; 
+        word-wrap: break-word;
+        display: inline-block;
+    }
+
+    /*-----------------------------------------------------------------------------  
+        Form section
+    -----------------------------------------------------------------------------*/
+
+    .formSection
+    {
+        margin: 0px;
+        padding: 0px;
+        border: 0px;
+    }
+
+
+    /*-----------------------------------------------------------------------------  
+        Form section heading
+    -----------------------------------------------------------------------------*/
+
+    .formSectionHeading 
+    {
+	    font-family:"Segoe UI Light";
+	    line-height:32px;
+	    font-size:20pt;
+        margin:38px 0px 29px 0px;
+    }
+    
+
+    /*-----------------------------------------------------------------------------  
+        Tow column form container
+    -----------------------------------------------------------------------------*/
+    .twoColumnFormContainer
+    {
+        display: -ms-grid;
+        -ms-grid-columns: 50% 50%;
+        min-width: 380px;
+        max-width: 450px;
+    }
+
+
+    /*-----------------------------------------------------------------------------  
+        Control groups (radio, checkbox button group)
+    -----------------------------------------------------------------------------*/
+    .controlGroup
+    {
+        margin: 0px 0px 20px 0px;
+        padding: 0px;
+        border: 0px;
+    }
+
+
+    .controlGroupName
+    {
+        font:normal normal normal 11pt/15pt "Segoe UI Semilight";
+        margin:0px 0px 10px 0px;
+        padding:0px;
+        border: 0px;
+        position:relative;
+        vertical-align:top;
+        display:block;
+    }
+
+    /*-----------------------------------------------------------------------------  
+        Horizontal label layout
+    -----------------------------------------------------------------------------*/
+
+    .horizontalLabelLayout
+    {
+        margin-right:20px;
+    }
+
+    /*-----------------------------------------------------------------------------  
+        push button group  
+    -----------------------------------------------------------------------------*/
+
+    .buttonGroup 
+    {
+        margin: 30px 0px 0px 0px;
+        text-align: right;
+    }
+
+
+    /* the margin is to separate a button with any other text input or button before it. */
+    .horizontalButtonLayout
+    {
+        margin: 0px 0px 0px 20px;
+    }
+
+
+    /*-----------------------------------------------------------------------------  
+        Vertical spacing to separate stacking form controls
+    -----------------------------------------------------------------------------*/
+    .verticalStacking button,
+    .verticalStacking input[type=button],
+    .verticalStacking input[type=submit],
+    .verticalStacking input[type=reset]
+    {
+        margin-bottom: 12px;
+    }
+
+    .verticalStacking input[type="checkbox"]
+    {
+        margin-bottom: 10px;
+    }
+
+    .verticalStacking input[type="radio"]
+    {
+        margin-bottom: 10px;
+    }
+
+    .verticalStacking select,
+    .verticalStacking input[type=text],
+    .verticalStacking input[type=password],
+    .verticalStacking input[type=email],
+    .verticalStacking input[type=number],
+    .verticalStacking input[type=tel],
+    .verticalStacking input[type=url],
+    .verticalStacking input[type=search],
+    .verticalStacking textarea,
+    .verticalStacking .win-textarea
+    {
+        margin-bottom: 16px;
+    }
+
+    /*-----------------------------------------------------------------------------  
+        Error and notification messages
+    -----------------------------------------------------------------------------*/
+    .formMessage
+    {
+        margin-bottom: 13px;
+        font-family: "Segoe UI Semilight";
+    }
+
+    .formMessage.error
+    {
+        color: rgb(200, 83, 5);
+    }
+    --&gt;
+</pre>
+        </div>
+    </div>
+
+    <!--Rendered result-->
+    <div class="resultRegion" role="region" aria-labelledby="resultLabel" aria-live="assertive">
+        <h3 id="resultLabel">Result</h3>
+        <div class="resultContent">
+            <form onsubmit="return false;" class="verticalStacking">
+                <fieldset class="formSection">
+                    <legend class="formSectionHeading">Registration</legend>
+                    <div class="twoColumnFormContainer">
+                        <div style="-ms-grid-row: 1; -ms-grid-column: 1;">
+                            <label>
+                                User Name<br />
+                                <input type="text" name="userName" />
+                            </label>
+                        </div>
+                        <div style="-ms-grid-row: 1; -ms-grid-column: 2;">
+                            <label>
+                                Password<br />
+                                <input type="password" name="password" />
+                            </label>
+                        </div>
+                        <div style="-ms-grid-row: 2; -ms-grid-column: 1;">
+                            <label>
+                                Email<br />
+                                <input type="email" name="email" />
+                            </label>
+                        </div>
+                        <div style="-ms-grid-row: 2; -ms-grid-column: 2;">
+                            <label>
+                                Telephone number<br />
+                                <input type="tel" name="telephone" />
+                            </label>
+                        </div>
+                        <div style="-ms-grid-row: 3; -ms-grid-column: 1;">
+                            <label>
+                                City<br />
+                                <input type="text" name="city" />
+                            </label>
+                        </div>
+                        <div style="-ms-grid-row: 3; -ms-grid-column: 2;">
+                            <label>
+                                State<br />
+                                <select name="state">
+                                    <option selected value=""></option>
+                                    <option value="AL">Alabama</option>
+                                    <option value="AK">Alaska</option>
+                                    <option value="AZ">Arizona</option>
+                                    <option value="AR">Arkansas</option>
+                                    <option value="CA">California</option>
+                                    <option value="CO">Colorado</option>
+                                    <option value="CT">Connecticut</option>
+                                    <option value="DC">District of Columbia</option>
+                                    <option value="DE">Delaware</option>
+                                    <option value="FL">Florida</option>
+                                    <option value="GA">Georgia</option>
+                                    <option value="HI">Hawaii</option>
+                                    <option value="ID">Idaho</option>
+                                    <option value="IL">Illinois</option>
+                                    <option value="IN">Indiana</option>
+                                    <option value="IA">Iowa</option>
+                                    <option value="KS">Kansas</option>
+                                    <option value="KY">Kentucky</option>
+                                    <option value="LA">Louisiana</option>
+                                    <option value="ME">Maine</option>
+                                    <option value="MD">Maryland</option>
+                                    <option value="MA">Massachusetts</option>
+                                    <option value="MI">Michigan</option>
+                                    <option value="MN">Minnesota</option>
+                                    <option value="MS">Mississippi</option>
+                                    <option value="MO">Missouri</option>
+                                    <option value="MT">Montana</option>
+                                    <option value="NE">Nebraska</option>
+                                    <option value="NV">Nevada</option>
+                                    <option value="NH">New Hampshire</option>
+                                    <option value="NJ">New Jersey</option>
+                                    <option value="NM">New Mexico</option>
+                                    <option value="NY">New York</option>
+                                    <option value="NC">North Carolina</option>
+                                    <option value="ND">North Dakota</option>
+                                    <option value="OH">Ohio</option>
+                                    <option value="OK">Oklahoma</option>
+                                    <option value="OR">Oregon</option>
+                                    <option value="PA">Pennsylvania</option>
+                                    <option value="PR">Puerto Rico</option>
+                                    <option value="RI">Rhode Island</option>
+                                    <option value="SC">South Carolina</option>
+                                    <option value="SD">South Dakota</option>
+                                    <option value="TN">Tennessee</option>
+                                    <option value="TX">Texas</option>
+                                    <option value="UT">Utah</option>
+                                    <option value="VT">Vermont</option>
+                                    <option value="VA">Virginia</option>
+                                    <option value="WA">Washington</option>
+                                    <option value="WV">West Virginia</option>
+                                    <option value="WI">Wisconsin</option>
+                                    <option value="WY">Wyoming</option>
+                                </select>
+                            </label>
+                        </div>
+                        <div style="-ms-grid-row: 4; -ms-grid-column: 1;">
+                            <label>
+                                Birth Year<br />
+                                <input type="number" name="birthYear" />
+                            </label>
+                        </div>
+                        <div style="-ms-grid-row: 5; -ms-grid-column: 1; -ms-grid-column-span: 2;">
+                            <fieldset class="controlGroup">
+                                <legend class="controlGroupName">How did you learn about our site?</legend>
+                                <label class="radioLabel">
+                                    <input type="radio" name="learn" value="friend" />Through a friend
+                                </label>
+                                <br />
+                                <label class="radioLabel">
+                                    <input type="radio" name="learn" value="web" />Read about it on a website
+                                </label>
+                                <br />
+                                <label class="radioLabel">
+                                    <input type="radio" name="learn" value="radio" />Heard a radio advertisement
+                                </label>
+                                <br />
+                                <label class="radioLabel">
+                                    <input type="radio" name="learn" value="other" />Other source
+                                </label>
+                            </fieldset>
+                            <label class="checkboxLabel wrapContainer">
+                                <input type="checkbox" name="agreement"  />
+                                <span class="wrapText">I agree to the terms of service for this site.</span>
+                            </label>
+                        </div>
+                        <div style="-ms-grid-row: 6; -ms-grid-column: 1; -ms-grid-column-span: 2;">
+                            <fieldset class="controlGroup buttonGroup">
+                                <button type="submit" class="horizontalButtonLayout">
+                                    Submit</button>
+                                <button type="button" class="horizontalButtonLayout">
+                                    Cancel</button>
+                            </fieldset>
+                        </div>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+
+    <div id="footer" role="contentinfo"></div>
+</body>
+</html>

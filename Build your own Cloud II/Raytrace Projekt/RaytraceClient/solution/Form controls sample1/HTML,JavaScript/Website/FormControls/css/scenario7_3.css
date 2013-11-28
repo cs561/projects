@@ -1,0 +1,105 @@
+﻿/* -- Copyright © Microsoft Corporation. All rights reserved. */
+input[type=range].vertical
+{
+    writing-mode: bt-lr; 
+}
+
+label.verticalLabel
+{
+    text-align: center;
+    font: normal normal normal 9pt/15pt "Segoe UI";
+    display: inline-block;
+}
+
+.bar-left, .bar-right, .bar-both
+{
+    background-origin: border-box;
+}
+
+/* for the left most slider that only has bars on the right side */
+.bar-left
+{
+    background: transparent url('../images/eqBackground_Light.svg') repeat-y scroll top right;
+    background-size: 50px 5px;
+}
+
+/* for the right most slider that only has bars on the left side */
+.bar-right
+{
+    background: transparent url('../images/eqBackground_Light.svg') repeat-y scroll top left;
+    background-size: 50px 5px;
+}
+
+/* for sliders in between that have bars on both sides */
+.bar-both
+{
+    background: url('../images/eqBackground_Light.svg'), url('../images/eqBackground_Light.svg');
+    background-position: top left, top right;
+    background-repeat: repeat-y, repeat-y;
+    background-size: 50px 5px, 50px 5px;
+}
+
+/* controls change to classic style when you stylize background-color, so you need to override other styles if you want to keep them the same as default. */
+input[type="range"].vertical.eq::-ms-thumb
+{
+    width: 11px;
+    height: 11px;
+    border-style: none;
+    background-color: rgb(0, 0, 0);
+}
+
+input[type="range"].vertical.eq::-ms-track
+{
+    padding: 0;
+    width: 11px;
+    height: auto;
+    border-style: none;
+    color: rgb(255, 255, 255);
+}
+
+/* start adding customized styles */
+input[type="range"].vertical.eq
+{
+    margin: 0px 0px 4px 0px;
+    padding: 0px 50px 0px 50px;
+}
+
+input[type="range"].vertical.eq::-ms-track
+{
+    background-color: transparent;
+    color: transparent;
+    height: 191px;
+}
+
+input[type="range"].vertical.eq::-ms-thumb
+{
+    border-radius: 100%;
+}
+
+input[type="range"].vertical.eq::-ms-fill-upper
+{
+    border-radius: 11px 11px 0px 0px;
+    background-color: rgba(0, 0, 0, 0.17);
+}
+
+input[type="range"].vertical.eq:hover::-ms-fill-upper
+{
+    background-color: rgba(165, 165, 165, 0.37);
+}
+    
+input[type="range"].vertical.eq::-ms-fill-lower
+{
+    border-radius: 0px 0px 11px 11px;
+    background-color: rgb(54, 154, 202);
+}
+
+input[type="range"].vertical.eq:hover::-ms-fill-lower
+{
+    background-color: rgb(55, 169, 227);
+}
+
+/* hide the value tooltip */
+input[type="range"].eq::-ms-tooltip
+{
+    display: none;
+}

@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<!-- Copyright © Microsoft Corporation. All rights reserved. -->
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Internet Explorer Developer Sample</title>
+    <link rel="stylesheet" type="text/css" href="css/base-sdk.css" />
+    <link rel="stylesheet" type="text/css" href="css/formLayout.css" />
+    <link rel="stylesheet" type="text/css" href="css/scenario7_3.css" />
+    <script type="text/javascript" src="script/base-sdk.js"></script>
+</head>
+<body role="application">
+    <div id="header" role="contentinfo"></div>
+
+    <h1 id="sampleTitle">Form controls: Range</h1>
+
+    <!--Sample title-->
+    <h2>Scenario 7.3: Multi-touch Equalizer example</h2>
+    <p>
+        <a href="scenario7.html">Back to Range control scenarios menu</a>
+    </p>
+
+    <!--Description and code snippet-->
+    <div class="descRegion" role="region" aria-labelledby="descLabel" aria-live="assertive">
+        <h3 id="descLabel">Description</h3>
+        <div class="descContent">
+            <p>
+                The Windows platform supports multi-touch to let you manipulate multiple
+                controls at the same time. Normally this only works when the page isn't
+                pannable or zoomable, but the range control wins over page panning and
+                zooming, therefore in the equalizer example below you could move multiple
+                range controls simultaneously. 
+            </p>
+            <h3 class="codeLabel">Code</h3>
+<pre>
+&lt;!-- multi-touch equalizer
+    &lt;label class="verticalLabel"&gt;
+        &lt;input type="range" name="equalizer" class="vertical eq bar-left" /&gt;&lt;br /&gt;31
+    &lt;/label&gt;
+    &lt;label class="verticalLabel"&gt;
+        &lt;input type="range" name="equalizer" class="vertical eq bar-both" /&gt;&lt;br /&gt;62
+    &lt;/label&gt;
+    &lt;label class="verticalLabel"&gt;
+        &lt;input type="range" name="equalizer" class="vertical eq bar-both" /&gt;&lt;br /&gt;125
+    &lt;/label&gt;
+    &lt;label class="verticalLabel"&gt;
+        &lt;input type="range" name="equalizer" class="vertical eq bar-both" /&gt;&lt;br /&gt;250
+    &lt;/label&gt;
+    &lt;label class="verticalLabel"&gt;
+        &lt;input type="range" name="equalizer" class="vertical eq bar-both" /&gt;&lt;br /&gt;500
+    &lt;/label&gt;
+    &lt;label class="verticalLabel"&gt;
+        &lt;input type="range" name="equalizer" class="vertical eq bar-both" /&gt;&lt;br /&gt;1K
+    &lt;/label&gt;
+    &lt;label class="verticalLabel"&gt;
+        &lt;input type="range" name="equalizer" class="vertical eq bar-both" /&gt;&lt;br /&gt;2K
+    &lt;/label&gt;
+    &lt;label class="verticalLabel"&gt;
+        &lt;input type="range" name="equalizer" class="vertical eq bar-both" /&gt;&lt;br /&gt;4K
+    &lt;/label&gt;
+    &lt;label class="verticalLabel"&gt;
+        &lt;input type="range" name="equalizer" class="vertical eq bar-both" /&gt;&lt;br /&gt;8K
+    &lt;/label&gt;
+    &lt;label class="verticalLabel"&gt;
+        &lt;input type="range" name="equalizer" class="vertical eq bar-right" /&gt;&lt;br /&gt;16K
+    &lt;/label&gt;
+
+    input[type=range].vertical
+    {
+        writing-mode: bt-lr; 
+    }
+    
+    label.verticalLabel
+    {
+        text-align: center;
+        font: normal normal normal 9pt/15pt "Segoe UI";
+        display: inline-block;
+    }
+
+    .bar-left, .bar-right, .bar-both
+    {
+        background-origin: border-box;
+    }
+
+    /* for the left most slider that only has bars on the right side */
+    .bar-left
+    {
+        background: transparent url('../images/eqBackground_Light.svg')
+            repeat-y scroll top right;
+        background-size: 50px 5px;
+    }
+
+    /* for the right most slider that only has bars on the left side */
+    .bar-right
+    {
+        background: transparent url('../images/eqBackground_Light.svg')
+            repeat-y scroll top left;
+        background-size: 50px 5px;
+    }
+
+    /* for sliders in between that have bars on both sides */
+    .bar-both
+    {
+        background: url('../images/eqBackground_Light.svg'),
+            url('../images/eqBackground_Light.svg');
+        background-position: top left, top right;
+        background-repeat: repeat-y, repeat-y;
+        background-size: 50px 5px, 50px 5px;
+    }
+
+    /* controls change to classic style when you stylize background-color,
+       so you need to override other styles if you want to keep them the
+       same as default. */
+    input[type="range"].vertical.eq::-ms-thumb
+    {
+        width: 11px;
+        height: 11px;
+        border-style: none;
+        background-color: rgb(0, 0, 0);
+    }
+
+    input[type="range"].vertical.eq::-ms-track
+    {
+        padding: 0;
+        width: 11px;
+        height: auto;
+        border-style: none;
+        color: rgb(255, 255, 255);
+    }
+
+    /* start adding customized styles */
+    input[type="range"].vertical.eq
+    {
+        margin: 0px 0px 4px 0px;
+        padding: 0px 50px 0px 50px;
+    }
+
+    input[type="range"].vertical.eq::-ms-track
+    {
+        background-color: transparent;
+        color: transparent;
+        height: 191px;
+    }
+
+    input[type="range"].vertical.eq::-ms-thumb
+    {
+        border-radius: 100%;
+    }
+
+    input[type="range"].vertical.eq::-ms-fill-upper
+    {
+        border-radius: 11px 11px 0px 0px;
+        background-color: rgba(0, 0, 0, 0.17);
+    }
+
+    input[type="range"].vertical.eq:hover::-ms-fill-upper
+    {
+        background-color: rgba(165, 165, 165, 0.37);
+    }
+    
+    input[type="range"].vertical.eq::-ms-fill-lower
+    {
+        border-radius: 0px 0px 11px 11px;
+        background-color: rgb(54, 154, 202);
+    }
+
+    input[type="range"].vertical.eq:hover::-ms-fill-lower
+    {
+        background-color: rgb(55, 169, 227);
+    }
+
+    /* hide the value tooltip */
+    input[type="range"].eq::-ms-tooltip
+    {
+        display: none;
+    }
+    --&gt;
+</pre>
+        </div>
+    </div>
+
+    <!--Rendered result-->
+    <div class="resultRegion" role="region" aria-labelledby="resultLabel" aria-live="assertive">
+        <h3 id="resultLabel">Result</h3>
+        <div class="resultContent">
+            <fieldset class="formSection">
+                <legend class="formSectionHeading">Multi-touch Equalizer</legend>
+                <div style="margin-left: -50px; height: 220px; overflow: hidden;">
+                    <label class="verticalLabel">
+                        <input type="range" name="equalizer" class="vertical eq bar-left" /><br />
+                        31
+                    </label><label class="verticalLabel">
+                        <input type="range" name="equalizer" class="vertical eq bar-both" /><br />
+                        62
+                    </label><label class="verticalLabel">
+                        <input type="range" name="equalizer" class="vertical eq bar-both" /><br />
+                        125
+                    </label><label class="verticalLabel">
+                        <input type="range" name="equalizer" class="vertical eq bar-both" /><br />
+                        250
+                    </label><label class="verticalLabel">
+                        <input type="range" name="equalizer" class="vertical eq bar-both" /><br />
+                        500
+                    </label><label class="verticalLabel">
+                        <input type="range" name="equalizer" class="vertical eq bar-both" /><br />
+                        1K
+                    </label><label class="verticalLabel">
+                        <input type="range" name="equalizer" class="vertical eq bar-both" /><br />
+                        2K
+                    </label><label class="verticalLabel">
+                        <input type="range" name="equalizer" class="vertical eq bar-both" /><br />
+                        4K
+                    </label><label class="verticalLabel">
+                        <input type="range" name="equalizer" class="vertical eq bar-both" /><br />
+                        8K
+                    </label><label class="verticalLabel">
+                        <input type="range" name="equalizer" class="vertical eq bar-right" /><br />
+                        16K
+                    </label>
+                </div>
+            </fieldset>
+        </div>
+    </div>
+
+    <div id="footer" role="contentinfo"></div>
+</body>
+</html>

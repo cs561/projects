@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<!-- Copyright © Microsoft Corporation. All rights reserved. -->
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Internet Explorer Developer Sample</title>
+    <link rel="stylesheet" type="text/css" href="css/base-sdk.css" />
+    <link rel="stylesheet" type="text/css" href="css/formLayout.css" />
+    <link rel="stylesheet" type="text/css" href="css/scenario2.css" />
+    <script type="text/javascript" src="script/base-sdk.js"></script>
+    <script type="text/javascript" src="script/scenario2.js"></script>
+</head>
+<body role="application" onload="toppingsCheck();">
+    <div id="header" role="contentinfo"></div>
+
+    <h1 id="sampleTitle">Form controls</h1>
+
+    <!--Sample title-->
+    <h2>Scenario 2: Checkbox</h2>
+    <p>
+        <a href="default.html">Back to scenarios menu</a>
+    </p>
+
+    <!--Description and code snippet-->
+    <div class="descRegion" role="region" aria-labelledby="descLabel" aria-live="assertive">
+        <h3 id="descLabel">Description</h3>
+        <div class="descContent">
+            <p>
+                A checkbox can be used for multi-selection. They can have three states
+                - checked, unchecked, and indeterminate. The indeterminate state often
+                indicates that a collection has a mix of selected and unselected items.
+            </p>
+            <h3 class="codeLabel">Code</h3>
+<pre>
+&lt;!--Pizza Toppings
+    &lt;body onload="toppingsCheck();"&gt;
+    &lt;fieldset class="controlGroup verticalStacking"&gt;
+        &lt;legend class="controlGroupName"&gt;Pizza Toppings&lt;/legend&gt;
+        &lt;label class="checkboxLabel"&gt;
+            &lt;input type="checkbox" id="Checkbox1" onclick="toppingsCheckAll();" /&gt;All
+        &lt;/label&gt;
+        &lt;br /&gt;
+        &lt;div onclick="toppingsCheck();"&gt;
+            &lt;label class="checkboxLabel"&gt;
+                &lt;input type="checkbox" class="toppings" /&gt;Pepperoni
+            &lt;/label&gt;
+            &lt;br /&gt;
+            &lt;label class="checkboxLabel"&gt;
+                &lt;input type="checkbox" class="toppings" checked/&gt;Beef
+            &lt;/label&gt;
+            &lt;br /&gt;
+            &lt;label class="checkboxLabel"&gt;
+                &lt;input type="checkbox" class="toppings" /&gt;Mushrooms
+            &lt;/label&gt;
+            &lt;br /&gt;
+            &lt;label class="checkboxLabel"&gt;
+                &lt;input type="checkbox" class="toppings" checked /&gt;Onions
+            &lt;/label&gt;
+            &lt;br /&gt;
+        &lt;/div&gt;
+    &lt;/fieldset&gt;
+    
+        function toppingsCheck() {
+            var options = document.getElementsByClassName("toppings");
+            var selectedCount = 0;
+            for (var i = 0; i &lt; options.length; i++) {
+                if (options[i].checked) {
+                    selectedCount++;
+                }
+            }
+
+            // switch between 3 states using indeterminate and checked properties
+            var selectAll = document.getElementById("toppingsAll");
+            if (selectedCount == options.length) {
+                selectAll.indeterminate = false;
+                selectAll.checked = true;
+            } else if (selectedCount == 0) {
+                selectAll.indeterminate = false;
+                selectAll.checked = false;
+            } else {
+                selectAll.indeterminate = true;
+                selectAll.checked = false;
+            }
+        }
+
+        function toppinsCheckAll() {
+            var options = document.getElementsByClassName("toppings");
+            for (var i = 0; i &lt; options.length; i++) {
+                options[i].checked = event.srcElement.checked;
+            }
+        }
+    --&gt;
+
+&lt;!-- Change check mark color
+    input[type="checkbox"].differentCheckboxColor::-ms-check
+    {
+        color: green;
+    }
+    --&gt;
+
+&lt;!-- Replace the check mark
+    /* checkbox with check mark extending outside the box */
+    /* reset default styles */
+    input[type="checkbox"].styleCheckMark,
+    input[type="checkbox"].styleCheckMark::-ms-check,
+    input[type="checkbox"].styleCheckMark:hover::-ms-check,
+    input[type="checkbox"].styleCheckMark:active::-ms-check,
+    input[type="checkbox"].styleCheckMark:hover:active::-ms-check,
+    input[type="checkbox"].styleCheckMark:hover:active:disabled::-ms-check
+    {
+        color: transparent;
+        border: 0px;
+        background-color: transparent;
+        padding: 0px;
+        margin: 0px;
+    }
+
+    /* Show a checkbox. */
+    input[type=checkbox].styleCheckMark 
+    {
+        width: 30px;
+        height: 30px;
+        margin-bottom: -4px;    /* pull down to align with label */
+        background-repeat: no-repeat;
+    
+        /* stack two background images to creat the grey border and white fill */
+        background-position: 
+                5px 12px, 
+                4px 11px;
+        background-size: 
+                16px 16px, 
+                18px 18px;
+        background-image:
+                linear-gradient(white, white),
+                linear-gradient(rgb(204,204,204), rgb(204,204,204));
+    }
+
+    /* Show a custom check when checked. */
+    input[type=checkbox].styleCheckMark:checked::-ms-check 
+    {
+        background-image: url("../images/check.svg");
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+    --&gt;
+
+&lt;!-- Like / dislike
+    &lt;input type="checkbox" class="likeDislike" id="Checkbox2"
+        onclick="likeDislikeSwitch();" /&gt;
+
+    /* like / dislike checkbox style */
+    /* reset default styles */
+    input[type="checkbox"].likeDislike,
+    input[type="checkbox"].likeDislike::-ms-check,
+    input[type="checkbox"].likeDislike:hover::-ms-check,
+    input[type="checkbox"].likeDislike:active::-ms-check,
+    input[type="checkbox"].likeDislike:hover:active::-ms-check,
+    input[type="checkbox"].likeDislike:hover:active:disabled::-ms-check
+    {
+        color: transparent;
+        border: 0px;
+        background-color: transparent;
+        padding: 0px;
+        margin: 0px;
+    }
+
+    input[type="checkbox"].likeDislike
+    {
+        width: 48px;
+        height: 40px;
+        border: 0px;
+        font-family: "Segoe UI Symbol";
+        font-size: 40px;
+        line-height: 40px;
+        text-align: center;
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+    }
+
+    input[type="checkbox"].likeDislike:hover
+    {
+        opacity: 0.8;
+    }
+
+    input[type="checkbox"].likeDislike
+    {
+        background-image: url("../images/heartBroken.svg"); /* broken heart */
+    }
+
+    input[type="checkbox"].likeDislike:indeterminate
+    {
+        background-image: url("../images/heartEmpty.svg"); /* empty heart*/
+    }
+
+    input[type="checkbox"].likeDislike:checked
+    {
+        background-image: url("../images/heartFull.svg"); /* full heart*/
+    }
+
+        var likeDislikeStatus = 0;
+
+        function likeDislikeSwitch() {
+            var likeDislike = document.getElementById("myLikeDislikeCheckbox");
+
+            if (likeDislikeStatus == 0) {
+                likeDislike.indeterminate = true;
+                likeDislikeStatus = 1;          // neutral
+            } else if (likeDislikeStatus == 1) {
+                likeDislike.indeterminate = false;
+                likeDislike.checked = true;
+                likeDislikeStatus = 2;          // like
+            } else if (likeDislikeStatus == 2) {
+                likeDislike.indeterminate = false;
+                likeDislike.checked = false;
+                likeDislikeStatus = 3;          // dislike
+            } else if (likeDislikeStatus == 3) {
+                likeDislike.indeterminate = true;
+                likeDislike.checked = false;
+                likeDislikeStatus = 1;          // neutral
+            }
+        }
+    --&gt;
+</pre>
+        </div>
+    </div>
+
+    <!--Rendered result-->
+    <div class="resultRegion" role="region" aria-labelledby="resultLabel" aria-live="assertive">
+        <h3 id="resultLabel">Result</h3>
+        <div class="resultContent">
+            <fieldset id="Fieldset3" class="formSection">
+                <legend class="formSectionHeading">Basics</legend>
+                <div class="twoColumnGridContainer-ControlList">
+                    <div style="-ms-grid-row: 1; -ms-grid-column: 1;">
+                        Multi-select
+                    </div>
+                    <div style="-ms-grid-row: 1; -ms-grid-column: 2;">
+                        <fieldset class="controlGroup verticalStacking">
+                            <legend class="controlGroupName">Pizza Toppings</legend>
+                            <label class="checkboxLabel">
+                                <!-- the checkbox that toggles all of the child checkboxes, and turns indeterminate if some of them are checked while some others are not checked. -->
+                                <input type="checkbox" id="toppingsAll" onclick="toppingsCheckAll();" />All
+                            </label>
+                            <br />
+                            <div onclick="toppingsCheck();">
+                                <label class="checkboxLabel">
+                                    <input type="checkbox" class="toppings" />Pepperoni
+                                </label>
+                                <br />
+                                <label class="checkboxLabel">
+                                    <input type="checkbox" class="toppings" checked/>Beef
+                                </label>
+                                <br />
+                                <label class="checkboxLabel">
+                                    <input type="checkbox" class="toppings" />Mushrooms
+                                </label>
+                                <br />
+                                <label class="checkboxLabel">
+                                    <input type="checkbox" class="toppings" checked />Onions
+                                </label>
+                                <br />
+                            </div>
+                        </fieldset>
+                    </div>
+                </div>
+            </fieldset>
+            <fieldset id="Fieldset4" class="formSection">
+                <legend class="formSectionHeading">Styling</legend>
+                <div class="twoColumnGridContainer-ControlList">
+                    <div style="-ms-grid-row: 1; -ms-grid-column: 1;">
+                        Change check mark color
+                        <div class="detail">
+                            ::-ms-check{ color: green; }</div>
+                    </div>
+                    <div style="-ms-grid-row: 1; -ms-grid-column: 2;">
+                        <label class="checkboxLabel">
+                            <input type="checkbox" class="differentCheckboxColor" checked />Checkbox
+                        </label>
+                    </div>
+                    <div style="-ms-grid-row: 2; -ms-grid-column: 1;">
+                        Replace the check mark
+                        <div class="detail">
+                            ::-ms-check{ background-image: url("check.svg"); }</div>
+                    </div>
+                    <div style="-ms-grid-row: 2; -ms-grid-column: 2;">
+                        <label class="checkboxLabel"><input type="checkbox" class="styleCheckMark" checked />Checkbox</label>                            
+                    </div>
+                    <div style="-ms-grid-row: 3; -ms-grid-column: 1;">
+                        Like / dislike rating
+                        <div class="detail">
+                            Using indeterminate and checked properties to switch between three states: neutral / like / dislike.</div>
+                    </div>
+                    <div style="-ms-grid-row: 3; -ms-grid-column: 2;">
+                        <input type="checkbox" class="likeDislike" id="myLikeDislikeCheckbox" onclick="likeDislikeSwitch();" />
+                    </div>
+                </div>
+            </fieldset>
+        </div>
+    </div>
+
+    <div id="footer" role="contentinfo"></div>
+</body>
+</html>

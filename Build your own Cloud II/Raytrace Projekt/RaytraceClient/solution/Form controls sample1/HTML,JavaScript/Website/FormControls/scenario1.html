@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<!-- Copyright © Microsoft Corporation. All rights reserved. -->
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Internet Explorer Developer Sample</title>
+    <link rel="stylesheet" type="text/css" href="css/base-sdk.css" />
+    <link rel="stylesheet" type="text/css" href="css/formLayout.css" />
+    <link rel="stylesheet" type="text/css" href="css/scenario1.css" />
+    <script type="text/javascript" src="script/base-sdk.js"></script>
+    <script type="text/javascript" src="script/scenario1.js"></script>
+</head>
+<body role="application">
+    <div id="header" role="contentinfo"></div>
+
+    <h1 id="sampleTitle">Form controls</h1>
+
+    <!--Sample title-->
+    <h2>Scenario 1: Button</h2>
+    <p>
+        <a href="default.html">Back to scenarios menu</a>
+    </p>
+
+    <!--Description and code snippet-->
+    <div class="descRegion" role="region" aria-labelledby="descLabel" aria-live="assertive">
+        <h3 id="descLabel">Description</h3>
+        <div class="descContent">
+            <p>
+                There are three types of buttons: submit button, reset button, and standard
+                button. The Submit button is activated when a user presses the Enter
+                key while the focus is on another control in the same form that isn't
+                a button, like a text field.
+            </p>
+            <p>
+                Clicking the reset button returns a field to its default state. In this
+                example, it returns the field to its original text content.
+            </p>
+            <p>
+                The standard button can be set to call a JavaScript function. In this example,
+                the button calls a simple arithmatic function.
+            </p>
+            <h3 class="codeLabel">Code</h3>
+<pre>
+&lt;!-- submit button
+    &lt;form onsubmit="sendMessage(); return false;"&gt;
+        &lt;input type="text" id="Text1" placeholder="Type your message here." /&gt;
+        &lt;button type="submit"&gt;Submit&lt;/button&gt;
+    &lt;/form&gt;
+        
+        function sendMessage() {
+            var data = document.getElementById("message").value;
+
+            // Put your code here to send out message.
+            // Using AJAX is recommended to avoid page switch.
+
+            document.getElementById("sendMessageResult").innerText = 
+                "Your message has been sent: " + data;
+        }
+    --&gt;
+
+&lt;!-- reset button
+    &lt;form&gt;
+        &lt;input type="text" value="Edit this content and then press reset." /&gt;
+        &lt;button type="reset"&gt;Reset&lt;/button&gt;
+    &lt;/form&gt;
+    --&gt;
+
+&lt;!-- calculate button
+    &lt;button onclick="calculate1Plus1();"&gt;Calculate 1 + 1&lt;/button&gt;
+
+        function calculate1Plus1() {
+            var result = 1 + 1;
+            document.getElementById("calculate1Plus1Result").innerText =
+                "The result is " + result + ".";
+        }
+    --&gt;
+
+&lt;!-- change button background color
+    button.differentButtonColor
+    {
+        border: 0px;
+        padding: 4px 11px;
+        color: rgb(255, 255, 255);
+        background-color: rgb(89, 0, 140);
+    }
+
+    button.differentButtonColor:hover
+    {
+        border-color: rgb(255, 255, 255);
+        background-color: rgb(121, 0, 191);
+    }
+
+    button.differentButtonColor:hover:active
+    {
+        background-color: rgb(0, 0, 0);
+    }
+    --&gt;
+
+&lt;!-- back button
+    .backbutton
+    {
+        display: inline-block;
+        min-width: 0px;
+        min-height: 0px;
+        background-clip: border-box;
+        box-sizing: border-box;
+        border-radius: 50%;
+        border-width: 2px;
+        border-style: solid;
+        padding: 0px;
+        text-align: center;
+
+        width: 41px;
+        height: 41px;
+        font-size: 14pt;
+        line-height: 37px; /* line-height must match the content box height. */
+        vertical-align: baseline;
+    
+        margin-right: 10px;
+    }
+
+    .backbutton:hover, .backbutton:hover:active
+    {
+        border-width: 2px;
+        border-style: solid;
+        border-radius: 50%;
+    }
+
+    .backbutton::before
+    {
+        font-family: "Segoe UI Symbol";
+        font-weight: normal;
+        content: "\E0D5";
+        vertical-align: 50%;
+    }
+
+    .backbutton:disabled, .backbutton:hover:active:disabled
+    {
+        background-clip: padding-box;
+        visibility: hidden;
+    }
+
+    .backbutton
+    {
+        background-color: transparent;
+        border-color: rgb(0, 0, 0);
+        color: rgb(0, 0, 0);
+    }
+
+    .backbutton:hover
+    {
+        background-color: rgba(0, 0, 0, 0.13);
+        border-color: rgb(0, 0, 0);
+    }
+
+    .backbutton:hover:active
+    {
+        background-color: rgb(0, 0, 0);
+        border-color: rgb(0, 0, 0);
+        color: rgb(255, 255, 255);
+    }
+
+    .backbutton:disabled, .backbutton:disabled:active
+    {
+        background-color: transparent;
+        border-color: rgba(0, 0, 0, 0.4);
+        color: rgba(0, 0, 0, 0.4);
+    }
+    --&gt;
+</pre>
+        </div>
+    </div>
+
+    <!--Rendered result-->
+    <div class="resultRegion" role="region" aria-labelledby="resultLabel" aria-live="assertive">
+        <h3 id="resultLabel">Result</h3>
+        <div class="resultContent">
+            <fieldset id="Fieldset1" class="formSection">
+                <legend class="formSectionHeading">Basics</legend>
+                <div class="twoColumnGridContainer-ControlList">
+                    <div style="-ms-grid-row: 1; -ms-grid-column: 1;">
+                        Submit Button
+                    </div>
+                    <div style="-ms-grid-row: 1; -ms-grid-column: 2;" class="noWrap">
+                        <div id="sendMessageResult" class="formMessage">
+                        </div>
+                        <form onsubmit="sendMessage(); return false;">
+                        <input type="text" id="message" placeholder="Type your message here." />
+                        <button type="submit" class="horizontalButtonLayout">
+                            Submit</button></form>
+                    </div>
+                    <div style="-ms-grid-row: 2; -ms-grid-column: 1;">
+                        Reset Button
+                    </div>
+                    <div style="-ms-grid-row: 2; -ms-grid-column: 2;" class="noWrap">
+                        <form>
+                        <input type="text" value="Edit this content and then press reset." />
+                        <button type="reset" class="horizontalButtonLayout">
+                            Reset</button></form>
+                    </div>
+                    <div style="-ms-grid-row: 3; -ms-grid-column: 1;">
+                        Standard Button
+                    </div>
+                    <div style="-ms-grid-row: 3; -ms-grid-column: 2;">
+                        <div id="calculate1Plus1Result" class="formMessage">
+                        </div>
+                        <button onclick="calculate1Plus1();">
+                            Calculate 1 + 1</button>
+                    </div>
+                </div>
+            </fieldset>
+            <fieldset id="Fieldset2" class="formSection">
+                <legend class="formSectionHeading">Styling</legend>
+                <div class="twoColumnGridContainer-ControlList">
+                    <div style="-ms-grid-row: 1; -ms-grid-column: 1;">
+                        Change the button's background color
+                    </div>
+                    <div style="-ms-grid-row: 1; -ms-grid-column: 2;">
+                        <button type="submit" class="differentButtonColor">
+                            Submit</button>
+                    </div>
+                    <div style="-ms-grid-row: 3; -ms-grid-column: 1;">
+                        Back Button
+                        <div class="detail">
+                            The arrow is a font glyph in Segoe UI Symbol font.</div>
+                    </div>
+                    <div style="-ms-grid-row: 3; -ms-grid-column: 2;" class="noWrap">
+                        <button class="backbutton">
+                        </button>
+                    </div>
+                </div>
+            </fieldset>
+        </div>
+    </div>
+
+    <div id="footer" role="contentinfo"></div>
+</body>
+</html>

@@ -1,0 +1,114 @@
+﻿/* -- Copyright © Microsoft Corporation. All rights reserved. */
+input[type=range].vertical
+{
+    writing-mode: bt-lr;
+}
+
+input[type="range"].differentSliderColor::-ms-fill-lower
+{
+    background-color: rgb(191, 85, 0);
+}
+
+/* controls change to classic style when you stylize background-color, so you need to override other styles if you want to keep them the same as default. */
+input[type="range"].differentSliderColor::-ms-thumb
+{
+    width: 11px;
+    height: 11px;
+    border-style: none;
+    background-color: rgb(0, 0, 0);
+}
+
+input[type="range"].differentSliderColor::-ms-track
+{
+    padding: 0;
+    width: auto;
+    height: 11px;
+    border-style: none;
+    color: rgb(255, 255, 255);
+}
+
+input[type="range"].tickMarkAbove
+{
+    height: auto;
+}
+
+input[type="range"].tickMarkAbove::-ms-track
+{
+    color: transparent;
+}
+
+input[type="range"].tickMarkAbove::-ms-ticks-before
+{
+    display: block;
+    color: rgb(150, 150, 150);
+    height: 8px;
+    padding-bottom: 5px;
+}
+
+input[type="range"].noValueTooltip::-ms-tooltip
+{
+    display: none;
+}
+
+#steps
+{
+    width: 226px;
+    height: 47px;
+    padding: 0px;
+}
+
+#steps::-ms-thumb
+{
+    width: 24px;
+    height: 25px;
+    padding: 0px;
+    border: 0px;
+    margin-top: 22px;
+    background-color: transparent;
+    background-image: url('../images/steps/thumb.png');
+}
+
+/* put :hover after ::-ms-thumb, so that when the user hovers on the track, the thumb doesn't light up */
+#steps::-ms-thumb:hover
+{
+    background-image: url('../images/steps/thumb_hover.png');
+}
+
+/* if you put :active after ::-ms-thumb, then if the user presses on the track, the thumb doesn't turn active even after 
+    it jumps to the place where the user presses, because the active pseudo element is still the track, not the thumb */
+#steps:active::-ms-thumb
+{
+    background-image: url('../images/steps/thumb_active.png');
+}
+
+#steps::-ms-track
+{
+    height: 47px;
+    margin: 0px;
+    border: 0px;
+    padding: 0px;
+    color: transparent;
+    background-color: transparent;
+}
+
+#steps::-ms-fill-lower, #steps::-ms-fill-upper
+{
+    height: 47px;
+    margin: 0px;
+    border: 0px;
+    padding: 0px;
+    background-color: transparent;
+    background-repeat: no-repeat;
+}
+
+#steps::-ms-fill-lower
+{
+    background-image: url('../images/steps/slider_enabled_filled.png');
+    background-position: left top;
+}
+
+#steps::-ms-fill-upper
+{
+    background-image: url('../images/steps/slider_enabled.png');
+    background-position: right top;
+}

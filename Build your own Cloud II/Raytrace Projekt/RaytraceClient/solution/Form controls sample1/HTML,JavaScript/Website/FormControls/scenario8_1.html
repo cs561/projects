@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<!-- Copyright © Microsoft Corporation. All rights reserved. -->
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Internet Explorer Developer Sample</title>
+    <link rel="stylesheet" type="text/css" href="css/base-sdk.css" />
+    <link rel="stylesheet" type="text/css" href="css/formLayout.css" />
+    <link rel="stylesheet" type="text/css" href="css/scenario8_1.css" />
+    <script type="text/javascript" src="script/base-sdk.js"></script>
+    <script type="text/javascript" src="script/scenario8_1.js"></script>
+</head>
+<body role="application">
+    <div id="header" role="contentinfo"></div>
+
+    <h1 id="sampleTitle">Form controls: Progress</h1>
+
+    <!--Sample title-->
+    <h2>Scenario 8.1: Introduction</h2>
+    <p>
+        <a href="scenario8.html">Back to Progress control scenarios menu</a>
+    </p>
+
+    <!--Description and code snippet-->
+    <div class="descRegion" role="region" aria-labelledby="descLabel" aria-live="assertive">
+        <h3 id="descLabel">Description</h3>
+        <div class="descContent">
+            <p>
+                The HTML5 &lt;progress&gt; element can be used to indicate that the system
+                is busy with some activity. The progress element can show a determinate
+                or measurable progress from 0 to a maximum value. It can also show an
+                indeterminate progress that shows the page is doing something but the
+                amount of time needed or progress isn't known. 
+            </p>
+            <h3 class="codeLabel">Code</h3>
+<pre>
+&lt;!-- Indeterminate Progress Bar 
+    &lt;progress&gt;&lt;/progress&gt;
+     --&gt;
+
+&lt;!-- Determinate Progress Bar  
+    &lt;progress value="30" max="100"&gt;&lt;/progress&gt;
+     --&gt;
+       
+&lt;!-- Progress Ring  
+    &lt;label  class="progressRingText"&gt;
+        &lt;progress class="ring withText"&gt;&lt;/progress&gt;
+        Processing
+    &lt;/label&gt;
+
+    progress.ring::-ms-fill
+    {
+        animation-name: -ms-ring;
+    }
+
+    progress.withText
+    {
+        color: inherit;                 /* to use the same text color as the page */
+        vertical-align: text-bottom;    /* to pull the control down so that the
+                                           bottom of the control align with the bottom
+                                           of its label */
+    }
+
+    /* text style when put as the label for progress ring */
+    .progressRingText
+    {
+        font-family: "Segoe UI";
+    }
+
+    /* text style when put as the label a default size progress ring */
+    .progressRingText
+    {
+        font-size: 11pt;
+        line-height: 15pt;
+    }
+
+    /* the margin to separate the ring and its label */
+    .progressRingText progress
+    {
+        margin-right: 5px;
+    }
+    --&gt;
+
+&lt;!-- Example of using progress ring on image placeholder  
+    &lt;div id="imageDownloadSample"&gt;
+        &lt;div id="imagePlaceholder"&gt;
+            &lt;progress class="ring" id="imageDownloadProgress"&gt;&lt;/progress&gt;
+        &lt;/div&gt;                                    
+        &lt;div style="margin-left: 20px;"&gt;
+            &lt;button class="horizontalButtonLayout" id="btnCompleteImageDownload"
+                onclick="completeImageDownload();"&gt;Complete&lt;/button&gt;
+            &lt;button class="horizontalButtonLayout" id="btnResetImageDownload"
+                onclick="resetImageDownload();" disabled&gt;Reset&lt;/button&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+
+    #imageDownloadSample
+    {
+        margin-top: 50px;
+        display: -ms-flexbox;
+        -ms-flex-align: center;
+    }
+ 
+    #imagePlaceholder
+    {
+        width: 80px;
+        height: 80px;
+        background-color: rgba(204, 204, 204, 0.3);
+        display: -ms-flexbox;
+        -ms-flex-align: center;
+        -ms-flex-pack: center;
+    }
+
+    #imagePlaceholder.completed
+    {
+        width: 80px;
+        height: 80px;
+        border: 0px;
+        background-image: url("../images/SauceCaramel.png");
+    
+        animation-name: image-fade-in;
+        animation-duration: 0.167s;
+        animation-timing-function: linear;
+    }
+
+    @keyframes image-fade-in{
+        from 
+        {
+            opacity: 0.0;
+        }
+        to 
+        {
+            opacity: 1.0;
+        }
+    }
+
+    // helper functions for CSS class
+    function hasClass(ele, cls) {
+        return ele.className.match(new RegExp('(\\s|^)' + cls + '(\\s|$)'));
+    }
+
+    function addClass(ele, cls) {
+        if (!this.hasClass(ele, cls)) {
+            ele.className += " " + cls;
+        }
+    }
+
+    function removeClass(ele, cls) {
+        if (hasClass(ele, cls)) {
+            var reg = new RegExp('(\\s|^)' + cls + '(\\s|$)');
+            ele.className = ele.className.replace(reg, ' ');
+        }
+    }
+
+    function completeImageDownload() {
+        var progress = document.getElementById("imageDownloadProgress");
+
+        if (!progress) {
+            return;
+        }
+
+        // Because the CSS animation keeps running and consuming CPU/GPU when
+        // the element is hidden, remove the control, rather than using display:none.
+        // The Progress control stops its internal CSS animation when it is removed
+        // from DOM tree.
+        progress.parentNode.removeChild(progress);
+
+        addClass(document.getElementById("imagePlaceholder"), "completed");
+
+
+        document.getElementById("btnCompleteImageDownload").disabled = true;
+        document.getElementById("btnResetImageDownload").disabled = false;
+    }
+
+    function resetImageDownload() {
+        var container = document.getElementById("imagePlaceholder");
+        removeClass(container, "completed");
+
+        // re-create the control
+        var newProgress = document.createElement("progress");
+        newProgress.id = "imageDownloadProgress";
+        newProgress.setAttribute("class", "ring");
+        container.appendChild(newProgress);
+
+        document.getElementById("btnCompleteImageDownload").disabled = false;
+        document.getElementById("btnResetImageDownload").disabled = true;
+    }
+    --&gt;
+
+&lt;!-- customize color        
+    progress.differentProgressColor
+    {
+        color: green;
+    }
+    --&gt; 
+
+&lt;!-- customize background 
+    &lt;button class="horizontalButtonLayout" id="btnUpdateGradientProgress"
+        onclick="updateGradientProgress();"&gt;Move to 100%&lt;/button&gt;
+    &lt;button class="horizontalButtonLayout" id="btnResetGradientProgress"
+        onclick="resetGradientProgress();" disabled&gt;Reset&lt;/button&gt;
+
+
+    function updateGradientProgress() {
+        var progress = document.getElementById("myGradientProgress");
+        if (progress) {
+            progress.value = 1;
+        }
+
+        document.getElementById("btnUpdateGradientProgress").disabled = true;
+        document.getElementById("btnResetGradientProgress").disabled = false;
+    }
+
+    function resetGradientProgress() {
+        // re-create the control with value 0
+        var container = document.getElementById("gradientProgressContainer");
+        while (container.childNodes.length &gt;= 1) {
+            container.removeChild(container.firstChild);
+        }
+
+        var newProgress = document.createElement("progress");
+        newProgress.id = "myGradientProgress";
+        newProgress.setAttribute("value", "0");
+        newProgress.setAttribute("class", "gradientProgress");
+        container.appendChild(newProgress);
+
+        document.getElementById("btnUpdateGradientProgress").disabled = false;
+        document.getElementById("btnResetGradientProgress").disabled = true;
+    }
+
+    progress.gradientProgress
+    {
+        width: 250px;
+        height: 16px;
+        border-radius: 8px;
+        border-width: 0px;
+        box-shadow: inset 0 4px 10px rgba(0, 0, 0, 0.4);
+    }
+
+    progress.gradientProgress::-ms-fill
+    {
+        border-width: 0px;
+        box-shadow: inset 0 4px 10px rgba(0, 0, 0, 0.4);
+        background-image: linear-gradient(90deg, rgb(255, 30, 30), rgb(230, 230, 30) 40%, rgb(30, 255, 30));
+
+        /* without this fixed width the gradient is having an "extending"
+        effect instead of "reveal" effect */
+        background-size: 250px;
+    }
+    --&gt;
+</pre>
+        </div>
+    </div>
+
+    <!--Rendered result-->
+    <div class="resultRegion" role="region" aria-labelledby="resultLabel" aria-live="assertive">
+        <h3 id="resultLabel">Result</h3>
+        <div class="resultContent">
+            <fieldset class="formSection">
+                <legend class="formSectionHeading">Basics</legend>
+                <div class="twoColumnGridContainer-ControlList">
+                    <div style="-ms-grid-row: 1; -ms-grid-column: 1;">
+                        Indeterminate Progress Bar
+                        <div class="detail">
+                            &lt;progress&gt;&lt;/progress&gt;</div>
+                    </div>
+                    <div style="-ms-grid-row: 1; -ms-grid-column: 2;">
+                        <progress></progress>
+                    </div>
+                    <div style="-ms-grid-row: 2; -ms-grid-column: 1;">
+                        Determinate Progress Bar
+                        <div class="detail">
+                            value="30" max="100"</div>
+                    </div>
+                    <div style="-ms-grid-row: 2; -ms-grid-column: 2;">
+                        <progress value="30" max="100">
+                        </progress>
+                    </div>
+                    <div style="-ms-grid-row: 3; -ms-grid-column: 1;">
+                        Progress Ring
+                        <div class="detail">
+                            By setting -ms-animation-name.<br />Layout examples on how to put it with text and how to use it on a placeholder.</div>
+                    </div>
+                    <div style="-ms-grid-row: 3; -ms-grid-column: 2;">
+                        <!-- when putting progress ring with text, please style them with the same color, matching size, and pull the ring down to align with the text-bottom of the label.
+                             here we put label as the parent element of progress control, so that the label can be associated with the control automatically without specifying a "for" attribute,
+                             also by doing this we can use vertical-align: text-bottom to align the bottom of the progress ring with the bottom of the label. -->
+                        <label  class="progressRingText">
+                            <progress class="ring withText"></progress>Processing
+                        </label>
+                        <div id="imageDownloadSample">
+                            <div id="imagePlaceholder"><progress class="ring" id="imageDownloadProgress"></progress></div>                                    
+                            <div style="margin-left: 20px;">
+                                <button class="horizontalButtonLayout" id="btnCompleteImageDownload" onclick="completeImageDownload();">Complete</button>
+                                <button class="horizontalButtonLayout" id="btnResetImageDownload" onclick="resetImageDownload();" disabled>Reset</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+            <fieldset class="formSection">
+                <legend class="formSectionHeading">Styling</legend>
+                <div class="twoColumnGridContainer-ControlList">
+                    <div style="-ms-grid-row: 1; -ms-grid-column: 1;">
+                        Customize color
+                        <div class="detail">
+                            progress{ color: green; }</div>
+                    </div>
+                    <div style="-ms-grid-row: 1; -ms-grid-column: 2;">
+                        <progress class="differentProgressColor"></progress><br />
+                        <br />
+                        <progress value="0.3" class="differentProgressColor"></progress><br />
+                        <br />
+                        <progress class="ring differentProgressColor"></progress>
+                    </div>
+                    <div style="-ms-grid-row: 2; -ms-grid-column: 1;">
+                        Customize background
+                        <div class="detail">
+                            Using CSS gradient on ::-ms-fill
+                        </div>
+                    </div>
+                    <div style="-ms-grid-row: 2; -ms-grid-column: 2; display: -ms-flexbox; -ms-flex-align: center;">
+                        <div id="gradientProgressContainer">
+                            <progress value="0" class="gradientProgress" id="myGradientProgress"></progress>
+                        </div>
+                        <div style="margin-left: 20px;">
+                            <button class="horizontalButtonLayout" id="btnUpdateGradientProgress" onclick="updateGradientProgress();">
+                                Move to 100%</button>
+                            <button class="horizontalButtonLayout" id="btnResetGradientProgress" onclick="resetGradientProgress();" disabled>
+                                Reset</button>
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+        </div>
+    </div>    
+    <div id="footer" role="contentinfo"></div>
+</body>
+</html>

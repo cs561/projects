@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<!-- Copyright © Microsoft Corporation. All rights reserved. -->
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Internet Explorer Developer Sample</title>
+    <link rel="stylesheet" type="text/css" href="css/base-sdk.css" />
+    <link rel="stylesheet" type="text/css" href="css/formLayout.css" />
+    <link rel="stylesheet" type="text/css" href="css/scenario7_1.css" />
+    <script type="text/javascript" src="script/base-sdk.js"></script>
+</head>
+<body role="application">
+    <div id="header" role="contentinfo"></div>
+
+    <h1 id="sampleTitle">Form controls: Range</h1>
+
+    <!--Sample title-->
+    <h2>Scenario 7.1: Introduction</h2>
+    <p>
+        <a href="scenario7.html">Back to Range control scenarios menu</a>
+    </p>
+
+    <!--Description and code snippet-->
+    <div class="descRegion" role="region" aria-labelledby="descLabel" aria-live="assertive">
+        <h3 id="descLabel">Description</h3>
+        <div class="descContent">
+            <p>
+                The range control is used to create a slide that can be used for quickly
+                setting numeric values. With the HTML5 &lt;input type="range"&gt; element, you 
+                can set a minimum, maximum, and step increment for the numbers to be input.
+            </p>
+            <h3 class="codeLabel">Code</h3>
+<pre>
+&lt;!-- horizontal range control
+    &lt;input type="range" /&gt;
+     --&gt;
+
+&lt;!-- vertical range control
+    &lt;input type="range" class="vertical" /&gt;
+    
+    input[type=range].vertical
+    {
+        writing-mode: bt-lr; 
+    }
+    --&gt;
+
+&lt;!-- customize step
+    &lt;input type="range" min="0" max="12" step="4" /&gt;
+    --&gt;
+
+&lt;!-- continuous
+        tick mark doesn't show up in this case, while you could still enable
+        that by using datalist in the "customize tick mark position" example below.
+    &lt;input type="range" step="any" /&gt;
+    --&gt;
+
+&lt;!-- customize fill color 
+    input[type="range"].differentSliderColor::-ms-fill-lower
+    {
+        background-color: rgb(191, 85, 0);
+    }
+
+    /* controls change to classic style when you stylize background-color, so you need
+    to override other styles if you want to keep them the same as default. */
+    input[type="range"].differentSliderColor::-ms-thumb
+    {
+        width: 11px;
+        height: 11px;
+        border-style: none;
+        background-color: rgb(0, 0, 0);
+    }
+
+    input[type="range"].differentSliderColor::-ms-track
+    {
+        padding: 0;
+        width: auto;
+        height: 11px;
+        border-style: none;
+        color: rgb(255, 255, 255);
+    }
+    --&gt;
+
+&lt;!-- customize tick mark region 
+    input[type="range"].tickMarkAbove
+    {
+        height: auto;
+    }
+
+    input[type="range"].tickMarkAbove::-ms-track
+    {
+        color: transparent;
+    }
+
+    input[type="range"].tickMarkAbove::-ms-ticks-before
+    {
+        display: block;
+        color: rgb(150, 150, 150);
+        height: 8px;
+        padding-bottom: 5px;
+    }
+    --&gt;
+
+
+&lt;!-- Customize tick mark position 
+    &lt;input type="range" list="myTickMarkPositions" class="customTickMarkPosition"/&gt;
+    &lt;datalist id="Datalist1"&gt;
+        &lt;option&gt;20&lt;/option&gt;
+        &lt;option&gt;40&lt;/option&gt;
+        &lt;option&gt;60&lt;/option&gt;
+        &lt;option&gt;80&lt;/option&gt;
+    &lt;/datalist&gt;
+    --&gt;
+
+&lt;!-- Hide value tooltip  
+    input[type="range"].noValueTooltip::-ms-tooltip
+    {
+        display: none;
+    }
+    --&gt;
+
+&lt;!-- Customize background image  
+    &lt;input type="range" id="Range1" step="any" /&gt;
+    
+    #steps
+    {
+        width: 226px;
+        height: 47px;
+        padding: 0px;
+    }
+
+    #steps::-ms-thumb
+    {
+        width: 24px;
+        height: 25px;
+        padding: 0px;
+        border: 0px;
+        margin-top: 22px;
+        background-color: transparent;
+        background-image: url('../images/steps/thumb.png');
+    }
+
+    /* put :hover after ::-ms-thumb, so that when the user hovers on the track,
+       the thumb doesn't light up */
+    #steps::-ms-thumb:hover
+    {
+        background-image: url('../images/steps/thumb_hover.png');
+    }
+
+    /* if you put :active after ::-ms-thumb, then if the user presses on the track,
+       the thumb doesn't turn active even after it jumps to the place where the
+       user presses, because the active pseudo element is still the track,
+       not the thumb */
+    #steps:active::-ms-thumb
+    {
+        background-image: url('../images/steps/thumb_active.png');
+    }
+
+    #steps::-ms-track
+    {
+        height: 47px;
+        margin: 0px;
+        border: 0px;
+        padding: 0px;
+        color: transparent;
+        background-color: transparent;
+    }
+
+    #steps::-ms-fill-lower, #steps::-ms-fill-upper
+    {
+        height: 47px;
+        margin: 0px;
+        border: 0px;
+        padding: 0px;
+        background-color: transparent;
+        background-repeat: no-repeat;
+    }
+
+    #steps::-ms-fill-lower
+    {
+        background-image: url('../images/steps/slider_enabled_filled.png');
+        background-position: left top;
+    }
+
+    #steps::-ms-fill-upper
+    {
+        background-image: url('../images/steps/slider_enabled.png');
+        background-position: right top;
+    }
+    --&gt;
+</pre>
+        </div>
+    </div>
+
+    <!--Rendered result-->
+    <div class="resultRegion" role="region" aria-labelledby="resultLabel" aria-live="assertive">
+        <h3 id="resultLabel">Result</h3>
+        <div class="resultContent">
+            <fieldset id="Fieldset13" class="formSection">
+                <legend class="formSectionHeading">Basics</legend>
+                <div class="twoColumnGridContainer-ControlList">
+                    <div style="-ms-grid-row: 1; -ms-grid-column: 1;">
+                        Default
+                        <div class="detail">
+                            min="0" max="100" step="1"</div>
+                    </div>
+                    <div style="-ms-grid-row: 1; -ms-grid-column: 2;">
+                        <input type="range" />
+                    </div>
+                    <div style="-ms-grid-row: 2; -ms-grid-column: 1;">
+                        Vertical
+                        <div class="detail">
+                            by setting width smaller than height</div>
+                    </div>
+                    <div style="-ms-grid-row: 2; -ms-grid-column: 2;">
+                        <input type="range" class="vertical" />
+                    </div>
+                    <div style="-ms-grid-row: 3; -ms-grid-column: 1;">
+                        Customize step
+                        <div class="detail">
+                            min="0" max="12" step="4"</div>
+                    </div>
+                    <div style="-ms-grid-row: 3; -ms-grid-column: 2;">
+                        <input type="range" min="0" max="12" step="4" />
+                    </div>
+                    <div style="-ms-grid-row: 4; -ms-grid-column: 1;">
+                        Continuous
+                        <div class="detail">
+                            step="any"</div>
+                    </div>
+                    <div style="-ms-grid-row: 4; -ms-grid-column: 2;">
+                        <!-- tick mark doesn't show up in this case, while you could still enable that by using datalist in the "customize tick mark position" example below. -->
+                        <input type="range" step="any" />
+                    </div>
+                </div>
+            </fieldset>
+            <fieldset id="Fieldset14" class="formSection">
+                <legend class="formSectionHeading">Styling</legend>
+                <div class="twoColumnGridContainer-ControlList">
+                    <div style="-ms-grid-row: 1; -ms-grid-column: 1;">
+                        Customize fill color
+                        <div class="detail">
+                            ::-ms-fill-lower{ background-color: rgb(191, 85, 0); }</div>
+                    </div>
+                    <div style="-ms-grid-row: 1; -ms-grid-column: 2;">
+                        <input type="range" class="differentSliderColor" />
+                    </div>
+                    <div style="-ms-grid-row: 2; -ms-grid-column: 1;">
+                        Customize tick mark region
+                        <div class="detail">
+                            ::-ms-track{ color: transparent; }<br />
+                            ::-ms-ticks-before{ display: block; }</div>
+                    </div>
+                    <div style="-ms-grid-row: 2; -ms-grid-column: 2;">
+                        <input type="range" class="tickMarkAbove" step="25" />
+                    </div>
+                    <div style="-ms-grid-row: 3; -ms-grid-column: 1;">
+                        Customize tick mark position
+                        <div class="detail">
+                            by using &lt;datalist&gt;</div>
+                    </div>
+                    <div style="-ms-grid-row: 3; -ms-grid-column: 2;">
+                        <input type="range" list="myTickMarkPositions" class="customTickMarkPosition"/>
+                        <datalist id="myTickMarkPositions">
+                            <option>20</option>
+                            <option>40</option>
+                            <option>60</option>
+                            <option>80</option>
+                        </datalist>
+                    </div>
+                    <div style="-ms-grid-row: 4; -ms-grid-column: 1;">
+                        Hide value tooltip
+                        <div class="detail">
+                            ::-ms-tooltip{ display: none; }</div>
+                    </div>
+                    <div style="-ms-grid-row: 4; -ms-grid-column: 2;">
+                        <input type="range" class="noValueTooltip" step="any" />
+                    </div>
+                    <div style="-ms-grid-row: 5; -ms-grid-column: 1;">
+                        Customize background image
+                    </div>
+                    <div style="-ms-grid-row: 5; -ms-grid-column: 2;">
+                        <input type="range" id="steps" step="any" />
+                    </div>
+                </div>
+            </fieldset>
+        </div>
+    </div>
+
+    <div id="footer" role="contentinfo"></div>
+</body>
+</html>
