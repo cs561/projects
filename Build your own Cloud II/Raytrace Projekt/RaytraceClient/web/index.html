@@ -1,9 +1,46 @@
 ﻿<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <title></title>
+    <link href="css/default.css" rel="stylesheet" type="text/css">
+    <script src="js/jquery.js" type="text/javascript"></script>
+    <script src="js/offline.js" type="text/javascript"></script>
 </head>
 <body>
+    <div id="title">
+        <h1>JaMi Render Cloud</h1>
+    </div>
+        <canvas id="drawplane"></canvas>
+    <div class="container">
+        <h2>Settings</h2>
+        <form onsubmit="sendMessage(); return false;">
+            <div class="controls">
+                <label>Framebuffer Width:</label>
+                <input type="text" name="cWidth" placeholder="Suggested value: 800"><br />
+                <label>Framebuffer Height:</label>
+                <input type="text" name="cHeight" placeholder="Suggested value: 600"><br />
+                <label>Max. Reflections:</label>
+                <input type="text" name="maxRef" placeholder="Suggested value: 2"><br />
+                <button type="submit" class="standardButtonColor">Render Scene</button>
+                <button type="reset" class="standardButtonColor">Reset</button><br />
+    
+            </div>
+        </form>
+    </div>
+
+    <div class="container">
+        <h2>Server</h2>
+        <form onsubmit="sendMessage(); return false;">
+            <div class="controls">
+                <label>IP / Hostname:</label>
+                <input type="text" name="hostname" placeholder="xxx.xxx.xxx.xxx"><br />
+                <label>Port:</label>
+                <input type="number" name="cHeight" placeholder="1 - 65535"><br />
+                <button type="submit" class="standardButtonColor">Add Server</button>
+                <button type="reset" class="standardButtonColor">Reset</button><br />
+
+            </div>
+        </form>
+    </div>
 
 </body>
 </html>
