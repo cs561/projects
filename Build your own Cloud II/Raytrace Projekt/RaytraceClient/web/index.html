@@ -9,15 +9,15 @@
     <div id="title">
         <h1>JaMi Render Cloud</h1>
     </div>
-        <canvas id="drawplane"></canvas>
+    <canvas id="frameBuffer"></canvas>
     <div class="container">
         <h2>Settings</h2>
-        <form onsubmit="sendMessage(); return false;">
+        <form onsubmit="setCanvas(); return false;">
             <div class="controls">
                 <label>Framebuffer Width:</label>
-                <input type="text" name="cWidth" placeholder="Suggested value: 800"><br />
+                <input id="canvasWidth" type="text" name="cWidth" placeholder="Suggested value: 800"><br />
                 <label>Framebuffer Height:</label>
-                <input type="text" name="cHeight" placeholder="Suggested value: 600"><br />
+                <input id="canvasHeight" type="text" name="cHeight" placeholder="Suggested value: 600"><br />
                 <label>Max. Reflections:</label>
                 <input type="text" name="maxRef" placeholder="Suggested value: 2"><br />
                 <button type="submit" class="standardButtonColor">Render Scene</button>
@@ -29,7 +29,7 @@
 
     <div class="container">
         <h2>Server</h2>
-        <form onsubmit="sendMessage(); return false;">
+        <form onsubmit="testCanvas(); return false;">
             <div class="controls">
                 <label>IP / Hostname:</label>
                 <input type="text" name="hostname" placeholder="xxx.xxx.xxx.xxx"><br />
@@ -37,6 +37,24 @@
                 <input type="number" name="cHeight" placeholder="1 - 65535"><br />
                 <button type="submit" class="standardButtonColor">Add Server</button>
                 <button type="reset" class="standardButtonColor">Reset</button><br />
+
+            </div>
+        </form>
+    </div>
+
+    <div class="container">
+        <h2>Server List</h2>
+        <form onsubmit="null; return false;">
+            <div class="controls">
+                <label>192.168.1.6</label>
+                <button type="reset" class="standardButtonColor">Reset</button><br />
+                <label>192.168.1.6</label>
+                <button type="reset" class="standardButtonColor">Reset</button><br />
+                <label>192.168.1.6</label>
+                <button type="reset" class="standardButtonColor">Reset</button><br />
+                <label>192.168.1.6</label>
+                <button type="reset" class="standardButtonColor">Reset</button><br />
+
 
             </div>
         </form>

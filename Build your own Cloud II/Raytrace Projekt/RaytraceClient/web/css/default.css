@@ -25,7 +25,7 @@ h2 {
     -webkit-text-shadow: rgba(0,0,0,.01) 0 0 1px;
 }
 
-#drawplane {
+#frameBuffer {
     width: 640px;
     height: 480px;
     background-color: white;
