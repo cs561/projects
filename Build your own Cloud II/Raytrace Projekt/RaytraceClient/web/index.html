@@ -4,41 +4,57 @@
     <link href="css/default.css" rel="stylesheet" type="text/css">
     <script src="js/jquery.js" type="text/javascript"></script>
     <script src="js/offline.js" type="text/javascript"></script>
+
 </head>
 <body>
     <div id="title">
         <h1>JaMi Render Cloud</h1>
     </div>
-    <canvas id="frameBuffer"></canvas> 
-    
+    <canvas id="frameBuffer"></canvas>
+
     <div class="container">
         <h2>Settings</h2>
-        <form onsubmit="setCanvas(); return false;">
+        <form onsubmit="testSend(); return false;">
             <div class="controls">
                 <label>Framebuffer Width:</label>
-                <input id="canvasWidth" type="text" name="cWidth" placeholder="Suggested value: 800"><br />
+                <input id="canvasWidth" type="text" name="cWidth" placeholder="Suggested value: 800" value="160"><br />
                 <label>Framebuffer Height:</label>
-                <input id="canvasHeight" type="text" name="cHeight" placeholder="Suggested value: 600"><br />
+                <input id="canvasHeight" type="text" name="cHeight" placeholder="Suggested value: 600" value="90"><br />
                 <label>Max. Reflections:</label>
-                <input type="text" name="maxRef" placeholder="Suggested value: 2"><br />
+                <input id="maxReflex" type="text" name="maxRef" placeholder="Suggested value: 2" value="2"><br />
                 <button type="submit" class="standardButtonColor">Render Scene</button>
                 <button type="reset" class="standardButtonColor">Reset</button><br />
-    
+
             </div>
         </form>
     </div>
 
     <div class="container">
         <h2>Server</h2>
-        <form onsubmit="testCanvas(); return false;">
+        <form onsubmit="addServer(); return false;">
             <div class="controls">
-                <label>IP / Hostname:</label>
-                <input type="text" name="hostname" placeholder="xxx.xxx.xxx.xxx"><br />
-                <label>Port:</label>
-                <input type="number" name="cHeight" placeholder="1 - 65535"><br />
-                <button type="submit" class="standardButtonColor">Add Server</button>
-                <button type="reset" class="standardButtonColor">Reset</button><br />
-
+                <div id="manual">
+                    <label>IP / Hostname:</label>
+                    <input id="serverAddress" type="text" name="hostname" placeholder="xxx.xxx.xxx.xxx" value="localhost"><br />
+                    <label>Port:</label>
+                    <input id="serverPort" type="number" name="port" placeholder="1 - 65535" value="1337"><br />
+                    <label>Server Quality:</label>
+                    <input id="serverQuality" type="number" name="quality" placeholder="(worst) 1 - 10 (best)" value="10"><br />
+                    <button type="submit" class="standardButtonColor">Add Server</button>
+                    <button type="reset" class="standardButtonColor">Reset</button><br />
+                </div>
+                <div id="upload">
+                    <div id="holder">
+                    </div>
+                    <p id="upload" class="hidden"><label>Drag & drop not supported, but you can still upload via this input field:<br><input type="file"></label></p>
+                </div>
+                <div id="uploadProgress">
+                    <p id="filereader">File API & FileReader API not supported</p>
+                    <p id="formdata">XHR2's FormData is not supported</p>
+                    <p id="progress">XHR2's upload progress isn't supported</p>
+                    <p id="lol">Upload progress: <progress id="ulp" min="0" max="100" value="0">0</progress></p>
+                    <script src="js/uploadHandler.js" type="text/javascript"></script>
+                </div>
             </div>
         </form>
     </div>
@@ -47,16 +63,14 @@
         <h2>Server List</h2>
         <form onsubmit="null; return false;">
             <div class="controls">
-                <label>192.168.1.6</label>
-                <button type="reset" class="standardButtonColor">Reset</button><br />
-                <label>192.168.1.6</label>
-                <button type="reset" class="standardButtonColor">Reset</button><br />
-                <label>192.168.1.6</label>
-                <button type="reset" class="standardButtonColor">Reset</button><br />
-                <label>192.168.1.6</label>
-                <button type="reset" class="standardButtonColor">Reset</button><br />
-
-
+                <table id="serverList" entries="0">
+                    <tr class="tableHeader" >
+                        <td>Address</td>
+                        <td>Port</td>
+                        <td>Quality</td>
+                        <td>Controls</td>
+                    </tr>
+                </table>
             </div>
         </form>
     </div>

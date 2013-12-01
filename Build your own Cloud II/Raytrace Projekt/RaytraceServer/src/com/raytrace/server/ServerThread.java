@@ -30,7 +30,7 @@ public class ServerThread extends Thread {
 			serverSocket = new ServerSocket(port);
 			serverSocket.setSoTimeout(SO_TIMEOUT);
 		} catch (IOException e) {
-			System.out.println("Server Thread Port " + port + ": " + e.getMessage());
+			System.out.println("1 Server Thread Port " + port + ": " + e.getMessage());
 			return;
 		}
 		
@@ -39,6 +39,7 @@ public class ServerThread extends Thread {
 			while (!shouldEnd) {
 				try {
 					clientSocket = serverSocket.accept();
+					
 					break;
 				} catch (Exception e) {
 				}
@@ -47,12 +48,18 @@ public class ServerThread extends Thread {
 			if (shouldEnd) {
 				break;
 			}
-		
+			
+			System.out.println("Connected - processing");
+			
 			try {
 				PrintStream out = new PrintStream(clientSocket.getOutputStream());
 				DataOutputStream outData = new DataOutputStream(clientSocket.getOutputStream());
 				BufferedReader in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
 			
+				while (!in.ready() && !shouldEnd) {
+					Thread.sleep(1);
+				}
+				
 				String[] request = null;
 				while (in.ready()) {
 					String line = in.readLine();
@@ -73,7 +80,6 @@ public class ServerThread extends Thread {
 					out.flush();
 					
 					int[] rgbs = renderer.renderLine(renderLine, width, height, maxRecursion);
-					
 					for (int rgb : rgbs) {
 						outData.writeInt(rgb);
 					}
@@ -83,7 +89,8 @@ public class ServerThread extends Thread {
 				
 				clientSocket.close();
 			} catch (Exception e) {
-				System.out.println("Server Thread Port " + port + ": " + e.getMessage());
+				e.printStackTrace();
+				System.out.println("2 Server Thread Port " + port + ": " + e.getMessage());
 			}
 			
 		}
@@ -91,7 +98,7 @@ public class ServerThread extends Thread {
 		try {
 			serverSocket.close();
 		} catch (IOException e) {
-			System.out.println("Server Thread Port " + port + ": " + e.getMessage());
+			System.out.println("3 Server Thread Port " + port + ": " + e.getMessage());
 		}
 	}
 	

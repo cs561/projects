@@ -4,18 +4,16 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.net.InetAddress;
-import java.util.ArrayList;
+
 
 import javax.imageio.ImageIO;
 
 import com.raytrace.engine.AmbientLight;
 import com.raytrace.engine.ColorSphere;
-import com.raytrace.engine.ColorTriangle;
 import com.raytrace.engine.DiffuseLight;
 import com.raytrace.engine.Renderer;
 import com.raytrace.engine.SpecularLight;
 import com.raytrace.engine.TextureTriangle;
-import com.raytrace.wavefrontloader.Triangle;
 import com.raytrace.wavefrontloader.WavefrontMesh;
 
 public class RaytraceServer {
@@ -91,7 +89,7 @@ public class RaytraceServer {
 		float[] td = {1, 1};
 		BufferedImage t = null;
 		try {
-			t = ImageIO.read(new File("/Users/jan_ebbe/Downloads/chessboard.jpg"));
+			t = ImageIO.read(new File("mesh/chessboard.jpg"));
 		} catch (IOException e1) {
 			e1.printStackTrace();
 		}
@@ -124,11 +122,11 @@ public class RaytraceServer {
 		renderer.addMesh(mesh);
 		
 		//debug
-		try {
-			ImageIO.write(renderer.renderScene(1600, 900, 5), "png", new File("/Users/jan_ebbe/desktop/ray.png"));
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		//try {
+		//	ImageIO.write(renderer.renderScene(1600, 900, 5), "png", new File("/Users/jan_ebbe/desktop/ray.png"));
+		//} catch (IOException e) {
+		//	e.printStackTrace();
+		//}
 		
 		return renderer;
 	}
