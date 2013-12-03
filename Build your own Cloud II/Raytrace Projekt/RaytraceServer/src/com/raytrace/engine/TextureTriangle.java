@@ -78,7 +78,7 @@ public class TextureTriangle implements Intersectable {
 		float[] barycentric = calcBarycentric(P);
 		
 		if (barycentric[0] > 1 || barycentric[0] < 0 || barycentric[1] > 1 || barycentric[1] < 0 || barycentric[2] > 1 || barycentric[2] < 0) {
-			//return null;
+			return null;
 		}
 		
 		// find texture color

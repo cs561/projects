@@ -56,7 +56,7 @@ public class Renderer {
 	public int[] renderLine(int line, int width, int height, int maxRecursion) {
 		int[] rgb = new int[width];
 		
-		float[] origin = {0,150,-800};
+		float[] origin = {0,0,0};
 		
 		float deltaX = ((right - left) / width);
 		float deltaY = ((bottom - top) / height);

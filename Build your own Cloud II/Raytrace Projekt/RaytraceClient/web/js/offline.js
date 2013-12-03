@@ -1,4 +1,8 @@
-﻿function testCanvas() {
+﻿var _serverStatus = new Array();
+var _currentRenderLine = 0;
+var _renderFinished = false;
+
+function testCanvas() {
     var cWidth = $("#frameBuffer").width();
     var cHeight = $("#frameBuffer").height();
     $('#frameBuffer').attr({ width: cWidth, height: cHeight });
@@ -37,24 +41,27 @@ function scrollToTop() {
     else clearTimeout(timeOut);
 }
 
-function sendRequest(url) {
-    var oReq = new XMLHttpRequest();
-    oReq.open("GET", url, true);
-    oReq.responseType = "arraybuffer";
+function sendRequest(url, serverNo, lineNo) {
+    if (!_renderFinished) {
+        var oReq = new XMLHttpRequest();
+        oReq.open("GET", url, true);
+        oReq.responseType = "arraybuffer";
 
-    oReq.onload = function (oEvent) {
+        oReq.onload = function (oEvent) {
 
-        var arrayBuffer = oReq.response; // Note: not oReq.responseText
-        if (arrayBuffer) {
-            var byteArray = new Uint8Array(arrayBuffer);
-            console.log(byteArray);
-            drawLine(byteArray, getLine(url));
+            var arrayBuffer = oReq.response; // Note: not oReq.responseText
+            if (arrayBuffer) {
+                var byteArray = new Uint8Array(arrayBuffer);
+                drawLine(byteArray, lineNo);
+                _currentRenderLine += 1;
+                processLine(serverNo);
 
-        }
-    };
+            }
+        };
 
 
-    oReq.send(null);
+        oReq.send(null);
+    }
 }
 
 function sleep(ms) {
@@ -69,16 +76,17 @@ function drawLine(byteArray, line) {
     var ctx = $("#frameBuffer")[0].getContext("2d");
     var imageData = ctx.getImageData(0, 0, w, h);
     var data = imageData.data;
+    var offset = line * w * 4;
 
-    for (var x = 0; x < w; ++x) {
-        var index = (line * w + x) * 4;
-        var value = byteArray[index];
+    for (var x = 0; x < w * 4; x += 4) {
 
-        data[index] = byteArray[index];	// red
-        data[++index] = byteArray[index];	// green
-        data[++index] = byteArray[index];	// blue
-        data[++index] = 255;	// alpha
+        data[x + offset + 1] = byteArray[x + 2];
+        data[x + offset] = byteArray[x + 1];
+        data[x + offset + 2] = byteArray[x + 3];
+        data[x + offset + 3] = 255;
     }
+
+
 
     ctx.putImageData(imageData, 0, 0);
 }
@@ -88,15 +96,66 @@ function getLine(url) {
     return urlArray[urlArray.length - 2];
 }
 
-function testSend() {
+function render() {
     setCanvas();
+    var totalServers = prepareServerList();
+
+
+
+
+
+
+    for (var i = 0; i < totalServers; i++) {
+        processLine(i);
+    }
+
+    /* while (line < cHeight) {
+ 
+          var lineProcessed = false;
+  
+          for (var j = 0; j < totalServers; j++) {
+              if (_serverStatus[j][2] == 1) {
+                  lineProcessed = true;
+                  sendRequest("http://" + _serverStatus[j][0] + ":" + _serverStatus[j][1] + "/render-" + cWidth + "-" + cHeight + "-" + line + "-" + maxRef, j, line);
+  
+                  break;
+              }
+          }
+          if (lineProcessed) {
+              line++;
+          }
+          sleep(5000);
+      }*/
+
+
+}
+
+function processLine(serverNo) {
     var cWidth = $("#frameBuffer").width();
     var cHeight = $("#frameBuffer").height();
     var maxRef = $("#maxReflex").val();
-
-    for (var i = 0; i < cHeight; i++) {
-        sendRequest("http://localhost:1337/render-" + cWidth + "-" + cHeight + "-" + i + "-" + maxRef);
+    if (_currentRenderLine < cHeight) {
+        sendRequest("http://" + _serverStatus[serverNo][0] + ":" + _serverStatus[serverNo][1] + "/render-" + cWidth + "-" + cHeight + "-" + _currentRenderLine + "-" + maxRef, serverNo, _currentRenderLine);
+    } else {
+        renderFinished = true;
     }
+}
+
+function prepareServerList() {
+    _serverStatus = getServerList();
+    var totalServers = _serverStatus.length;
+    if (totalServers > 0) {
+
+        for (var i = 0; i < totalServers; i++) {
+            _serverStatus[i][2] = 1;
+        }
+        console.log(_serverStatus);
+        return totalServers;
+    } else {
+        alert("Please add at least one server");
+        return 0;
+    }
+
 }
 
 function addServer() {
@@ -105,21 +164,15 @@ function addServer() {
 
     newServer[0] = $("#serverAddress").val();
     newServer[1] = $("#serverPort").val();
-    newServer[2] = $("#serverQuality").val();
-
-
 
     var row = document.createElement('tr');
     var counter = parseInt($("#serverList").attr("entries"));
-    
+
     row.id = "S" + counter;
     counter += 1;
     $("#serverList").attr("entries", counter);
-    
 
-
-
-    row.innerHTML = displayArrayAsTable(newServer, 0, 2, row.id);
+    row.innerHTML = displayArrayAsTable(newServer, 0, 1, row.id);
     document.getElementById('serverList').appendChild(row);
 
     var removeButton = $(document.createElement('button'));
@@ -141,7 +194,7 @@ function removeServer(btndel) {
 function getServerList() {
     var serverList = [];
 
-    $("table#serverList tr").each(function () {
+    $("table#serverList tr[id^=S]").each(function () {
         var arrayOfThisRow = [];
         var tableData = $(this).find('td');
         if (tableData.length > 0) {

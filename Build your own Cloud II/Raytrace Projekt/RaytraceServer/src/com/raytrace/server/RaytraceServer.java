@@ -123,7 +123,7 @@ public class RaytraceServer {
 		
 		//debug
 		//try {
-		//	ImageIO.write(renderer.renderScene(1600, 900, 5), "png", new File("/Users/jan_ebbe/desktop/ray.png"));
+		//	ImageIO.write(renderer.renderScene(160, 90, 5), "png", new File("/Users/jan_ebbe/desktop/ray.png"));
 		//} catch (IOException e) {
 		//	e.printStackTrace();
 		//}

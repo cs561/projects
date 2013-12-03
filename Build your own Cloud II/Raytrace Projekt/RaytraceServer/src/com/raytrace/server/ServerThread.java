@@ -30,7 +30,7 @@ public class ServerThread extends Thread {
 			serverSocket = new ServerSocket(port);
 			serverSocket.setSoTimeout(SO_TIMEOUT);
 		} catch (IOException e) {
-			System.out.println("1 Server Thread Port " + port + ": " + e.getMessage());
+			System.out.println("Server Thread Port " + port + ": " + e.getMessage());
 			return;
 		}
 		
@@ -48,8 +48,6 @@ public class ServerThread extends Thread {
 			if (shouldEnd) {
 				break;
 			}
-			
-			System.out.println("Connected - processing");
 			
 			try {
 				PrintStream out = new PrintStream(clientSocket.getOutputStream());
@@ -90,7 +88,7 @@ public class ServerThread extends Thread {
 				clientSocket.close();
 			} catch (Exception e) {
 				e.printStackTrace();
-				System.out.println("2 Server Thread Port " + port + ": " + e.getMessage());
+				System.out.println("Server Thread Port " + port + ": " + e.getMessage());
 			}
 			
 		}
@@ -98,7 +96,7 @@ public class ServerThread extends Thread {
 		try {
 			serverSocket.close();
 		} catch (IOException e) {
-			System.out.println("3 Server Thread Port " + port + ": " + e.getMessage());
+			System.out.println("Server Thread Port " + port + ": " + e.getMessage());
 		}
 	}
 	
