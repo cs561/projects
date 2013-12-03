@@ -1,0 +1,10 @@
+{
+    "name": "sc_client",
+    "description": "Server/Client-Modell: Client.",
+    "version": "0.0.1",
+    "dependencies": {
+        "socket.io-client": "*",
+        "delivery": "*",
+        "nconf": "*"
+    }
+}

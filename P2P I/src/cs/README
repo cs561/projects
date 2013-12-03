@@ -1,0 +1,36 @@
+
+Server/Client-Model: Client
+===========================
+
+Client connects to server and downloads file.
+
+Usage:
+    node client clientname
+
+Installation:
+    npm install
+    npm install git+https://github.com/liamks/Delivery.js.git
+
+
+-----
+
+
+!!!IMPORTANT!!!
+
+Install latest version of delivery:
+  npm install git+https://github.com/liamks/Delivery.js.git
+
+The version installed with npm contains bugs!
+
+
+-----
+
+
+!!!BUG!!!
+
+Sometimes the file is transfered whice.
+This is due to a bug in socket.io:
+   https://github.com/LearnBoost/socket.io/issues/430
+
+
+-----

@@ -1,0 +1,6 @@
+{
+    "serverip": "localhost",
+    "serverport": 5000,
+    "collectorip": "localhost",
+    "collectorport": 3000
+}
