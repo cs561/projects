@@ -3,7 +3,7 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Peer</title>
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
+<script src="jquery.js"></script>
 <script src="peer.js"></script>
 <script type="text/javascript">
 
@@ -14,12 +14,12 @@ var collectorIP,collectorPort;
 var serverIP,serverPort;
 
 $.getJSON( "config.json", function(data) {
-	var parsedInfo = $.parseJSON(data);
+	var parsedInfo = data;
 	collectorIP = parsedInfo.collectorip;
 	collectorPort = parsedInfo.collectorport;
 	serverIP = parsedInfo.serverip;
 	serverPort = parsedInfo.serverport;
-}
+});
 
 function on_submit_name(event) {
     // Check if any name has been entered.
