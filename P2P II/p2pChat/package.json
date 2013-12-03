@@ -1,0 +1,11 @@
+{
+  "name": "p2pchat",
+  "description": "a p2pchat proof of concept",
+  "version": "0.0.1",
+  "dependencies": {
+    "node-static": "~0.7.2",
+    "socket.io": "~0.9.16"
+  },
+  "devDependencies": {},
+  "license": "MIT"
+}

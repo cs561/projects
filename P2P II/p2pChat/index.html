@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>p2p Chat</title>
+        <meta name="description" content="">
+        <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+
+        <link rel="stylesheet" href="css/normalize.css">
+        <link rel="stylesheet" href="css/main.css">
+        <script src="js/vendor/modernizr-2.6.2.min.js"></script>
+
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+
+        <div id="content">
+            <div id="chatBox">
+            </div>
+            <div id="msgBox">
+                <input id="myMessage" type="text" />
+                <button id="sendMsg">Send</button>
+            </div>
+
+            <div id="infoBox">
+                <p>Allegmeine Infos:</p>
+                <ul>
+                    <li>Deine ID: <span id="nodeId"></span></li>
+                    <li><span id="socketAct" class="act">&#9608;</span> Aktivität mit Socket.io (<span id="socketActCnt">0</span> Verbindungen)</li>
+                    <li><span id="nrCons">0</span> Verbindungen</li>
+                </ul>
+                <p>Verbindungen:</p>
+                <ul id="connections">
+                    <li>test</li>
+                </ul>
+            </div>
+
+            <div id="graphCanvas">
+
+            </div>
+            <button id="redraw">Redraw</button>
+        </div>
+
+        <!--  Graph Dracula  -->
+        <script type="text/javascript" src="../js/raphael-min.js"></script>
+        <script type="text/javascript" src="../js/dracula_graffle.js"></script>
+        <script type="text/javascript" src="../js/dracula_graph.js"></script>
+        <script type="text/javascript" src="../js/dracula_algorithms.js"></script>
+
+        <!-- jQuery, Socket.io and Crypto -->
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <script src="http://crypto-js.googlecode.com/svn/tags/3.1.2/build/rollups/md5.js"></script>
+        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.2.min.js"><\/script>')</script>
+        <script src="socket.io/socket.io.js"></script>
+
+        <!-- Adapter.js for interop -->
+        <script src="js/adapter.js"></script>
+        <script src="./p2pChat.js"></script>
+
+        <script>
+
+            $(document).ready(function(){
+
+                /*
+                Some things for Socket.io
+                 */
+                var socketAct = $("#socketAct");
+                var socketActCntElem = $("#socketActCnt");
+                var socketActCnt = 0;
+                var connectionTimeout = undefined;
+                function showSocketConnection(){
+                    socketActCnt++;
+                    socketActCntElem.html(socketActCnt);
+
+                    if(connectionTimeout == undefined){
+                        connectionTimeout = setTimeout(function(){hideSocketConnection();},1000);
+                        socketAct.addClass('act');
+                    }
+                }
+                function hideSocketConnection(){
+                    socketAct.removeClass('act');
+                    connectionTimeout = undefined;
+                }
+
+                /*
+                  ___       ______ .___________. __    ______   .__   __.
+                 /   \     /      ||           ||  |  /  __  \  |  \ |  |
+                /  ^  \   |  ,----'`---|  |----`|  | |  |  |  | |   \|  |
+               /  /_\  \  |  |         |  |     |  | |  |  |  | |  . `  |
+              /  _____  \ |  `----.    |  |     |  | |  `--'  | |  |\   |
+             /__/     \__\ \______|    |__|     |__|  \______/  |__| \__|
+
+                 */
+
+                //set up chat
+                var chat = new ChatBox('#chatBox','#myMessage','#sendMsg');
+
+                //set up socket.io
+                var socket = io.connect();
+
+                //params for connectionHandler
+                var param = {
+                    statusChan: function(data){
+                        showSocketConnection();
+                        socket.emit('status', data);
+                    },
+                    establishChan: function(data){
+                        showSocketConnection();
+                        socket.emit('sendToNode',data);
+                    }
+                }
+
+                //init connectionhansler
+                var connectionHandler = new ConnectionHandler(param);
+                chat.emitMsg(new Message("YOU", "\Welcome, your Id is: <em>"+connectionHandler.nodeId+"\</em>", 'system'));
+                $("#nodeId").html(connectionHandler.nodeId);
+
+                /*
+                    Connect socket.io to ConnectionHandler
+                 */
+                socket.on('connect', function(){
+                    showSocketConnection();
+                    VERBOSE && console.log("Socket.io connection successful");
+                    connectionHandler.sendStatus(); //fixme make .acivate() function
+                });
+                socket.on('candidateList', function(signal){
+                    showSocketConnection();
+                    connectionHandler.processCandidates(signal);
+                });
+                socket.on('recvToNode',function(signal){
+                    //console.log("received from Node");
+                    //console.log(signal);
+                    //showSocketConnection();
+                    connectionHandler.receiveSignal(signal);
+                })
+                socket.on('disconnect', function(){
+                    showSocketConnection();
+                    chat.emitMsg(new Message("System", "Connection to socket.io Server lost", 'system'));
+                })
+
+                //overwrite hooks of connectionHandler eg connect ConnectionHandler with chat
+                connectionHandler.onChatPkt = function(msg){
+                    chat.emitMsg(msg);
+                }
+                connectionHandler.onSystemMsg = function(msg){
+                    chat.emitMsg(new Message('System', msg, 'system'));
+                }
+                connectionHandler.conChangeListener = function(connections){
+                    //display nr of connections
+                    $("#nrCons").html(connections.length);
+
+                    //display connections
+                    var conElem = $("#connections");
+                    conElem.html("");
+                    for(var i=0;i<connections.length;i++){
+                        var elem = document.createElement('li');
+                        elem.innerHTML = connections[i].remoteId;
+                        conElem.append(elem);
+                    }
+                }
+
+                //connect Chat with connectionHandler
+                chat.onMessage = function(msg){connectionHandler.sendChatPacket(msg);};
+
+                /*
+                  *========================================================================
+                  *
+                  *                                GRAPH
+                  *
+                  *========================================================================
+                  *
+                 */
+                //send my connections to everyone
+                function sendConnections(){
+                    var cons = connectionHandler.connections;
+                    var connectedTo = [];
+
+                    for(var con in cons){
+                        connectedTo.push(cons[con].getRemoteId());
+                    }
+                    connectionHandler.sendCMDPacket({type:"conInfo", src: connectionHandler.nodeId, consTo: connectedTo});
+                }
+                setInterval(function(){sendConnections()}, 30000);
+
+                connectionHandler.receivedCMDPacket = function(pkt){
+                    if(pkt == undefined){return}
+                    switch (pkt.type){
+                        case "conInfo":
+                            makeGraph(pkt);
+                            break;
+                    }
+                }
+
+                var globalConMap = {};
+                var graphDracula = new Graph();
+                var gLayout;
+                var gRender;
+                var graphTime = (new Date()).getTime();
+                var graphRenewTime = 10000;
+                var GRAPHDEBUG = false;
+
+                function makeGraph(pkt){
+
+                    GRAPHDEBUG && console.log("graph paket");
+                    GRAPHDEBUG && console.log(pkt);
+                    var oldAfter = 40000;
+                    var tTime = (new Date()).getTime();
+
+                    if(pkt){
+                        globalConMap[pkt.src] = {time:tTime, node:pkt.src, consTo:pkt.consTo};
+                    }
+
+                    //cleanup old entries
+                    for(var con in globalConMap){
+                        if(globalConMap.hasOwnProperty(con)){
+                            GRAPHDEBUG && console.log("Timeout so far:"+(tTime-globalConMap[con].time));
+
+                            if(tTime-globalConMap[con].time > oldAfter){
+                                GRAPHDEBUG && console.log("remove old node");
+                                delete globalConMap[con];
+                            }
+                        }
+                    }
+
+                    if(tTime-graphTime > graphRenewTime){
+                        GRAPHDEBUG && console.log("doing redraw after " + (tTime-graphTime));
+                        graphTime = tTime;
+
+                        //make graph
+                        $('#graphCanvas').html("");
+                        graphDracula = new Graph()
+                        gLayout = new Graph.Layout.Spring(graphDracula);
+                        gRender = new Graph.Renderer.Raphael('graphCanvas', graphDracula, 600, 600);
+
+
+                        for(var con in globalConMap){
+                            if(globalConMap.hasOwnProperty(con)){
+                                GRAPHDEBUG && console.log("even here");
+                                GRAPHDEBUG && console.log(con);
+                                var conObj = globalConMap[con];
+                                var cons = conObj.consTo;
+                                for(var rem in cons){
+                                    graphDracula.addEdge(conObj.node+"", cons[rem]+"");
+                                    GRAPHDEBUG && console.log("Adding the following: "+conObj.node+"\ <> "+cons[rem]+"");
+                                }
+                            }
+                      }
+                      gLayout.layout();
+                      gRender.draw();
+                    }
+
+                }
+
+                $("#redraw").click(function(){
+                    graphTime = 0;
+                    makeGraph();
+                })
+            });
+
+
+
+        </script>
+    </body>
+</html>
