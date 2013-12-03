@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Peer</title>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
+<script src="peer.js"></script>
+<script type="text/javascript">
+
+var nameForm, nameInput,connectButton, connectForm, messageInput, sendButton, msgbox, destroyForm, destroyButton;
+var myPeer;
+var begin_timestamp;
+var collectorIP,collectorPort;
+var serverIP,serverPort;
+
+$.getJSON( "config.json", function(data) {
+	var parsedInfo = $.parseJSON(data);
+	collectorIP = parsedInfo.collectorip;
+	collectorPort = parsedInfo.collectorport;
+	serverIP = parsedInfo.serverip;
+	serverPort = parsedInfo.serverport;
+}
+
+function on_submit_name(event) {
+    // Check if any name has been entered.
+    if (nameInput.value !== "") {
+        // Store the user's name for later.
+        var userName = nameInput.value;
+        myPeer = new Peer(userName,{host: serverIP, port:serverPort});
+        // Disable name entry, and enable message entry.
+        nameInput.disabled = connectButton.disabled = true;
+        messageInput.disabled = sendButton.disabled = destroyButton.disabled = false;
+    }
+    //Establish communication with Server 
+    myPeer.on('open', function(id){
+    	msgCollector("Peer "+myPeer.id+" online");
+    });
+    //Listen for incoming connection request
+    myPeer.on('connection',function(conn){
+    	receive(conn);
+    });
+    
+    event.preventDefault();
+    return false;
+};
+
+/*
+ * Send connection request to server. Does not guarantie a connection or error. If remote ID doesn't exist, 
+ * this will just stay idle.
+ */
+function on_connect(event) {
+    
+    if (messageInput.value !== "") {
+    	// Send connection request with remote ID to server
+    	var dataconn = myPeer.connect(messageInput.value,{label: 'data'});
+    	var timeconn = myPeer.connect(messageInput.value,{label:'timestamp'});
+    	// Listen for an answer
+    	receive(dataconn);
+    	receive(timeconn);
+    	
+        messageInput.value = "";
+    }
+    event.preventDefault();
+    return false;
+};
+
+
+function on_destroy(){
+	myPeer.destroy();
+	nameInput.disabled = connectButton.disabled = false;
+    messageInput.disabled = sendButton.disabled = closeButton.disabled = true;
+    window.location.reload();
+}
+
+function receive(conn){
+	//Waiting for remote to answer
+	conn.on('open', function(){
+		if(conn.label==='data'){
+			creatTableEntry(conn);
+		}
+		//remove Entry from table if remote user is no longer available
+		conn.on('close',function(){
+			if(conn.label==='data'){
+				removeTableEntry(conn);	
+			}
+		});
+		//Listen for data
+		conn.on('data',function(data){
+			if(conn.label==='data'){
+				var dataView = new Uint8Array(data);
+			    var dataBlob = new Blob([dataView]);
+				var url = window.URL.createObjectURL(dataBlob);
+				var end_timestamp = new Date().getTime();
+				timeToSend = end_timestamp-begin_timestamp;
+				resCollector(myPeer.id,parseInt(timeToSend));
+				$('#'+conn.peer).append(' (has send a <a target="_blank" href="' + url + '">file</a>)');	
+			} 
+			if(conn.label==='timestamp'){
+				begin_timestamp=data;				
+			}
+		});
+	});
+}
+
+function sendToAll(file){
+	//send the file to all connected peers
+	msgCollector(myPeer.id+" send a file");
+	timeBeforeSend = new Date().getTime();
+	var peers = $('.connection');
+	peers.each(function() {
+	    var peerId = $(this).attr('id');
+	    var conns = myPeer.connections[peerId];
+        for (var i = 0, ii = conns.length; i < ii; i += 1) {
+          	var conn = conns[i];
+          	if(conn.label==='data'){
+          		conn.send(file);
+          	}
+          	if(conn.label==='timestamp'){
+          		conn.send(timeBeforeSend);
+          	}
+        }
+	});
+}
+
+function creatTableEntry(dataconn){
+	//list all connected peers
+	if($('.connection').length===0){
+		$('.filler').hide();
+		$('#title').show();	
+	}
+	$('#connections').append('<div class="connection" id="'+dataconn.peer+'">'+dataconn.peer+'</div>');
+}
+
+function removeTableEntry(dataconn){
+	//remove no longer connected peers from list
+	$('#'+dataconn.peer).remove();
+	if ($('.connection').length === 0) {
+        $('.filler').show();
+        $('#title').hide();
+    }
+}
+
+
+$(document).ready(function() {
+    // Map the HTML elements to variables, and set up listeners for form submission.
+    nameForm = document.getElementById("name_form");
+    nameInput = document.getElementById("name_input");
+    connectButton = document.getElementById("connect_button");
+    nameForm.onsubmit = on_submit_name;
+
+    connectForm = document.getElementById("connect_form");
+    messageInput = document.getElementById("remote_name");
+    sendButton = document.getElementById("send_button");
+    connectForm.onsubmit = on_connect;
+    
+    destroyForm = document.getElementById("destroy_form");
+    destroyButton = document.getElementById("destroy_button");
+    destroyForm.onsubmit = on_destroy;
+    
+    // Prepare file drop box.
+    var box = $('#box');
+    box.on('dragenter', doNothing);
+    box.on('dragover', doNothing);
+    box.on('drop', function(e){
+    	
+      e.originalEvent.preventDefault();
+      var file = e.originalEvent.dataTransfer.files[0];
+      sendToAll(file);
+    });
+    
+    function doNothing(e){
+      e.preventDefault();
+      e.stopPropagation();
+    }   
+});    
+function msgCollector(msg){
+	$.get("http://"+collectorIP+":"+collectorPort+"/msg/"+msg);
+}
+function resCollector(name,time){
+	$.get("http://"+collectorIP+":"+collectorPort+"/peer/" + name+"/"+time);
+}
+
+
+</script>
+</head>
+<body>
+	<div style="float:left">
+		<form id="name_form">
+			Name:
+			<input type=text id="name_input"
+				   style="width: 165px; margin: 2px">
+			<input type="submit" id="connect_button" value="Send"
+				   style="width: 70px; margin: 2px">
+		</form>
+		<form id="connect_form">
+			RemoteID:
+			<input type=text id="remote_name"
+				   style="width: 137px; margin: 2px" disabled>
+			<input type="submit" id="send_button" value="Connect"
+				   style="width: 70px; margin: 2px" disabled>
+		</form>
+	</div>	
+    <div id="wrap"><div id="connections" style="float:left"><span class="filler">You have not yet
+        made any connections.</span><div id="title" style="display: none;">Connections:</div></div>
+    <div class="clear"></div></div>
+    <div id="box" style= "clear:both; margin-top:10px; margin-bottom:10px; top:10px; width:235px; background: #BEBEBE; font-size: 18px; padding:40px 30px; text-align: center;">
+    Drag file here to send to all connections.
+	</div>
+	<form id="destroy_form">
+    	<input type="submit" id="destroy_button" value="destroy Peer" disabled>
+    </form>    
+</body>
+</html>
