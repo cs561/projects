@@ -23,26 +23,25 @@ Gliederung des Inhalts:
 - Wie baue ich mir meine Cloud?
 - Ausblick auf das Projekt (dCache)
 
-Risiken:
 
 Gefundene Informationen:
 http://blog.sciencelogic.com/how-to-build-your-own-cloud/07/2013  
 
-Todos:
 
 
 ##Stand Projektausarbeitung
 
-Projektthema:
-dCache
+Projektthema: dCache
+
+Timing: grün
 
 Zu verwendende Quellen:  
 http://www.dcache.org/   
 https://entropia.de/GPN13:Build_your_own_cloud
 
-Risiken:
-Vernetzen von mehreren dCache-Instanzen.
-
-Todos:
-- mit dCache rumspielen
-- Projektvortrag vorbereiten
+Gliederung des Inhalts:
+- Vorstellung von dCache
+- Umsetzung
+- Probleme & Schwierigkeiten
+- Zeiteinteilung
+- Demo
