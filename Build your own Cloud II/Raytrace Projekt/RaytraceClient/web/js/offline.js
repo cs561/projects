@@ -1,36 +1,17 @@
-﻿var _serverStatus = new Array();
+﻿if (!window.console) window.console = {};
+if (!window.console.log) window.console.log = function () { };
+
+var _serverStatus = new Array();
 var _currentRenderLine = 0;
-var _renderFinished = false;
-
-function testCanvas() {
-    var cWidth = $("#frameBuffer").width();
-    var cHeight = $("#frameBuffer").height();
-    $('#frameBuffer').attr({ width: cWidth, height: cHeight });
-    var ctx = $("#frameBuffer")[0].getContext("2d");
-    var imageData = ctx.getImageData(0, 0, cWidth, cHeight);
-    var data = imageData.data;
-    for (var y = 0; y < cHeight; ++y) {
-
-        for (var x = 0; x < cWidth; ++x) {
-            var index = (y * cWidth + x) * 4;
-            var value = x * y & 0xff;
-
-            data[index] = value;	// red
-            data[++index] = value;	// green
-            data[++index] = value;	// blue
-            data[++index] = 255;	// alpha
-        }
-    }
-
-    ctx.putImageData(imageData, 0, 0);
-}
+var _startTime = 0;
+var _serverEnd = 0;
 
 function setCanvas() {
-
     $("#frameBuffer").width($("#canvasWidth").val() + "px");
     $("#frameBuffer").height($("#canvasHeight").val() + "px");
     $('#frameBuffer').attr({ width: $("#canvasWidth").val(), height: $("#canvasHeight").val() });
-    scrollToTop();
+
+    //scrollToTop();
 }
 
 function scrollToTop() {
@@ -42,26 +23,26 @@ function scrollToTop() {
 }
 
 function sendRequest(url, serverNo, lineNo) {
-    if (!_renderFinished) {
-        var oReq = new XMLHttpRequest();
-        oReq.open("GET", url, true);
-        oReq.responseType = "arraybuffer";
+    var oReq = new XMLHttpRequest();
+    oReq.open("GET", url, true);
+    oReq.responseType = "arraybuffer";
 
-        oReq.onload = function (oEvent) {
+    oReq.onload = function (oEvent) {
 
-            var arrayBuffer = oReq.response; // Note: not oReq.responseText
-            if (arrayBuffer) {
-                var byteArray = new Uint8Array(arrayBuffer);
-                drawLine(byteArray, lineNo);
-                _currentRenderLine += 1;
-                processLine(serverNo);
+        var arrayBuffer = oReq.response; // Note: not oReq.responseText
+        if (arrayBuffer) {
+            var byteArray = new Uint8Array(arrayBuffer);
+            drawLine(byteArray, lineNo);
+            _currentRenderLine += 1;
+            _serverStatus[serverNo][2]++;
+            processLine(serverNo);
 
-            }
-        };
+        }
+    };
 
 
-        oReq.send(null);
-    }
+    oReq.send(null);
+
 }
 
 function sleep(ms) {
@@ -97,9 +78,11 @@ function getLine(url) {
 }
 
 function render() {
+    _serverEnd = 0;
+    _currentRenderLine = 0;
     setCanvas();
     var totalServers = prepareServerList();
-
+    _startTime = new Date().getTime();
 
 
 
@@ -137,8 +120,52 @@ function processLine(serverNo) {
     if (_currentRenderLine < cHeight) {
         sendRequest("http://" + _serverStatus[serverNo][0] + ":" + _serverStatus[serverNo][1] + "/render-" + cWidth + "-" + cHeight + "-" + _currentRenderLine + "-" + maxRef, serverNo, _currentRenderLine);
     } else {
-        renderFinished = true;
+        _serverEnd++;
+
     }
+
+    if (_serverEnd == _serverStatus.length) {
+
+        evaluate(new Date().getTime());
+    }
+}
+
+function evaluate(endTime) {
+
+    var timeDiff = endTime - _startTime;
+    $("#statServers").val(_serverStatus.length);
+    $("#statRenderTime").val((timeDiff / 1000) + "s");
+    $("#statAvgRenderTime").val(Math.round(($("#frameBuffer").height() / (timeDiff / 10000))) / 10);
+
+    var bestServer = new Array();
+    var bestVal = 0;
+
+    for (var i = 0; i < _serverStatus.length; i++) {
+        if (_serverStatus[i][2] > bestVal) {
+            bestVal = _serverStatus[i][2];
+            bestServer = _serverStatus[i];
+        }
+    }
+
+    $("#statTopServerName").val(bestServer[0] + ":" + bestServer[1]);
+    $("#statTopServerCount").val(bestServer[2]);
+
+    var worstServer = new Array();
+    var worstVal = 99999999;
+
+    for (var i = 0; i < _serverStatus.length; i++) {
+        if (_serverStatus[i][2] < worstVal) {
+            worstVal = _serverStatus[i][2];
+            worstServer = _serverStatus[i];
+        }
+    }
+
+    $("#statFlopServerName").val(worstServer[0] + ":" + worstServer[1]);
+    $("#statFlopServerCount").val(worstServer[2]);
+}
+
+function evalTopServer() {
+
 }
 
 function prepareServerList() {
@@ -147,9 +174,8 @@ function prepareServerList() {
     if (totalServers > 0) {
 
         for (var i = 0; i < totalServers; i++) {
-            _serverStatus[i][2] = 1;
+            _serverStatus[i][2] = 0;
         }
-        console.log(_serverStatus);
         return totalServers;
     } else {
         alert("Please add at least one server");

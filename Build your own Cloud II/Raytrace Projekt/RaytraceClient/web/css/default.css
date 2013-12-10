@@ -26,7 +26,7 @@ h2 {
 
 #frameBuffer {
     width: 640px;
-    height: 480px;
+    height: 100px;
     background-color: white;
     margin: inherit;
     padding: inherit;
@@ -64,7 +64,7 @@ form {
 }
 
 .controls input {
-    width: 5;
+    width: 50%;
     display: inline-block;
 }
 

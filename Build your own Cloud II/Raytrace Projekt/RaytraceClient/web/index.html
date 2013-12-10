@@ -8,18 +8,21 @@
 </head>
 <body>
     <div id="title">
-        <h1>JaMi Render Cloud</h1>
+        <h1>JaMi Raytrace Client</h1>
     </div>
-    <canvas id="frameBuffer"></canvas>
+    <canvas id="frameBuffer" width="640" height="100"></canvas>
+    <script>var ctx = $("#frameBuffer")[0].getContext("2d");
+        ctx.font = "40px Calibri";
+        ctx.fillText("Render Frame", 200, 60);</script>
 
     <div class="container">
         <h2>Settings</h2>
         <form onsubmit="render(); return false;">
             <div class="controls">
                 <label>Framebuffer Width:</label>
-                <input id="canvasWidth" type="text" name="cWidth" placeholder="Suggested value: 800" value="160"><br />
+                <input id="canvasWidth" type="text" name="cWidth" placeholder="Suggested value: 800" value="640"><br />
                 <label>Framebuffer Height:</label>
-                <input id="canvasHeight" type="text" name="cHeight" placeholder="Suggested value: 600" value="90"><br />
+                <input id="canvasHeight" type="text" name="cHeight" placeholder="Suggested value: 600" value="380"><br />
                 <label>Max. Reflections:</label>
                 <input id="maxReflex" type="text" name="maxRef" placeholder="Suggested value: 2" value="2"><br />
                 <button type="submit" class="standardButtonColor">Render Scene</button>
@@ -30,17 +33,40 @@
     </div>
 
     <div class="container">
+        <h2>Rendering Statistics</h2>
+        <div class="controls">
+
+            <label>Total Servers:</label>
+            <input id="statServers" type="text" name="statServers" value="-" readonly><br />
+            <label>Total Rendering Time:</label>
+            <input id="statRenderTime" type="text" name="statRenderTime"  value="-" readonly><br />
+            <label>Avg Lines per Second:</label>
+            <input id="statAvgRenderTime" type="text" name="statAvgRenderTime" value="-" readonly><br />
+            <label>Top Server:</label>
+            <input id="statTopServerName" type="text" name="statTopServerName" value="-" readonly><br />
+            <label>Top Server Lines:</label>
+            <input id="statTopServerCount" type="text" name="statTopServerCount" value="-" readonly><br />
+            <label>Flop Server:</label>
+            <input id="statFlopServerName" type="text" name="statFlopServerName" value="-" readonly><br />
+            <label>Flop Server Lines:</label>
+            <input id="statFlopServerCount" type="text" name="statFlopServerCount" value="-" readonly><br />
+        </div>
+
+
+    </div>
+
+    <div class="container">
         <h2>Server</h2>
         <form onsubmit="addServer(); return false;">
             <div class="controls">
-                <div id="manual">
-                    <label>IP / Hostname:</label>
-                    <input id="serverAddress" type="text" name="hostname" placeholder="xxx.xxx.xxx.xxx" value="localhost"><br />
-                    <label>Port:</label>
-                    <input id="serverPort" type="number" name="port" placeholder="1 - 65535" value="1337"><br />
-                    <button type="submit" class="standardButtonColor">Add Server</button>
-                    <button type="reset" class="standardButtonColor">Reset</button><br />
-                </div>
+
+                <label>IP / Hostname:</label>
+                <input id="serverAddress" type="text" name="hostname" placeholder="xxx.xxx.xxx.xxx" value="localhost"><br />
+                <label>Port:</label>
+                <input id="serverPort" type="number" name="port" placeholder="1 - 65535" value="1337"><br />
+                <button type="submit" class="standardButtonColor">Add Server</button>
+                <button type="reset" class="standardButtonColor">Reset</button><br />
+                <!--</div>
                 <div id="upload">
                     <div id="holder">
                     </div>
@@ -51,8 +77,8 @@
                     <p id="formdata">XHR2's FormData is not supported</p>
                     <p id="progress">XHR2's upload progress isn't supported</p>
                     <p id="lol">Upload progress: <progress id="ulp" min="0" max="100" value="0">0</progress></p>
-                    <script src="js/uploadHandler.js" type="text/javascript"></script>
-                </div>
+                    <script src="js/uploadHandler.js" type="text/javascript"></script>-->
+
             </div>
         </form>
     </div>
@@ -62,7 +88,7 @@
         <form onsubmit="null; return false;">
             <div class="controls">
                 <table id="serverList" entries="0">
-                    <tr class="tableHeader" >
+                    <tr class="tableHeader">
                         <td>Address</td>
                         <td>Port</td>
                         <td>Controls</td>

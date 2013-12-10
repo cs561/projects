@@ -1,6 +1,5 @@
 package com.raytrace.wavefrontloader;
 
-import java.awt.image.BufferedImage;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
@@ -99,16 +98,7 @@ public class WavefrontMesh {
 			} else if (parts[0].equalsIgnoreCase("map_Kd")) {
 				if (parts.length > 1) {
 					File textureFile = new File(mtlFile.getParentFile(), parts[1]);
-					
-					BufferedImage textureImage = null;
-					if (textureFile.getName().endsWith(".tga")) {
-						textureImage = TargaReader.getImage(textureFile);
-					} else {
-						textureImage = ImageIO.read(textureFile);
-					}
-				
-					textures.add(new Texture(currentName, textureImage));
-					
+					textures.add(new Texture(currentName, ImageIO.read(textureFile)));
 				}
 			}
 		}

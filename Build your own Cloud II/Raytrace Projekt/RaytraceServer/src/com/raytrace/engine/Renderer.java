@@ -72,7 +72,7 @@ public class Renderer {
 		return rgb;
 	}
 	
-	public float[] rayTrace(float[] origin, float[] direction, int maxRecursion) {
+	public Intersection findIntersection(float[] origin, float[] direction) {
 		Intersection nearestIntersection = null;
 		
 		for (Intersectable object : objects) {
@@ -84,6 +84,12 @@ public class Renderer {
 				}
 			}
 		}
+		
+		return nearestIntersection;
+	}
+	
+	public float[] rayTrace(float[] origin, float[] direction, int maxRecursion) {
+		Intersection nearestIntersection = findIntersection(origin, direction);
 		
 		if (nearestIntersection != null) {
 			float[] color = nearestIntersection.getColor();
@@ -98,12 +104,20 @@ public class Renderer {
 			
 			// diffuse light
 			if (diffuseLight != null) {
-				lightColor = Matrix.addVector(Matrix.multVectorVectorComponents(color, diffuseLight.getBrightness(nearestIntersection.getNormal())), lightColor);
+				float[] lightDirection = Matrix.normalizeVector(Matrix.substractVector(diffuseLight.getPosition(), nearestIntersection.getIntersection()));
+				
+				if (findIntersection(nearestIntersection.getIntersection(), lightDirection) == null) {
+					lightColor = Matrix.addVector(Matrix.multVectorVectorComponents(color, diffuseLight.getBrightness(nearestIntersection.getNormal())), lightColor);
+				}
 			}
 			
 			// specular light
 			if (specularLight != null) {
-				lightColor = Matrix.addVector(Matrix.multVectorVectorComponents(color, specularLight.getBrightness(nearestIntersection.getNormal(), direction)), lightColor);
+				float[] lightDirection = Matrix.normalizeVector(Matrix.substractVector(specularLight.getPosition(), nearestIntersection.getIntersection()));
+				
+				if (findIntersection(nearestIntersection.getIntersection(), lightDirection) == null) {
+					lightColor = Matrix.addVector(Matrix.multVectorVectorComponents(color, specularLight.getBrightness(nearestIntersection.getNormal(), direction)), lightColor);
+				}
 			}
 
 			// reflection
@@ -112,7 +126,7 @@ public class Renderer {
 				
 				float[] reflectedColor = rayTrace(nearestIntersection.getIntersection(), reflectedDirection, maxRecursion-1);
 				if (reflectedColor != BACKGROUND) {					
-					lightColor = Matrix.addVector(Matrix.multVectorScalar(lightColor, 0.7f), Matrix.multVectorScalar(reflectedColor, 0.3f));
+					lightColor = Matrix.addVector(Matrix.multVectorScalar(lightColor, 0.75f), Matrix.multVectorScalar(reflectedColor, 0.25f));
 				}
 			}
 			
