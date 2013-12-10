@@ -1,0 +1,52 @@
+
+####################
+## alles als root ##
+####################
+
+apt-get update && apt-get dist-upgrade
+
+
+##################
+## Oracle JDK 7 ##
+##################
+
+apt-get install python-software-properties && add-apt-repository ppa:webupd8team/java
+apt-get update && apt-get install oracle-java7-installer
+
+
+#########################
+## dCache installieren ##
+#########################
+wget http://www.dcache.org/downloads/1.9/repo/2.6/dcache_2.6.11-1_all.deb
+dpkg -i dcache_2.6.11-1_all.deb
+
+
+~~~~~~~~~~~~~~~~~~
+~ dCache starten ~
+~~~~~~~~~~~~~~~~~~
+
+mv /etc/dcache/gplazma.conf /etc/dcache/gplazma.conf.bak
+touch /etc/dcache/gplazma.conf
+dcache start
+
+
+#########################################
+## dCache konfigurieren (als poolnode) ##
+#########################################
+
+-- wir brauchen / haben kein tape-System --
+-------------------------------------------
+
+nano /etc/dcache/dcache.conf
+	DefaultRetentionPolicy=REPLICA
+	DefaultAccessLatency=ONLINE
+	dcache.layout=cs561Pool
+	broker.host=131.152.56.204
+
+cp /etc/dcache/layouts/pool.conf /etc/dcache/layouts/cs561Pool.conf
+dcache restart
+
+-- pool anlegen --
+------------------
+dcache pool create --size=10G --meta=db /srv/pools/pool1 pool1 poolDomain
+
