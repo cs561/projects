@@ -21,8 +21,11 @@ Risiken:
 Gefundene Informationen:
 
 Todos:
-
+alles erledigt
 
 ##Stand Projektausarbeitung
+
+Projekt abgeschlossen
+Readme.txt erstellt
 
 
