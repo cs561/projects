@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<results trackingurl="html/resources/TrackingData.zip">
+  <arel><![CDATA[html/index.html]]></arel>
+  <object id="video2">
+    <title><![CDATA[▶ Max Herre - A-N-N-A - MTV Unplugged (Official Teaser) - YouTube]]></title>
+    <assets3d>
+      <movie><![CDATA[html/resources/201a0b22493299e07d2b8e09404c73b2/videoGood.3g2]]></movie>
+      <transform>
+        <translation>
+          <x>0.0000000000</x>
+          <y>0.0000000000</y>
+          <z>5.0067968369</z>
+        </translation>
+        <rotation type="eulerdeg">
+          <x>0.0000000000</x>
+          <y>0.0000000000</y>
+          <z>0.0000000000</z>
+        </rotation>
+        <scale>
+          <x>15.9986286163</x>
+          <y>15.9986286163</y>
+          <z>1.0000000000</z>
+        </scale>
+      </transform>
+      <properties>
+        <coordinatesystemid>1</coordinatesystemid>
+      </properties>
+    </assets3d>
+    <viewparameters/>
+  </object>
+  <object id="image2">
+    <title><![CDATA[1]]></title>
+    <assets3d>
+      <model><![CDATA[html/resources/2837476d026ab03a6b319e1510b5173d/2837476d026ab03a6b319e1510b5173d.zip]]></model>
+      <transform>
+        <translation>
+          <x>0.0000000000</x>
+          <y>0.0000000000</y>
+          <z>5.0053343773</z>
+        </translation>
+        <rotation type="eulerdeg">
+          <x>0.0000000000</x>
+          <y>0.0000000000</y>
+          <z>0.0000000000</z>
+        </rotation>
+        <scale>
+          <x>1.0668692589</x>
+          <y>1.0668692589</y>
+          <z>1.0668692589</z>
+        </scale>
+      </transform>
+      <properties>
+        <coordinatesystemid>2</coordinatesystemid>
+      </properties>
+    </assets3d>
+    <viewparameters/>
+  </object>
+  <object id="image3">
+    <title><![CDATA[2]]></title>
+    <assets3d>
+      <model><![CDATA[html/resources/295783db1abcfe8fcaa051a163fe10de/295783db1abcfe8fcaa051a163fe10de.zip]]></model>
+      <transform>
+        <translation>
+          <x>0.0000000000</x>
+          <y>0.0000000000</y>
+          <z>5.0095672607</z>
+        </translation>
+        <rotation type="eulerdeg">
+          <x>0.0000000000</x>
+          <y>0.0000000000</y>
+          <z>0.0000000000</z>
+        </rotation>
+        <scale>
+          <x>1.9134328365</x>
+          <y>1.9134328365</y>
+          <z>1.9134328365</z>
+        </scale>
+      </transform>
+      <properties>
+        <coordinatesystemid>2</coordinatesystemid>
+      </properties>
+    </assets3d>
+    <viewparameters/>
+  </object>
+  <object id="image4">
+    <title><![CDATA[3]]></title>
+    <assets3d>
+      <model><![CDATA[html/resources/86a01e2b20c7fc134f39ecadb41e8c3e/86a01e2b20c7fc134f39ecadb41e8c3e.zip]]></model>
+      <transform>
+        <translation>
+          <x>0.0000000000</x>
+          <y>0.0000000000</y>
+          <z>5.0051617622</z>
+        </translation>
+        <rotation type="eulerdeg">
+          <x>0.0000000000</x>
+          <y>0.0000000000</y>
+          <z>0.0000000000</z>
+        </rotation>
+        <scale>
+          <x>1.0323529243</x>
+          <y>1.0323529243</y>
+          <z>1.0323529243</z>
+        </scale>
+      </transform>
+      <properties>
+        <coordinatesystemid>2</coordinatesystemid>
+      </properties>
+    </assets3d>
+    <viewparameters/>
+  </object>
+  <object id="image5">
+    <title><![CDATA[4]]></title>
+    <assets3d>
+      <model><![CDATA[html/resources/f8dc06d87586c717e56b29ada00b2bb8/f8dc06d87586c717e56b29ada00b2bb8.zip]]></model>
+      <transform>
+        <translation>
+          <x>0.0000000000</x>
+          <y>0.0000000000</y>
+          <z>5.0043873787</z>
+        </translation>
+        <rotation type="eulerdeg">
+          <x>0.0000000000</x>
+          <y>0.0000000000</y>
+          <z>0.0000000000</z>
+        </rotation>
+        <scale>
+          <x>0.8774999976</x>
+          <y>0.8774999976</y>
+          <z>0.8774999976</z>
+        </scale>
+      </transform>
+      <properties>
+        <coordinatesystemid>2</coordinatesystemid>
+      </properties>
+    </assets3d>
+    <viewparameters/>
+  </object>
+  <object id="model7">
+    <title><![CDATA[Mammut]]></title>
+    <assets3d>
+      <model><![CDATA[html/resources/97e211852373189b8583ee9d7131e61a/97e211852373189b8583ee9d7131e61a.zip]]></model>
+      <transform>
+        <translation>
+          <x>294.5619201660</x>
+          <y>176.1668548584</y>
+          <z>5.0396847725</z>
+        </translation>
+        <rotation type="eulerdeg">
+          <x>270.0000000000</x>
+          <y>180.0000000000</y>
+          <z>0.0000000000</z>
+        </rotation>
+        <scale>
+          <x>1.4234898090</x>
+          <y>1.4234898090</y>
+          <z>1.4234898090</z>
+        </scale>
+      </transform>
+      <properties>
+        <coordinatesystemid>3</coordinatesystemid>
+      </properties>
+    </assets3d>
+    <viewparameters/>
+  </object>
+</results>

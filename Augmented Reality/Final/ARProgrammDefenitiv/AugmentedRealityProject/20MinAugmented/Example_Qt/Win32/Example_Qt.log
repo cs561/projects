@@ -1,0 +1,21 @@
+﻿Der Buildvorgang wurde am 17.12.2013 16:29:43 gestartet.
+     1>Projekt "C:\Users\Maurus\Dropbox\Informatik\5. Semester\Verteilte Systeme\ARProgrammDefenitiv\AugmentedRealityProject\20MinAugmented\Example_Qt\Example_Qt.vcxproj" auf Knoten "2", build Ziel(e).
+     1>InitializeBuildStatus:
+         "Win32\Example_Qt.unsuccessfulbuild" wird erstellt, da "AlwaysCreate" angegeben wurde.
+       CustomBuild:
+         Alle Ausgaben sind aktuell.
+       ClCompile:
+         Alle Ausgaben sind aktuell.
+       ResourceCompile:
+         Alle Ausgaben sind aktuell.
+       Link:
+         Alle Ausgaben sind aktuell.
+         Example_Qt.vcxproj -> C:\Users\Maurus\Dropbox\Informatik\5. Semester\Verteilte Systeme\ARProgrammDefenitiv\AugmentedRealityProject\20MinAugmented\../../metaioSDK/bin/Example_Qt.exe
+       FinalizeBuildStatus:
+         Die Datei "Win32\Example_Qt.unsuccessfulbuild" wird gelöscht.
+         Aktualisieren des Timestamps von "Win32\Example_Qt.lastbuildstate".
+     1>Die Erstellung des Projekts "C:\Users\Maurus\Dropbox\Informatik\5. Semester\Verteilte Systeme\ARProgrammDefenitiv\AugmentedRealityProject\20MinAugmented\Example_Qt\Example_Qt.vcxproj" ist abgeschlossen, build Ziel(e).
+
+Das Erstellen war erfolgreich.
+
+Verstrichene Zeit 00:00:00.25
